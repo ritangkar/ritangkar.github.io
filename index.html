@@ -1,0 +1,2963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ritangkar Dey — AI-First Enterprise Commerce Architect</title>
+<meta name="description" content="Ritangkar Dey is a Senior SAP Commerce / Enterprise Commerce Technical Leader with 8+ years across B2B, B2C and B2B2C commerce, enterprise integration, performance engineering and applied GenAI." />
+<meta name="author" content="Ritangkar Dey" />
+<meta name="theme-color" content="#0A0B0D" />
+<link rel="canonical" href="https://ritangkar.github.io/" />
+
+<!-- =========================================
+     OPEN GRAPH / SOCIAL SHARING
+     Replace assets/og-image.png with a 1200x630 image for a richer preview.
+========================================= -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ritangkar Dey — AI-First Enterprise Commerce Architect" />
+<meta property="og:description" content="SAP Commerce Technical Lead & Solution Architect — enterprise integration, performance engineering and applied GenAI." />
+<meta property="og:url" content="https://ritangkar.github.io/" />
+<meta property="og:image" content="assets/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ritangkar Dey — AI-First Enterprise Commerce Architect" />
+<meta name="twitter:description" content="SAP Commerce Technical Lead & Solution Architect — enterprise integration, performance engineering and applied GenAI." />
+<meta name="twitter:image" content="assets/og-image.png" />
+
+<!-- Favicon: simple "RD" monogram, inline SVG (no external file needed) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0B0D'/%3E%3Crect x='1.5' y='1.5' width='61' height='61' rx='12.5' fill='none' stroke='%234A85C7' stroke-width='1.5'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' fill='%23ECEEF1' text-anchor='middle'%3ERD%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================
+   GLOBAL RESET & TOKENS
+========================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+:root {
+  /* Color */
+  --bg: #0A0B0D;
+  --bg-elevated: #0D0F13;
+  --surface: #14161B;
+  --surface-hover: #1A1D23;
+  --border: #24272E;
+  --border-strong: #34383F;
+  --text: #ECEEF1;
+  --text-muted: #8D919C;
+  --text-faint: #828896;
+
+  --accent: #4A85C7;         /* blueprint blue — enterprise / systems */
+  --accent-light: #8FBBE6;
+  --accent-dim: rgba(74, 133, 199, 0.14);
+  --accent-2: #E0A048;       /* copper amber — AI / GenAI */
+  --accent-2-light: #F0C27E;
+  --accent-2-dim: rgba(224, 160, 72, 0.14);
+  --good: #5FBE87;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+
+  /* Spacing */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1.1rem;
+  --space-4: 1.75rem;
+  --space-5: 2.5rem;
+  --space-6: 3.5rem;
+  --space-7: 5rem;
+  --space-8: 7rem;
+
+  /* Layout */
+  --container: 1180px;
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+  --shadow-soft: 0 24px 48px -28px rgba(0,0,0,0.6);
+  --header-h: 72px;
+}
+
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; padding: 0; }
+code { font-family: var(--font-body); }
+
+::selection { background: var(--accent-dim); color: var(--text); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--space-3);
+  background: var(--text);
+  color: var(--bg);
+  padding: 0.6em 1em;
+  border-radius: var(--radius-s);
+  z-index: 1000;
+  font-weight: 600;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: var(--space-2); }
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.75rem);
+}
+
+section { position: relative; }
+
+.section-pad { padding-block: var(--space-8); }
+@media (max-width: 720px) {
+  .section-pad { padding-block: var(--space-6); }
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: var(--space-6);
+}
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--accent-light);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+.section-kicker .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+.section-head h2 {
+  font-size: clamp(1.7rem, 1.1rem + 2.2vw, 2.5rem);
+  margin-bottom: var(--space-3);
+}
+.section-head p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 56ch;
+}
+
+/* Divider rule used between major sections */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+}
+
+/* =========================================
+   BUTTONS & CHIPS
+========================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.85em 1.5em;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  white-space: nowrap;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--text);
+  color: #0A0B0D;
+}
+.btn-primary:hover { transform: translateY(-2px); background: #FFFFFF; }
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.btn-outline:hover { border-color: var(--accent-light); transform: translateY(-2px); }
+.btn-ghost {
+  color: var(--text-muted);
+  padding: 0.85em 1em;
+}
+.btn-ghost:hover { color: var(--text); }
+.btn-sm { padding: 0.6em 1.1em; font-size: 0.85rem; }
+.btn-disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.btn-disabled:hover { transform: none; border-color: var(--border-strong); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35em 0.85em;
+  background: var(--surface);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 0.35em 0.85em 0.35em 0.65em;
+}
+.status-pill .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-faint); flex-shrink: 0; }
+.status-deployed .status-dot { background: var(--good); }
+.status-deployed { color: #B6E6C9; border-color: rgba(95,190,135,0.35); }
+.status-concept .status-dot { background: var(--accent-2); }
+.status-concept { color: var(--accent-2-light); border-color: rgba(224,160,72,0.35); }
+.status-poc .status-dot { background: var(--accent); }
+.status-poc { color: var(--accent-light); border-color: rgba(74,133,199,0.35); }
+.status-prototype .status-dot { background: var(--text-faint); }
+.status-prototype { color: var(--text-muted); border-color: var(--border-strong); }
+
+/* =========================================
+   HEADER / NAVIGATION
+========================================= */
+.site-header {
+  position: fixed;
+  top: 1rem; left: 0; right: 0;
+  z-index: 500;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  border-bottom: none;
+  pointer-events: none;
+}
+.site-header.is-scrolled { top: 0.75rem; }
+.nav-inner {
+  pointer-events: auto;
+  width: auto;
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  padding: 0.5rem 0.6rem 0.5rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  background: rgba(20, 22, 27, 0.68);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  box-shadow: 0 20px 50px -26px rgba(0,0,0,0.65);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+.site-header.is-scrolled .nav-inner {
+  background: rgba(14, 16, 20, 0.88);
+  box-shadow: 0 20px 50px -20px rgba(0,0,0,0.75);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65em;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+}
+.brand-mark {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: linear-gradient(160deg, var(--surface), var(--bg-elevated));
+}
+.brand-name { display: none; }
+@media (min-width: 480px) { .brand-name { display: inline; } }
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: var(--space-5);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+.nav-links a { position: relative; padding: 0.3em 0; transition: color 0.2s ease; }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 100%;
+  bottom: -2px;
+  height: 1px;
+  background: var(--accent-light);
+  transition: right 0.25s ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a.is-active { color: var(--text); }
+.nav-links a.is-active::after { right: 0; }
+
+@media (min-width: 960px) {
+  .nav-links { display: flex; }
+}
+
+.nav-right { display: flex; align-items: center; gap: var(--space-3); }
+
+.nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+}
+@media (min-width: 960px) { .nav-toggle { display: none; } }
+.nav-toggle svg { width: 18px; height: 18px; }
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  background: var(--bg-elevated);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) clamp(1.25rem, 4vw, 2.75rem);
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0s linear 0.22s;
+}
+.mobile-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; visibility: visible; transition: opacity 0.22s ease, transform 0.22s ease; }
+.mobile-nav-top { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); }
+.mobile-nav-links { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-5); }
+.mobile-nav-links a {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text);
+  padding: 0.45em 0;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-nav-foot { margin-top: auto; padding-top: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+.mobile-nav-foot .social-row { color: var(--text-muted); }
+
+body.nav-open { overflow: hidden; }
+
+/* =========================================
+   HERO
+========================================= */
+.hero {
+  padding-top: calc(var(--header-h) + var(--space-8));
+  padding-bottom: var(--space-7);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before { display: none; } /* superseded by .site-atmosphere, now global */
+
+/* Site-wide atmosphere: fixed to the viewport, so it's the same behind
+   every section as you scroll — not just the hero. */
+.site-atmosphere {
+  position: fixed; inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+.atmo-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(4px);
+  will-change: transform, opacity;
+}
+.atmo-blob.b1 {
+  width: 900px; height: 900px; top: -18%; left: 8%;
+  background: radial-gradient(closest-side, rgba(74,133,199,0.30), transparent 68%);
+  animation: drift1 26s ease-in-out infinite;
+}
+.atmo-blob.b2 {
+  width: 700px; height: 700px; top: 4%; right: 4%;
+  background: radial-gradient(closest-side, rgba(143,187,230,0.20), transparent 70%);
+  animation: drift2 32s ease-in-out infinite;
+}
+.atmo-blob.b3 {
+  width: 620px; height: 620px; bottom: -12%; left: 40%;
+  background: radial-gradient(closest-side, rgba(224,160,72,0.20), transparent 70%);
+  animation: drift3 22s ease-in-out infinite;
+}
+.atmo-blob.b4 {
+  width: 500px; height: 500px; top: 40%; left: -8%;
+  background: radial-gradient(closest-side, rgba(74,133,199,0.22), transparent 72%);
+  animation: drift1 30s ease-in-out infinite reverse;
+}
+.atmo-blob.b5 {
+  width: 420px; height: 420px; bottom: 10%; right: 14%;
+  background: radial-gradient(closest-side, rgba(240,194,126,0.14), transparent 70%);
+  animation: drift2 24s ease-in-out infinite reverse;
+}
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, 6%) scale(1.08); }
+  66% { transform: translate(-3%, -4%) scale(0.96); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6%, 5%) scale(1.1); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-46%, -6%) scale(1.12); }
+}
+.atmo-blob.b3 { transform: translate(-50%, 0); }
+
+.site-grain {
+  position: absolute; inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmo-blob { animation: none; }
+}
+@media (max-width: 720px) {
+  .atmo-blob { filter: blur(8px); }
+  .atmo-blob.b1, .atmo-blob.b2 { width: 500px; height: 500px; }
+  .atmo-blob.b3 { width: 420px; height: 420px; }
+  .atmo-blob.b4, .atmo-blob.b5 { display: none; }
+}
+
+.hero-grid-plane {
+  position: absolute; left: 50%; top: 58%;
+  width: 2200px; height: 1300px;
+  margin-left: -1100px; margin-top: -280px;
+  transform: perspective(900px) rotateX(62deg) rotateZ(-5deg);
+  background-image:
+    linear-gradient(rgba(74,133,199,0.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,133,199,0.45) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(1000px 620px at 50% 15%, black, transparent 74%);
+  mask-image: radial-gradient(1000px 620px at 50% 15%, black, transparent 74%);
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: -1;
+}
+.hero-amber-glow { display: none; } /* superseded by .site-atmosphere blobs */
+.hero-inner { max-width: 760px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 0.5em 1.1em;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-5);
+}
+.hero-badge strong { color: var(--text); font-weight: 600; }
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2.9rem, 1.6rem + 7.5vw, 6.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  text-shadow: 0 0 60px rgba(74,133,199,0.3), 0 0 120px rgba(74,133,199,0.12);
+}
+.hero h1 .muted { display: block; color: var(--text-muted); font-weight: 500; }
+
+.hero-tagline {
+  margin-top: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.02rem, 0.9rem + 0.5vw, 1.3rem);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.hero-tagline .rotor {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent-light);
+  font-size: 1.12em;
+  transition: opacity 0.26s ease;
+}
+
+.hero-sub {
+  margin-top: var(--space-4);
+  font-size: clamp(1.02rem, 0.95rem + 0.3vw, 1.18rem);
+  color: var(--text-muted);
+  max-width: 54ch;
+}
+
+.hero-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+
+.hero-social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  font-size: 0.88rem;
+  color: var(--text-faint);
+}
+.hero-social a { color: var(--text-muted); border-bottom: 1px solid transparent; transition: color .2s ease, border-color .2s ease; }
+.hero-social a:hover { color: var(--text); border-color: var(--border-strong); }
+.hero-social .is-placeholder { color: var(--text-faint); cursor: default; }
+.hero-social .is-placeholder:hover { color: var(--text-faint); }
+
+.hero-visual { width: 100%; max-width: 720px; margin-top: var(--space-8); }
+.hero-visual svg { width: 100%; height: auto; display: block; }
+
+.scroll-cue {
+  display: flex; flex-direction: column; align-items: center; gap: 0.55rem;
+  margin-top: var(--space-6);
+  color: var(--text-faint);
+}
+.scroll-cue .line {
+  width: 1px; height: 30px;
+  background: linear-gradient(var(--text-faint), transparent);
+  animation: bob 2.4s ease-in-out infinite;
+}
+.scroll-cue span {
+  font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.28em;
+}
+@media (prefers-reduced-motion: reduce) { .scroll-cue .line { animation: none; } }
+@keyframes bob { 0%,100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(6px); opacity: 1; } }
+
+/* Architecture diagram flow animation */
+.flow-line {
+  stroke-dasharray: 6 7;
+  animation: flow 2.6s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .flow-line { animation: none; } }
+@keyframes flow { to { stroke-dashoffset: -130; } }
+
+/* =========================================
+   REVEAL ON SCROLL
+========================================= */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* Scale variant — major storytelling moments (case studies, AI Lab cards,
+   section headers of primary sections) get a slightly stronger, cinematic
+   entrance instead of the plain fade+rise every other card uses. */
+[data-reveal="scale"] {
+  opacity: 0;
+  transform: translateY(22px) scale(0.96);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-reveal="scale"].is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-reveal="scale"] { opacity: 1; transform: none; transition: none; }
+}
+#main-view > section[id]:not(#home) { will-change: opacity; }
+
+/* Hero headline line reveal */
+.reveal-line-wrap { overflow: hidden; display: block; }
+.reveal-line {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+.reveal-line.is-visible { transform: translateY(0); opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-line { transform: none; opacity: 1; transition: none; }
+}
+
+/* Progressive architecture-diagram build: nodes/labels fade+rise in
+   sequence, connector lines draw via stroke-dashoffset, then the existing
+   continuous flow animation takes over. Triggered once via JS by adding
+   .is-built to the parent <svg>. */
+.diagram-node { opacity: 0; transform: translateY(6px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.diagram-wrap svg.is-built .diagram-node,
+.hero-visual svg.is-built .diagram-node { opacity: 1; transform: none; }
+.diagram-connector { opacity: 0; transition: opacity 0.5s ease; }
+.diagram-wrap svg.is-built .diagram-connector,
+.hero-visual svg.is-built .diagram-connector { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .diagram-node { opacity: 1; transform: none; transition: none; }
+  .diagram-connector { transition: none; }
+}
+
+/* Scroll-linked timeline draw */
+.timeline-track {
+  position: absolute;
+  left: 9px; top: 6px;
+  width: 1px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.1s linear;
+}
+@media (min-width: 720px) { .timeline-track { left: 129px; } }
+@media (prefers-reduced-motion: reduce) { .timeline-track { transition: none; } }
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  z-index: 700;
+  transition: width 0.1s linear;
+}
+@media (prefers-reduced-motion: reduce) { .scroll-progress { display: none; } }
+
+/* =========================================
+   ABOUT
+========================================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+@media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; gap: var(--space-5); } }
+
+.about-copy p { color: var(--text-muted); font-size: 1.05rem; max-width: 58ch; }
+.about-copy p + p { margin-top: var(--space-3); }
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+@media (max-width: 560px) { .stat-row { grid-template-columns: 1fr; gap: var(--space-3); } }
+.stat-block { border-left: 2px solid var(--border-strong); padding-left: var(--space-3); }
+.stat-num { font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; color: var(--text); }
+.stat-label { color: var(--text-muted); font-size: 0.88rem; margin-top: 0.2em; }
+
+.trajectory {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  padding: var(--space-4);
+}
+.trajectory-label { font-size: 0.85rem; color: var(--text-faint); margin-bottom: var(--space-3); }
+.trajectory-path { display: flex; flex-direction: column; gap: 0; }
+.trajectory-stage { display: flex; gap: var(--space-3); }
+.trajectory-line-wrap { display: flex; flex-direction: column; align-items: center; }
+.trajectory-node { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-top: 6px; flex-shrink: 0; }
+.trajectory-stage:last-child .trajectory-node { background: var(--accent-2); }
+.trajectory-connector { width: 1px; flex: 1; background: var(--border-strong); margin-top: 4px; }
+.trajectory-text { padding-bottom: var(--space-4); }
+.trajectory-stage:last-child .trajectory-text { padding-bottom: 0; }
+.trajectory-text strong { display: block; color: var(--text); font-size: 0.98rem; font-weight: 600; }
+.trajectory-text span { color: var(--text-muted); font-size: 0.88rem; }
+
+/* Work-on cards */
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  margin-top: var(--space-7);
+}
+@media (max-width: 980px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .work-grid { grid-template-columns: 1fr; } }
+.work-card {
+  background: var(--surface);
+  padding: var(--space-4);
+  transition: background 0.2s ease;
+}
+.work-card:hover { background: var(--surface-hover); }
+.work-icon {
+  width: 38px; height: 38px;
+  border-radius: 9px;
+  border: 1px solid var(--border-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent-light);
+  margin-bottom: var(--space-3);
+}
+.work-icon svg { width: 19px; height: 19px; }
+.work-card h3 { font-size: 1.05rem; margin-bottom: 0.55em; }
+.work-card p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: var(--space-3); }
+.work-card .tag-row { gap: 0.4rem; }
+.work-card .chip { font-size: 0.72rem; padding: 0.3em 0.7em; }
+
+/* =========================================
+   EXPERIENCE TIMELINE
+========================================= */
+.timeline { position: relative; margin-top: var(--space-6); }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px; top: 6px; bottom: 6px;
+  width: 1px;
+  background: var(--border-strong);
+}
+@media (min-width: 720px) { .timeline::before { left: 129px; } }
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--border);
+}
+@media (min-width: 720px) { .timeline-item { grid-template-columns: 120px 20px 1fr; } }
+.timeline-item.is-current { padding-top: 0; }
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-date {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  padding-top: 0.2em;
+}
+@media (min-width: 720px) { .timeline-date { display: block; } }
+
+.timeline-node-col { display: flex; justify-content: center; }
+.timeline-node {
+  width: 19px; height: 19px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.timeline-item.is-current .timeline-node { background: var(--accent); }
+
+.timeline-body h3 { font-size: 1.2rem; }
+.timeline-role { color: var(--accent-light); font-size: 0.95rem; font-weight: 500; margin-top: 0.15em; }
+.timeline-meta { color: var(--text-faint); font-size: 0.85rem; margin-top: 0.3em; }
+.timeline-meta.mobile-only { display: block; }
+@media (min-width: 720px) { .timeline-meta.mobile-only { display: none; } }
+.timeline-list { margin-top: var(--space-3); display: flex; flex-direction: column; gap: 0.55em; }
+.timeline-list li { position: relative; padding-left: 1.1em; color: var(--text-muted); font-size: 0.96rem; }
+.timeline-list li::before { content: '—'; position: absolute; left: 0; color: var(--text-faint); }
+.timeline-item .tag-row { margin-top: var(--space-3); }
+.timeline-item .chip { font-size: 0.72rem; }
+
+/* =========================================
+   AI LAB
+========================================= */
+.recognition-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  border: 1px solid rgba(224,160,72,0.3);
+  background: var(--accent-2-dim);
+  border-radius: var(--radius-m);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.recognition-icon {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(224,160,72,0.18);
+  color: var(--accent-2-light);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.recognition-icon svg { width: 17px; height: 17px; }
+.recognition-card strong { color: var(--text); font-size: 0.95rem; display: block; }
+.recognition-card span { color: var(--text-muted); font-size: 0.88rem; }
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 980px) { .ai-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .ai-grid { grid-template-columns: 1fr; } }
+
+.ai-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent-2);
+  border-radius: var(--radius-m);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.ai-card:hover { transform: translateY(-3px); border-color: var(--border-strong); border-left-color: var(--accent-2); }
+.ai-card .status-pill { margin-bottom: var(--space-3); align-self: flex-start; }
+.ai-card h3 { font-size: 1.08rem; margin-bottom: 0.6em; }
+.ai-card p { color: var(--text-muted); font-size: 0.92rem; flex-grow: 1; }
+.ai-card .tag-row { margin-top: var(--space-3); }
+.ai-card .chip { font-size: 0.72rem; padding: 0.3em 0.7em; }
+.ai-card .case-link {
+  margin-top: var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--accent-light);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+.ai-card .case-link svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+.ai-card .case-link:hover svg { transform: translateX(3px); }
+
+/* =========================================
+   CASE STUDY DETAIL VIEWS
+========================================= */
+.case-study {
+  display: none;
+  padding-top: calc(var(--header-h) + var(--space-6));
+  padding-bottom: var(--space-8);
+}
+.case-study.is-active { display: block; }
+body.case-study-open #main-view { display: none; }
+body.case-study-open { overflow-x: hidden; }
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-5);
+  transition: color 0.2s ease;
+}
+.back-link:hover { color: var(--text); }
+.back-link svg { width: 15px; height: 15px; }
+
+.cs-header { max-width: 760px; margin-bottom: var(--space-7); }
+.cs-header .status-pill { margin-bottom: var(--space-3); }
+.cs-header h1 { font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.9rem); margin-bottom: var(--space-3); }
+.cs-header .cs-dek { color: var(--text-muted); font-size: 1.05rem; max-width: 58ch; }
+.cs-header .tag-row { margin-top: var(--space-4); }
+
+.cs-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-7);
+}
+@media (max-width: 900px) { .cs-body { grid-template-columns: 1fr; gap: var(--space-6); } }
+
+.cs-block + .cs-block { margin-top: var(--space-6); }
+.cs-block h2 { font-size: 1.05rem; color: var(--text); margin-bottom: var(--space-3); }
+.cs-block p { color: var(--text-muted); font-size: 0.98rem; max-width: 62ch; }
+.cs-block p + p { margin-top: var(--space-2); }
+.cs-block ol, .cs-block ul.cs-ul { display: flex; flex-direction: column; gap: 0.7em; margin-top: var(--space-2); }
+.cs-block ol { counter-reset: step; }
+.cs-block ol li {
+  position: relative;
+  padding-left: 2.1em;
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  counter-increment: step;
+}
+.cs-block ol li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: -0.05em;
+  width: 1.5em; height: 1.5em;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  color: var(--text-faint);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.cs-block ul.cs-ul li { position: relative; padding-left: 1.1em; color: var(--text-muted); font-size: 0.96rem; }
+.cs-block ul.cs-ul li::before { content: '—'; position: absolute; left: 0; color: var(--text-faint); }
+
+.cs-aside { display: flex; flex-direction: column; gap: var(--space-4); }
+.aside-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  padding: var(--space-4);
+  background: var(--surface);
+}
+.aside-card h3 { font-size: 0.85rem; color: var(--text-faint); margin-bottom: var(--space-3); font-weight: 600; }
+.aside-list { display: flex; flex-direction: column; gap: 0.6em; }
+.aside-list li { display: flex; justify-content: space-between; gap: 1em; font-size: 0.9rem; }
+.aside-list li span:first-child { color: var(--text-faint); }
+.aside-list li span:last-child { color: var(--text); text-align: right; }
+
+.diagram-wrap {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  background: var(--bg-elevated);
+  padding: var(--space-5);
+  margin-top: var(--space-4);
+  cursor: zoom-in;
+  position: relative;
+}
+.diagram-wrap svg { width: 100%; height: auto; }
+.diagram-hint {
+  position: absolute;
+  top: var(--space-3); right: var(--space-3);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  display: flex; align-items: center; gap: 0.35em;
+}
+.diagram-hint svg { width: 12px; height: 12px; }
+
+.shot-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+@media (max-width: 640px) { .shot-gallery { grid-template-columns: 1fr; } }
+.img-placeholder {
+  aspect-ratio: 16/10;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-m);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  color: var(--text-faint);
+  background: var(--bg-elevated);
+  text-align: center;
+  padding: var(--space-3);
+}
+.img-placeholder svg { width: 22px; height: 22px; margin-bottom: 0.2em; }
+.img-placeholder span { font-size: 0.82rem; }
+.img-placeholder code { font-size: 0.72rem; color: var(--text-faint); background: var(--surface); padding: 0.2em 0.5em; border-radius: 4px; }
+
+.cs-footer-note {
+  margin-top: var(--space-7);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+/* =========================================
+   PROJECTS
+========================================= */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 760px) { .project-grid { grid-template-columns: 1fr; } }
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  padding: var(--space-4);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.project-card:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+.project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-3); flex-wrap: wrap; }
+.project-top .chip { margin-left: auto; }
+.project-org { font-size: 0.8rem; color: var(--text-faint); }
+.project-card h3 { font-size: 1.05rem; margin-bottom: 0.5em; }
+.project-card p { color: var(--text-muted); font-size: 0.92rem; }
+.project-card .tag-row { margin-top: var(--space-3); }
+.project-card .chip { font-size: 0.72rem; padding: 0.3em 0.7em; }
+.project-links { margin-top: var(--space-4); display: flex; gap: var(--space-3); align-items: center; }
+.project-links .repo-link { font-size: 0.85rem; color: var(--text-faint); display: inline-flex; align-items: center; gap: 0.4em; }
+
+.confidential-note {
+  margin-top: var(--space-5);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  max-width: 62ch;
+}
+
+/* =========================================
+   SKILLS
+========================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5) var(--space-6);
+}
+@media (max-width: 760px) { .skills-grid { grid-template-columns: 1fr; } }
+.skill-group h3 {
+  font-size: 0.92rem;
+  color: var(--accent-light);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+}
+.skill-group .tag-row .chip { background: transparent; }
+
+/* =========================================
+   RESUME CTA
+========================================= */
+.resume-band {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-l);
+  background: linear-gradient(135deg, var(--surface), var(--bg-elevated));
+  padding: var(--space-6);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+.resume-band h2 { font-size: 1.5rem; margin-bottom: 0.4em; }
+.resume-band p { color: var(--text-muted); max-width: 46ch; }
+.resume-band-cta { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+/* =========================================
+   CONTACT
+========================================= */
+.contact-inner { text-align: center; max-width: 620px; margin-inline: auto; }
+.contact-inner h2 { font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem); }
+.contact-inner p { color: var(--text-muted); margin-top: var(--space-3); font-size: 1.05rem; }
+.contact-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin-top: var(--space-5); }
+.contact-alt { margin-top: var(--space-5); font-size: 0.9rem; color: var(--text-faint); }
+.contact-alt a { color: var(--text-muted); border-bottom: 1px solid var(--border-strong); }
+.contact-alt a:hover { color: var(--text); }
+
+/* =========================================
+   FOOTER
+========================================= */
+.site-footer { border-top: 1px solid var(--border); padding-block: var(--space-6); }
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.footer-brand strong { font-family: var(--font-display); font-size: 1.05rem; }
+.footer-brand p { color: var(--text-faint); font-size: 0.88rem; margin-top: 0.4em; }
+.footer-links { display: flex; flex-wrap: wrap; gap: var(--space-5); }
+.footer-col h4 { font-size: 0.8rem; color: var(--text-faint); margin-bottom: var(--space-2); font-weight: 600; }
+.footer-col ul { display: flex; flex-direction: column; gap: 0.5em; }
+.footer-col a { color: var(--text-muted); font-size: 0.9rem; }
+.footer-col a:hover { color: var(--text); }
+.footer-bottom {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: 0.82rem;
+  color: var(--text-faint);
+}
+
+/* =========================================
+   LIGHTBOX
+========================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  background: rgba(6,7,9,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+.lightbox.is-open { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 0.2s ease; }
+.lightbox-inner {
+  max-width: 900px;
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-l);
+  padding: var(--space-5);
+  position: relative;
+}
+.lightbox-inner svg { width: 100%; height: auto; }
+.lightbox-close {
+  position: absolute;
+  top: -14px; right: -14px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+}
+.lightbox-close svg { width: 16px; height: 16px; }
+
+/* =========================================
+   STICKY MOBILE CTA
+========================================= */
+.sticky-mobile-cta {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 400;
+  display: none;
+  gap: var(--space-2);
+  padding: 0.75rem clamp(1rem, 4vw, 1.5rem);
+  padding-bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(10, 11, 13, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+}
+.sticky-mobile-cta.is-visible { transform: translateY(0); }
+.sticky-mobile-cta .btn { flex: 1; }
+@media (max-width: 720px) {
+  .sticky-mobile-cta { display: flex; }
+  /* keep the last section from being covered by the fixed bar */
+  .site-footer { padding-bottom: calc(var(--space-6) + 64px); }
+}
+
+/* =========================================
+   FAQ
+========================================= */
+.faq-list { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  text-align: left;
+  padding: var(--space-4) 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.faq-q .plus { flex-shrink: 0; width: 18px; height: 18px; position: relative; }
+.faq-q .plus::before, .faq-q .plus::after {
+  content: ''; position: absolute; background: var(--text-muted);
+  transition: transform 0.2s ease;
+}
+.faq-q .plus::before { left: 0; top: 50%; width: 100%; height: 1.4px; transform: translateY(-50%); }
+.faq-q .plus::after { top: 0; left: 50%; height: 100%; width: 1.4px; transform: translateX(-50%); }
+.faq-item.is-open .plus::after { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+.faq-item.is-open .faq-a { max-height: 240px; }
+.faq-a p { color: var(--text-muted); font-size: 0.96rem; padding-bottom: var(--space-4); max-width: 62ch; }
+
+/* Utility */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;
+}
+</style>
+</head>
+<body>
+<div class="site-atmosphere" aria-hidden="true">
+  <div class="atmo-blob b1"></div>
+  <div class="atmo-blob b2"></div>
+  <div class="atmo-blob b3"></div>
+  <div class="atmo-blob b4"></div>
+  <div class="atmo-blob b5"></div>
+  <div class="site-grain"></div>
+</div>
+<a href="#main-view" class="skip-link">Skip to content</a>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- =========================================
+     HEADER / NAVIGATION
+========================================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container nav-inner">
+    <a href="#home" class="brand" aria-label="Ritangkar Dey — home">
+      <span class="brand-mark" aria-hidden="true">RD</span>
+      <span class="brand-name">Ritangkar Dey</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#about" class="nav-link" data-nav="about">About</a>
+      <a href="#experience" class="nav-link" data-nav="experience">Experience</a>
+      <a href="#ai-lab" class="nav-link" data-nav="ai-lab">AI Lab</a>
+      <a href="#projects" class="nav-link" data-nav="projects">Projects</a>
+      <a href="#skills" class="nav-link" data-nav="skills">Skills</a>
+      <a href="#resume" class="nav-link" data-nav="resume">Resume</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-primary btn-sm">Contact</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-top">
+    <a href="#home" class="brand">
+      <span class="brand-mark" aria-hidden="true">RD</span>
+      <span class="brand-name">Ritangkar Dey</span>
+    </a>
+    <button class="nav-toggle" id="navClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-nav-links" aria-label="Mobile">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#ai-lab">AI Lab</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="mobile-nav-foot">
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/ritangkar-dey" target="_blank" rel="noopener">LinkedIn</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:ritangkardey11@gmail.com">Email</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================
+     MAIN VIEW (all standard sections live here;
+     hidden automatically when a case-study view is open)
+========================================= -->
+<div id="main-view">
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-grid-plane" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-badge"><strong>8+ years</strong>&nbsp;in enterprise commerce &amp; AI</div>
+
+      <h1>
+        <span class="reveal-line-wrap"><span class="reveal-line" style="transition-delay:0.05s">Ritangkar Dey</span></span>
+      </h1>
+
+      <p class="hero-tagline">An <span class="rotor" id="heroRotor">Architect</span> for enterprise scale.</p>
+
+      <p class="hero-sub">
+        SAP Commerce Technical Lead &amp; Solution Architect. I design and build enterprise
+        commerce platforms — and the integrations, performance engineering and applied GenAI that extend them —
+        for B2B, B2C and B2B2C organizations.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-primary">Explore my work</a>
+        <a href="assets/Ritangkar-Dey-Resume.pdf" class="btn btn-outline" download>Download résumé</a>
+      </div>
+
+      <div class="hero-social">
+        <a href="https://www.linkedin.com/in/ritangkar-dey" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/ritangkar" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:ritangkardey11@gmail.com">Email</a>
+      </div>
+
+      <!-- HERO VISUAL: enterprise commerce → integration → AI data-flow diagram -->
+      <div class="hero-visual" id="heroVisual2D" aria-hidden="true">
+        <svg viewBox="0 0 640 300" fill="none" xmlns="http://www.w3.org/2000/svg" id="heroDiagram">
+          <!-- connectors -->
+          <path class="flow-line diagram-connector" d="M320 34 L320 78" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path class="flow-line diagram-connector" d="M320 118 L320 150 L170 150 L170 178" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path class="flow-line diagram-connector" d="M320 118 L320 178" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path class="flow-line diagram-connector" d="M320 118 L320 150 L470 150 L470 178" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path class="flow-line diagram-connector" d="M170 214 L170 236 L320 236 L320 254" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path class="flow-line diagram-connector" d="M320 214 L320 254" stroke="var(--border-strong)" stroke-width="1.4"/>
+          <path class="flow-line diagram-connector" d="M470 214 L470 236 L320 236 L320 254" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+          <!-- S/4HANA -->
+          <g class="diagram-node" style="transition-delay:0.05s">
+            <rect x="255" y="6" width="130" height="28" rx="8" fill="var(--surface)" stroke="var(--border-strong)"/>
+            <text x="320" y="24" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--text-muted)">S/4HANA</text>
+          </g>
+
+          <!-- SAP Commerce (emphasized) -->
+          <g class="diagram-node" style="transition-delay:0.2s">
+            <rect x="230" y="78" width="180" height="40" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+            <text x="320" y="103" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="600" fill="var(--text)">SAP Commerce</text>
+          </g>
+
+          <!-- three integration nodes -->
+          <g class="diagram-node" style="transition-delay:0.35s">
+            <rect x="112" y="178" width="116" height="36" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+            <text x="170" y="200" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="var(--text-muted)">SAP CPI</text>
+          </g>
+
+          <g class="diagram-node" style="transition-delay:0.4s">
+            <rect x="262" y="178" width="116" height="36" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+            <text x="320" y="200" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="var(--text-muted)">Service Cloud</text>
+          </g>
+
+          <g class="diagram-node" style="transition-delay:0.45s">
+            <rect x="412" y="178" width="116" height="36" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+            <text x="470" y="200" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="var(--text-muted)">POS / Logistics</text>
+          </g>
+
+          <!-- AI layer -->
+          <g class="diagram-node" style="transition-delay:0.6s">
+          <rect x="235" y="254" width="170" height="40" rx="10" fill="var(--accent-2-dim)" stroke="var(--accent-2)" stroke-width="1.3"/>
+          <text x="320" y="279" text-anchor="middle" font-family="Space Grotesk" font-size="13.5" font-weight="600" fill="var(--accent-2-light)">AI / GenAI Layer</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="scroll-cue" aria-hidden="true">
+        <div class="line"></div>
+        <span>SCROLL</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-pad">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <div class="section-kicker" data-reveal><span class="dot"></span>About</div>
+          <div class="about-copy" data-reveal>
+            <p>
+              I'm a SAP Commerce Technical Lead and Solution Architect with 8+ years of experience across B2B, B2C
+              and B2B2C enterprise commerce. My work sits at the intersection of hands-on Java/Spring engineering,
+              solution architecture, enterprise integration and performance engineering.
+            </p>
+            <p>
+              Over the last few years that scope has expanded into applied GenAI — retrieval-augmented generation,
+              enterprise chatbots and multi-agent systems — built on the same enterprise foundation: SAP
+              Commerce/CX, S/4HANA, SAP C4C/Service Cloud, CPI and BTP. I've led teams of 15+ engineers and spent
+              most of my career translating complex business requirements into integrations and platforms that
+              hold up in production.
+            </p>
+          </div>
+
+          <div class="stat-row" data-reveal>
+            <div class="stat-block">
+              <div class="stat-num">8+</div>
+              <div class="stat-label">Years in enterprise commerce</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Engineers led on delivery</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-num">B2B · B2C · B2B2C</div>
+              <div class="stat-label">Commerce models delivered</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trajectory" data-reveal>
+          <div class="trajectory-label">How my focus has evolved</div>
+          <div class="trajectory-path">
+            <div class="trajectory-stage">
+              <div class="trajectory-line-wrap">
+                <div class="trajectory-node"></div>
+                <div class="trajectory-connector"></div>
+              </div>
+              <div class="trajectory-text">
+                <strong>SAP Commerce engineering</strong>
+                <span>Java/Spring, storefronts, integrations, hands-on delivery</span>
+              </div>
+            </div>
+            <div class="trajectory-stage">
+              <div class="trajectory-line-wrap">
+                <div class="trajectory-node"></div>
+                <div class="trajectory-connector"></div>
+              </div>
+              <div class="trajectory-text">
+                <strong>Solution &amp; integration architecture</strong>
+                <span>SAP CX, S/4HANA, CPI, Service Cloud, performance engineering</span>
+              </div>
+            </div>
+            <div class="trajectory-stage">
+              <div class="trajectory-line-wrap">
+                <div class="trajectory-node"></div>
+                <div class="trajectory-connector"></div>
+              </div>
+              <div class="trajectory-text">
+                <strong>Technical delivery leadership</strong>
+                <span>Leading 15+ engineer teams, client-facing solutioning</span>
+              </div>
+            </div>
+            <div class="trajectory-stage">
+              <div class="trajectory-line-wrap">
+                <div class="trajectory-node"></div>
+              </div>
+              <div class="trajectory-text">
+                <strong>AI-enabled enterprise commerce</strong>
+                <span>RAG, multi-agent systems, enterprise AI integration</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT I WORK ON -->
+      <div class="work-grid">
+        <div class="work-card" data-reveal>
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 13l9 5 9-5"/></svg>
+          </div>
+          <h3>SAP Commerce</h3>
+          <p>Enterprise B2B, B2C and B2B2C commerce platforms — storefronts, Backoffice, Solr search, OCC APIs and Spartacus headless architecture.</p>
+          <div class="tag-row">
+            <span class="chip">SAP Commerce</span><span class="chip">OCC</span><span class="chip">Spartacus</span><span class="chip">Solr</span>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M8 7.2 12 15.8M16 7.2 12 15.8M8.4 6h7.2"/></svg>
+          </div>
+          <h3>Enterprise Integration</h3>
+          <p>Connecting commerce with the wider enterprise landscape — S/4HANA, SAP C4C/Service Cloud, CPI, BTP and third-party/POS/logistics systems.</p>
+          <div class="tag-row">
+            <span class="chip">S/4HANA</span><span class="chip">Service Cloud</span><span class="chip">SAP CPI</span><span class="chip">BTP</span>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+          </div>
+          <h3>Performance Engineering</h3>
+          <p>Data modeling, query and index optimization, and scalability work that keeps heavily customized commerce platforms fast under real load.</p>
+          <div class="tag-row">
+            <span class="chip">Data Modeling</span><span class="chip">Indexing</span><span class="chip">JVM</span>
+          </div>
+        </div>
+        <div class="work-card" data-reveal>
+          <div class="work-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M3 12h3M18 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/><circle cx="12" cy="12" r="3.4"/></svg>
+          </div>
+          <h3>AI &amp; GenAI</h3>
+          <p>Applying LLMs, RAG and multi-agent orchestration to enterprise commerce — with guardrails, human-in-the-loop review and data privacy built in.</p>
+          <div class="tag-row">
+            <span class="chip">RAG</span><span class="chip">Multi-Agent</span><span class="chip">AI Guardrails</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <div data-reveal>
+        <div class="section-kicker"><span class="dot"></span>Experience</div>
+        <h2>Eight years of enterprise commerce delivery</h2>
+        </div>
+        <div data-reveal style="transition-delay:0.12s">
+        <p>From individual-contributor engineering to leading technical delivery for 15+ member teams — the roles below are where the platform experience on this page comes from.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-track" id="timelineTrack" aria-hidden="true"></div>
+        <div class="timeline-item is-current">
+          <div class="timeline-date">Apr 2024 — Present</div>
+          <div class="timeline-node-col"><div class="timeline-node"></div></div>
+          <div class="timeline-body">
+            <div data-reveal style="transition-delay:0s">
+            <h3>PwC India</h3>
+            <div class="timeline-role">Senior Associate</div>
+            <div class="timeline-meta mobile-only">Apr 2024 — Present · Kolkata, India</div>
+            </div>
+            <div data-reveal style="transition-delay:0.15s">
+            <ul class="timeline-list">
+              <li>Leads Commerce solution design, technical estimation, development, code review, releases and incident resolution for a large B2B SAP Commerce platform, including client-facing technical discussions.</li>
+              <li>Designs and delivers integrations with SAP S/4HANA, SAP C4C/Service Cloud, SAP CPI, logistics providers and SMS/WhatsApp messaging.</li>
+              <li>Independently led the JDK 17 → 21 migration within a SAP Commerce upgrade, resolving Java API/security compatibility and dependency issues; the approach was subsequently adopted by other projects.</li>
+              <li>Improved platform maintainability and scalability through data-model optimization, reduced customization and greater use of SAP Commerce OOTB capabilities.</li>
+              <li>Leads technical delivery for a new B2B2C retail transformation across a 15+ member team — architecture, data models, integrations and implementation planning. Phase 1 targets 6–7 stores in 3 months, with a long-term target of 1,000 stores.</li>
+              <li>Established a reusable notification architecture (business events, processes and actions) for WhatsApp, SMS and email, reducing duplicated implementation.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="chip">SAP Commerce</span><span class="chip">Java/Spring</span><span class="chip">S/4HANA</span><span class="chip">Service Cloud</span><span class="chip">SAP CPI</span><span class="chip">JDK 21</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">May 2022 — Mar 2024</div>
+          <div class="timeline-node-col"><div class="timeline-node"></div></div>
+          <div class="timeline-body">
+            <div data-reveal style="transition-delay:0s">
+            <h3>Birlasoft</h3>
+            <div class="timeline-role">Senior Consultant</div>
+            <div class="timeline-meta mobile-only">May 2022 — Mar 2024 · Pune, India</div>
+            </div>
+            <div data-reveal style="transition-delay:0.15s">
+            <ul class="timeline-list">
+              <li>Engineered SAP Commerce capabilities for a large US B2C footwear platform — Java/Spring controllers, services and DAOs, REST APIs, data modeling, Solr search and storefront integrations.</li>
+              <li>Resolved performance and scalability constraints in a heavily customized implementation through data restructuring, indexing, query optimization and large-scale migration work.</li>
+              <li>Modernized storefront architecture, supporting migration from legacy JSP toward SAP Spartacus / headless commerce and adapting backend and OCC API interactions.</li>
+              <li>Implemented a Commerce-based cashier/POS capability connecting store transactions with customer accounts, orders and loyalty/omnichannel experiences.</li>
+              <li>Mentored junior developers and supported technical analysis, estimation, testing and controlled releases.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="chip">SAP Commerce</span><span class="chip">Solr</span><span class="chip">Spartacus</span><span class="chip">POS Integration</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Oct 2020 — May 2022</div>
+          <div class="timeline-node-col"><div class="timeline-node"></div></div>
+          <div class="timeline-body">
+            <div data-reveal style="transition-delay:0s">
+            <h3>Birlasoft</h3>
+            <div class="timeline-role">Consultant</div>
+            <div class="timeline-meta mobile-only">Oct 2020 — May 2022 · Pune, India</div>
+            </div>
+            <div data-reveal style="transition-delay:0.15s">
+            <ul class="timeline-list">
+              <li>Developed and maintained SAP Commerce solutions (Java, Spring, MySQL, XML/JSON web services, Solr) across analysis, design, implementation, testing and release.</li>
+              <li>Supported data migration and storefront modernization using Hotfolder and Groovy, including backend changes required for Spartacus adoption.</li>
+              <li>Translated business requirements into SAP Commerce enhancements and environment releases.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="chip">SAP Commerce</span><span class="chip">Groovy</span><span class="chip">Hotfolder</span><span class="chip">MySQL</span>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Aug 2018 — Oct 2020</div>
+          <div class="timeline-node-col"><div class="timeline-node"></div></div>
+          <div class="timeline-body">
+            <div data-reveal style="transition-delay:0s">
+            <h3>Deloitte US-India</h3>
+            <div class="timeline-role">Business Technology Analyst</div>
+            <div class="timeline-meta mobile-only">Aug 2018 — Oct 2020 · India</div>
+            </div>
+            <div data-reveal style="transition-delay:0.15s">
+            <ul class="timeline-list">
+              <li>Delivered SAP Commerce/Hybris solutions across B2B, B2C and MLM e-commerce engagements within 10–20 member teams.</li>
+              <li>Built commerce components and integrations using Java, Spring, JavaScript, MySQL, XML/JSON and Solr while supporting end-to-end delivery.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="chip">SAP Hybris</span><span class="chip">Java</span><span class="chip">Spring</span><span class="chip">Solr</span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- AI & GENAI LAB -->
+  <section id="ai-lab" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <div data-reveal>
+        <div class="section-kicker"><span class="dot" style="background:var(--accent-2)"></span>AI &amp; GenAI Lab</div>
+        <h2>AI isn't separate from the commerce work — it's the newest layer on it</h2>
+        </div>
+        <div data-reveal style="transition-delay:0.12s">
+        <p>Most initiatives below have a working proof of concept that's been built and demoed — each one clearly labeled by status, from client-deployed down to early concept, so nothing experimental is overstated as production.</p>
+        </div>
+      </div>
+
+      <div class="recognition-card" data-reveal="scale">
+        <div class="recognition-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5"/></svg>
+        </div>
+        <div>
+          <strong>PwC India AI Hackathon — Winner</strong>
+          <span>The winning idea — the Multi-Agent Executive Business Copilot below — was recognized for its business and client impact.</span>
+        </div>
+      </div>
+
+      <div class="ai-grid">
+        <!-- Case-study-backed cards -->
+        <article class="ai-card" data-reveal="scale">
+          <span class="status-pill status-deployed"><span class="status-dot"></span>Client Deployed</span>
+          <h3>Enterprise AI Commerce Assistant</h3>
+          <p>An end-to-end enterprise AI chatbot spanning an Angular frontend, Java backend, multi-agent orchestration and RAG-based knowledge grounding, integrated with SAP Commerce and Service Cloud.</p>
+          <div class="tag-row"><span class="chip">RAG</span><span class="chip">Multi-Agent</span><span class="chip">Angular</span></div>
+          <a href="#ai-commerce-assistant" class="case-link">View case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="ai-card" data-reveal="scale">
+          <span class="status-pill status-concept"><span class="status-dot"></span>AI Hackathon Winner</span>
+          <h3>Multi-Agent Executive Business Copilot</h3>
+          <p>An executive decision-support concept combining enterprise retrieval, reasoning, forecasting and root-cause analysis with drill-down exploration.</p>
+          <div class="tag-row"><span class="chip">Multi-Agent</span><span class="chip">Forecasting</span></div>
+          <a href="#executive-copilot" class="case-link">View case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="ai-card" data-reveal="scale">
+          <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+          <h3>SAP Commerce + Service Cloud Live-Agent Chat</h3>
+          <p>A SAP BTP middle layer connecting Commerce and Service Cloud, exploring agent availability, assignment, conversation history and routing.</p>
+          <div class="tag-row"><span class="chip">SAP BTP</span><span class="chip">Service Cloud</span></div>
+          <a href="#service-cloud-chat" class="case-link">View case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <!-- POC — built and demoed -->
+        <article class="ai-card" data-reveal="scale">
+          <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+          <h3>AI B2B Replenishment Engine</h3>
+          <p>Analyzes historical purchase patterns to flag delayed purchases, predict revenue/churn impact and recommend no-action, nudge or incentive strategies, with configurable customer-health-based offer rules.</p>
+          <div class="tag-row"><span class="chip">Forecasting</span><span class="chip">Business Rules</span></div>
+          <a href="#replenishment-engine" class="case-link">View case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="ai-card" data-reveal="scale">
+          <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+          <h3>AI Integration Healer</h3>
+          <p>Analyzes production logs, matches known issues against a structured knowledge base and recommends or triggers predefined remediation actions; new issues are researched against SAP documentation with confidence-scored recommendations.</p>
+          <div class="tag-row"><span class="chip">Knowledge Base</span><span class="chip">Ops Automation</span></div>
+          <a href="#integration-healer" class="case-link">View case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="ai-card" data-reveal="scale">
+          <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+          <h3>AI Product Companion / PDP Helper</h3>
+          <p>Answers product questions from product documents and media, recommends alternatives and bundles, and tracks purchase-confidence and budget signals for targeted business interventions.</p>
+          <div class="tag-row"><span class="chip">RAG</span><span class="chip">Cross-sell</span></div>
+          <a href="#product-companion" class="case-link">View case study
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <div data-reveal>
+        <div class="section-kicker"><span class="dot"></span>Projects &amp; Engineering</div>
+        <h2>Selected engineering work</h2>
+        </div>
+        <div data-reveal style="transition-delay:0.12s">
+        <p>Client and platform names are generalized to respect confidentiality. Repository links will be added as they're published.</p>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <div class="project-card" data-reveal>
+          <div class="project-top">
+            <div>
+              <div class="project-org">PwC India</div>
+              <h3>JDK 17 → 21 Migration</h3>
+            </div>
+            <span class="chip">Delivered</span>
+          </div>
+          <p>Led a SAP Commerce JDK upgrade end-to-end, resolving API/security compatibility and dependency breaks, and establishing an upgrade approach later reused by other projects.</p>
+          <div class="tag-row"><span class="chip">Java</span><span class="chip">SAP Commerce</span><span class="chip">JVM</span></div>
+          <div class="project-links"><span class="repo-link">GitHub — Coming Soon</span></div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="project-top">
+            <div>
+              <div class="project-org">PwC India</div>
+              <h3>B2B2C Retail Transformation</h3>
+            </div>
+            <span class="chip">In Progress</span>
+          </div>
+          <p>Technical delivery lead for a 15+ engineer team building architecture, data models and integrations for a phased retail rollout — 6–7 stores in Phase 1, scaling toward 1,000 stores.</p>
+          <div class="tag-row"><span class="chip">Architecture</span><span class="chip">Integration</span><span class="chip">Leadership</span></div>
+          <div class="project-links"><span class="repo-link">Confidential — client engagement</span></div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="project-top">
+            <div>
+              <div class="project-org">PwC India</div>
+              <h3>Reusable Notification Architecture</h3>
+            </div>
+            <span class="chip">Delivered</span>
+          </div>
+          <p>Business-event-driven notification architecture for WhatsApp, SMS and email, reducing duplicated implementation and improving extensibility for future channels.</p>
+          <div class="tag-row"><span class="chip">Business Processes</span><span class="chip">Events</span></div>
+          <div class="project-links"><span class="repo-link">GitHub — Coming Soon</span></div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="project-top">
+            <div>
+              <div class="project-org">Birlasoft</div>
+              <h3>Commerce Performance &amp; Scalability</h3>
+            </div>
+            <span class="chip">Delivered</span>
+          </div>
+          <p>Resolved performance and scalability constraints on a heavily customized B2C platform through data restructuring, indexing, query optimization and large-scale migration.</p>
+          <div class="tag-row"><span class="chip">Performance</span><span class="chip">Solr</span><span class="chip">SQL</span></div>
+          <div class="project-links"><span class="repo-link">GitHub — Coming Soon</span></div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="project-top">
+            <div>
+              <div class="project-org">Birlasoft</div>
+              <h3>Spartacus / Headless Modernization</h3>
+            </div>
+            <span class="chip">Delivered</span>
+          </div>
+          <p>Supported migration from a legacy JSP storefront toward SAP Spartacus / headless commerce, adapting backend services and OCC API interactions.</p>
+          <div class="tag-row"><span class="chip">Spartacus</span><span class="chip">OCC APIs</span></div>
+          <div class="project-links"><span class="repo-link">GitHub — Coming Soon</span></div>
+        </div>
+
+        <div class="project-card" data-reveal>
+          <div class="project-top">
+            <div>
+              <div class="project-org">Personal</div>
+              <h3>Commerce &amp; AI Lab Repos</h3>
+            </div>
+            <span class="chip">Coming Soon</span>
+          </div>
+          <p>Open repositories exploring OCC API patterns, Spartacus demos and enterprise RAG patterns for commerce — published here as they're ready.</p>
+          <div class="tag-row"><span class="chip">OCC Patterns</span><span class="chip">Enterprise RAG</span></div>
+          <div class="project-links"><a href="https://github.com/ritangkar" target="_blank" rel="noopener" class="repo-link">View GitHub profile</a></div>
+        </div>
+      </div>
+
+      <p class="confidential-note">Descriptions above use generalized language for client engagements — no confidential system names, client data or proprietary implementation details are included.</p>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- SKILLS / ENGINEERING -->
+  <section id="skills" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <div data-reveal>
+        <div class="section-kicker"><span class="dot"></span>Engineering &amp; Skills</div>
+        <h2>Technical expertise</h2>
+        </div>
+        <div data-reveal style="transition-delay:0.12s">
+        <p>Grouped by how the work actually breaks down — not scored, since a percentage never meant much anyway.</p>
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-group" data-reveal>
+          <h3>Commerce</h3>
+          <div class="tag-row">
+            <span class="chip">SAP Commerce Cloud</span><span class="chip">SAP CX</span><span class="chip">SAP Hybris</span>
+            <span class="chip">B2B / B2C / B2B2C</span><span class="chip">OCC APIs</span><span class="chip">Spartacus</span>
+            <span class="chip">Headless Commerce</span><span class="chip">Backoffice</span><span class="chip">Solr</span>
+            <span class="chip">FlexibleSearch</span><span class="chip">ImpEx</span><span class="chip">Groovy</span>
+            <span class="chip">Hotfolder</span><span class="chip">Data Migration</span>
+          </div>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3>Architecture &amp; Integration</h3>
+          <div class="tag-row">
+            <span class="chip">Solution Architecture</span><span class="chip">API Architecture</span>
+            <span class="chip">Enterprise Integration</span><span class="chip">SAP S/4HANA</span>
+            <span class="chip">SAP C4C / Service Cloud</span><span class="chip">SAP CPI</span><span class="chip">SAP BTP</span>
+            <span class="chip">REST / SOAP</span><span class="chip">POS &amp; Logistics Integration</span>
+          </div>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3>Engineering &amp; Performance</h3>
+          <div class="tag-row">
+            <span class="chip">Java</span><span class="chip">Spring</span><span class="chip">Spring Boot</span>
+            <span class="chip">Spring Security</span><span class="chip">SQL</span><span class="chip">MySQL</span>
+            <span class="chip">Data Modeling</span><span class="chip">Query &amp; Index Optimization</span>
+            <span class="chip">Performance Engineering</span><span class="chip">Scalability</span><span class="chip">JVM</span>
+          </div>
+        </div>
+        <div class="skill-group" data-reveal>
+          <h3>AI &amp; Leadership</h3>
+          <div class="tag-row">
+            <span class="chip">GenAI / LLMs</span><span class="chip">RAG</span><span class="chip">Multi-Agent Systems</span>
+            <span class="chip">AI Agents</span><span class="chip">OpenAI APIs</span><span class="chip">Conversational AI</span>
+            <span class="chip">Prompt Engineering</span><span class="chip">AI Guardrails</span><span class="chip">Human-in-the-Loop</span>
+            <span class="chip">Responsible AI</span><span class="chip">Data Privacy &amp; Masking</span>
+            <span class="chip">Technical Leadership</span><span class="chip">Mentoring</span><span class="chip">Release Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- RESUME -->
+  <section id="resume" class="section-pad">
+    <div class="container">
+      <div class="resume-band" data-reveal>
+        <div>
+          <h2>Want the short version?</h2>
+          <p>A one-page summary of the roles, platforms and AI work covered on this page.</p>
+        </div>
+        <div class="resume-band-cta">
+          <a href="assets/Ritangkar-Dey-Resume.pdf" class="btn btn-primary" download>Download résumé (PDF)</a>
+          <a href="assets/Ritangkar-Dey-Resume.pdf" class="btn btn-outline" target="_blank" rel="noopener">Open in new tab</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- FAQ -->
+  <section id="faq" class="section-pad">
+    <div class="container">
+      <div class="section-head">
+        <div data-reveal>
+        <div class="section-kicker"><span class="dot"></span>FAQ</div>
+        <h2>A few common questions</h2>
+      </div>
+      <div class="faq-list" data-reveal>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            Which AI projects are actually in production?
+            <span class="plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><p>Only the Enterprise AI Commerce Assistant is client-deployed today. The Multi-Agent Executive Business Copilot is a hackathon-recognized idea rather than a deployed system, and the rest are proofs of concept — each clearly labeled, so nothing experimental is overstated as production.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            Is the code for these projects public?
+            <span class="plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><p>Not yet. Client-deployed and internal work isn't public by nature. Personal repositories are marked "Coming Soon" in the Projects section and will be linked from there once published.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            What's the difference between the Projects and AI Lab sections?
+            <span class="plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><p>Projects covers core SAP Commerce and platform engineering work. AI Lab is specifically the GenAI initiatives — chatbots, RAG, multi-agent systems — built on top of that same commerce foundation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            Can I get more detail on the enterprise architecture shown here?
+            <span class="plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><p>Client and system details are intentionally generalized on this site to protect confidentiality. Happy to walk through the architecture in more depth in a conversation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">
+            What's the best way to reach you?
+            <span class="plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-a"><p>Email is fastest — ritangkardey11@gmail.com — or connect on LinkedIn. Both are linked in the Contact section below.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="rule"></div></div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section-pad">
+    <div class="container contact-inner">
+      <div data-reveal>
+        <h2>Have an enterprise commerce or AI problem worth solving?</h2>
+        </div>
+        <div data-reveal style="transition-delay:0.12s">
+        <p>I'm always glad to talk about SAP Commerce architecture, enterprise integration or applied GenAI.</p>
+        <div class="contact-cta">
+          <a href="mailto:ritangkardey11@gmail.com" class="btn btn-primary">Email me</a>
+          <a href="https://www.linkedin.com/in/ritangkar-dey" class="btn btn-outline" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        </div>
+        <div class="contact-alt">
+          <a href="mailto:ritangkardey11@gmail.com">ritangkardey11@gmail.com</a> &nbsp;·&nbsp; <a href="tel:+918240773074">+91 82407 73074</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <strong>Ritangkar Dey</strong>
+          <p>SAP Commerce · Enterprise Architecture · AI</p>
+        </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Site</h4>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#ai-lab">AI Lab</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="https://www.linkedin.com/in/ritangkar-dey" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="mailto:ritangkardey11@gmail.com">Email</a></li>
+              <li><a href="https://github.com/ritangkar" target="_blank" rel="noopener">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Ritangkar Dey</span>
+        <span>Built with HTML, CSS &amp; vanilla JavaScript</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /#main-view -->
+
+<!-- =========================================
+     CASE STUDY: ENTERPRISE AI COMMERCE ASSISTANT
+========================================= -->
+<section class="case-study" id="cs-ai-commerce-assistant">
+  <div class="container">
+    <button type="button" class="back-link" data-back="ai-lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to AI Lab
+    </button>
+
+    <div class="cs-header">
+      <span class="status-pill status-deployed"><span class="status-dot"></span>Client Deployed</span>
+      <h1>Enterprise AI Commerce Assistant</h1>
+      <p class="cs-dek">An end-to-end enterprise AI chatbot that grounds its answers in SAP Commerce and Service Cloud data, built across a full frontend-to-integration stack.</p>
+      <div class="tag-row">
+        <span class="chip">Angular</span><span class="chip">Java</span><span class="chip">RAG</span><span class="chip">Multi-Agent Orchestration</span><span class="chip">SAP Commerce APIs</span><span class="chip">SAP Service Cloud APIs</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+      <div>
+        <div class="cs-block" data-reveal>
+          <h2>Overview</h2>
+          <p>An end-to-end enterprise AI chatbot spanning an Angular frontend, Java backend, AI/API integration, multi-agent orchestration, RAG-based knowledge grounding and SAP Commerce/Service Cloud APIs — deployed for one client and currently being adapted for another.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Business problem</h2>
+          <p>Enterprise buyers and support teams often need fast, accurate answers that span product data, order and account context, and service history — information that typically lives across separate SAP Commerce and Service Cloud systems rather than one place.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>My role</h2>
+          <p>Led design and build of the assistant end-to-end — the frontend experience, backend orchestration, AI integration, and the SAP Commerce and Service Cloud connections it depends on.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Architecture</h2>
+          <div class="diagram-wrap diagram-zoomable" tabindex="0" role="button" aria-label="Enlarge architecture diagram">
+            <div class="diagram-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Enlarge</div>
+            <svg viewBox="0 0 640 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+              <path class="flow-line diagram-connector" d="M75 40 L75 90" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M75 130 L75 170" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M170 150 L235 150" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M330 150 L235 150" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M330 150 L395 110 M330 150 L395 150 M330 150 L395 190" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M330 150 L560 150" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+              <g class="diagram-node" style="transition-delay:0.05s">
+                <rect x="20" y="10" width="110" height="30" rx="8" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="75" y="30" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="var(--text-muted)">User query</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.10s">
+                <rect x="15" y="90" width="120" height="40" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="75" y="115" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">Angular frontend</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.15s">
+                <rect x="15" y="170" width="120" height="34" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="75" y="191" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">Java backend</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.20s">
+                <rect x="205" y="130" width="130" height="40" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+              <text x="270" y="155" text-anchor="middle" font-family="Space Grotesk" font-size="12.5" font-weight="600" fill="var(--text)">Agent Orchestrator</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.25s">
+                <rect x="395" y="92" width="150" height="34" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="470" y="113" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">RAG / knowledge grounding</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.30s">
+                <rect x="395" y="133" width="150" height="34" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="470" y="154" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">SAP Commerce APIs</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.35s">
+                <rect x="395" y="174" width="150" height="34" rx="9" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="470" y="195" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">Service Cloud APIs</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.40s">
+                <rect x="560" y="130" width="65" height="40" rx="10" fill="var(--accent-2-dim)" stroke="var(--accent-2)" stroke-width="1.3"/>
+              <text x="592" y="147" text-anchor="middle" font-family="Space Grotesk" font-size="10" font-weight="600" fill="var(--accent-2-light)">Grounded</text>
+              </g>
+              <text x="592" y="160" text-anchor="middle" font-family="Space Grotesk" font-size="10" font-weight="600" fill="var(--accent-2-light)">answer</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>How it works</h2>
+          <ol>
+            <li>A query is submitted through the Angular frontend.</li>
+            <li>The Java backend routes it to the agent orchestrator.</li>
+            <li>Agents retrieve grounding context from enterprise knowledge and from SAP Commerce and Service Cloud data.</li>
+            <li>A response is composed with that context intact and returned to the user.</li>
+          </ol>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Guardrails &amp; quality</h2>
+          <p>The broader AI initiative work applies guardrails, human-in-the-loop review and responsible-AI practices to manage output quality in customer-facing scenarios — the same principles listed under AI &amp; Leadership in the skills section of this site.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Enterprise integration</h2>
+          <ul class="cs-ul">
+            <li><strong style="color:var(--text)">SAP Commerce:</strong> product, order and account context is pulled directly from Commerce APIs.</li>
+            <li><strong style="color:var(--text)">SAP Service Cloud:</strong> service and case context is connected so answers can span commerce and support.</li>
+          </ul>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Status &amp; rollout</h2>
+          <p>Deployed for one client and currently being adapted for a second engagement. Adapting a single assistant to a new client environment is proving to be as much an integration and configuration exercise as an AI one — grounding data and Commerce/Service Cloud connections need to be reconfigured per tenant.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Screenshots</h2>
+          <div class="shot-gallery">
+            <!-- Replace with: <img src="images/ai-commerce/hero.png" alt="Assistant interface" /> -->
+            <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-5-5L5 19"/></svg>
+              <span>Add screenshot</span>
+              <code>images/ai-commerce/hero.png</code>
+            </div>
+            <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-5-5L5 19"/></svg>
+              <span>Add screenshot</span>
+              <code>images/ai-commerce/screenshot-01.png</code>
+            </div>
+            <div class="img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 15-5-5L5 19"/></svg>
+              <span>Add screenshot</span>
+              <code>images/ai-commerce/screenshot-02.png</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="cs-aside" data-reveal>
+        <div class="aside-card">
+          <h3>At a glance</h3>
+          <ul class="aside-list">
+            <li><span>Status</span><span>Client Deployed</span></li>
+            <li><span>Role</span><span>End-to-end lead</span></li>
+            <li><span>Frontend</span><span>Angular</span></li>
+            <li><span>Backend</span><span>Java</span></li>
+            <li><span>AI approach</span><span>RAG, multi-agent</span></li>
+            <li><span>Integrations</span><span>Commerce, Service Cloud</span></li>
+          </ul>
+        </div>
+        <div class="aside-card">
+          <h3>Links</h3>
+          <p style="font-size:0.88rem;color:var(--text-faint)">Client-deployed work — code is not public. A demo link will be added here if one becomes available.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cs-footer-note">Client and system details above are generalized to protect confidentiality.</div>
+  </div>
+</section>
+
+<!-- =========================================
+     CASE STUDY: MULTI-AGENT EXECUTIVE BUSINESS COPILOT
+========================================= -->
+<section class="case-study" id="cs-executive-copilot">
+  <div class="container">
+    <button type="button" class="back-link" data-back="ai-lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to AI Lab
+    </button>
+
+    <div class="cs-header">
+      <span class="status-pill status-concept"><span class="status-dot"></span>AI Hackathon Winner</span>
+      <h1>Multi-Agent Executive Business Copilot</h1>
+      <p class="cs-dek">A decision-support concept for executives that moves from a high-level metric to root cause without switching between separate reports and tools.</p>
+      <div class="tag-row">
+        <span class="chip">Multi-Agent Systems</span><span class="chip">Retrieval</span><span class="chip">Forecasting</span><span class="chip">Root-Cause Analysis</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+      <div>
+        <div class="cs-block" data-reveal>
+          <h2>Overview</h2>
+          <p>An executive decision-support concept combining enterprise retrieval, reasoning, forecasting and root-cause analysis with drill-down exploration.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Business problem</h2>
+          <p>Executives often need to move from a high-level metric to its underlying cause quickly — a path that today usually means pulling together several reports and tools rather than one connected view.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Concept architecture</h2>
+          <div class="diagram-wrap diagram-zoomable" tabindex="0" role="button" aria-label="Enlarge architecture diagram">
+            <div class="diagram-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Enlarge</div>
+            <svg viewBox="0 0 640 170" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+              <path class="flow-line diagram-connector" d="M150 50 L260 50" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M390 50 L500 50" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M325 70 L325 110" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+              <g class="diagram-node" style="transition-delay:0.05s">
+                <rect x="20" y="30" width="130" height="40" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="85" y="55" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">Enterprise data &amp; retrieval</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.10s">
+                <rect x="260" y="30" width="130" height="40" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+              <text x="325" y="55" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">Reasoning &amp; forecasting agents</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.15s">
+                <rect x="500" y="30" width="120" height="40" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="560" y="50" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">Root-cause</text>
+              </g>
+              <text x="560" y="63" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">drill-down</text>
+
+              <g class="diagram-node" style="transition-delay:0.20s">
+                <rect x="245" y="110" width="160" height="40" rx="10" fill="var(--accent-2-dim)" stroke="var(--accent-2)" stroke-width="1.3"/>
+              <text x="325" y="135" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--accent-2-light)">Executive summary</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Approach</h2>
+          <ul class="cs-ul">
+            <li>Enterprise retrieval to pull relevant data into context.</li>
+            <li>Reasoning and forecasting agents to interpret trends.</li>
+            <li>Root-cause analysis with drill-down exploration for follow-up questions.</li>
+          </ul>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Status</h2>
+          <p>This was the winning idea at the PwC India AI Hackathon — recognized for its potential business and client impact. It remains a concept rather than a deployed system: it has not been built into a production platform. It's included here because the design thinking behind it — connecting retrieval, reasoning and forecasting into one drill-down experience — directly extends the commerce and integration work elsewhere on this site.</p>
+        </div>
+      </div>
+
+      <aside class="cs-aside" data-reveal>
+        <div class="aside-card">
+          <h3>At a glance</h3>
+          <ul class="aside-list">
+            <li><span>Status</span><span>AI Hackathon Winner</span></li>
+            <li><span>Focus</span><span>Executive decision support</span></li>
+            <li><span>Core ideas</span><span>Retrieval, forecasting</span></li>
+            <li><span>Deployment</span><span>Not deployed</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cs-footer-note">Presented as a concept, not a shipped product — status is intentionally not overstated.</div>
+  </div>
+</section>
+
+<!-- =========================================
+     CASE STUDY: SAP COMMERCE + SERVICE CLOUD LIVE-AGENT CHAT
+========================================= -->
+<section class="case-study" id="cs-service-cloud-chat">
+  <div class="container">
+    <button type="button" class="back-link" data-back="ai-lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to AI Lab
+    </button>
+
+    <div class="cs-header">
+      <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+      <h1>SAP Commerce + Service Cloud Live-Agent Chat</h1>
+      <p class="cs-dek">A SAP BTP middle layer connecting Commerce and Service Cloud UIs, exploring live-agent availability, assignment and conversation routing.</p>
+      <div class="tag-row">
+        <span class="chip">SAP BTP</span><span class="chip">SAP Commerce</span><span class="chip">SAP Service Cloud</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+      <div>
+        <div class="cs-block" data-reveal>
+          <h2>Overview</h2>
+          <p>Built a SAP BTP middle layer connecting Commerce and Service Cloud UIs, exploring agent availability, assignment, conversation history and Commerce-to-Service-Cloud routing.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Architecture</h2>
+          <div class="diagram-wrap diagram-zoomable" tabindex="0" role="button" aria-label="Enlarge architecture diagram">
+            <div class="diagram-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Enlarge</div>
+            <svg viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+              <path class="flow-line diagram-connector" d="M170 75 L245 75" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M395 75 L470 75" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+              <g class="diagram-node" style="transition-delay:0.05s">
+                <rect x="20" y="50" width="150" height="50" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="95" y="80" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--text-muted)">SAP Commerce UI</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.10s">
+                <rect x="245" y="45" width="150" height="60" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+              <text x="320" y="70" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">SAP BTP</text>
+              </g>
+              <text x="320" y="86" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">middle layer</text>
+
+              <g class="diagram-node" style="transition-delay:0.15s">
+                <rect x="470" y="50" width="150" height="50" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+              <text x="545" y="72" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--text-muted)">Service Cloud</text>
+              </g>
+              <text x="545" y="88" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--text-muted)">live agent</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>What it explores</h2>
+          <ul class="cs-ul">
+            <li>Live-agent availability and assignment across the two systems.</li>
+            <li>Conversation history handed off between Commerce and Service Cloud.</li>
+            <li>Routing logic from a Commerce-side conversation into a Service Cloud agent.</li>
+          </ul>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Status</h2>
+          <p>Built as a proof of concept / exploration — not a production deployment. It sits alongside the Enterprise AI Commerce Assistant as an example of how Commerce and Service Cloud can share a live conversation, rather than customers switching between separate support channels.</p>
+        </div>
+      </div>
+
+      <aside class="cs-aside" data-reveal>
+        <div class="aside-card">
+          <h3>At a glance</h3>
+          <ul class="aside-list">
+            <li><span>Status</span><span>Proof of Concept</span></li>
+            <li><span>Layer</span><span>SAP BTP</span></li>
+            <li><span>Systems</span><span>Commerce, Service Cloud</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cs-footer-note">Client and system details above are generalized to protect confidentiality.</div>
+  </div>
+</section>
+
+<!-- =========================================
+     CASE STUDY: AI B2B REPLENISHMENT ENGINE
+========================================= -->
+<section class="case-study" id="cs-replenishment-engine">
+  <div class="container">
+    <button type="button" class="back-link" data-back="ai-lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to AI Lab
+    </button>
+
+    <div class="cs-header">
+      <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+      <h1>AI B2B Replenishment Engine</h1>
+      <p class="cs-dek">An AI-driven engine that reads B2B purchase patterns to catch delayed reorders before they quietly turn into churn.</p>
+      <div class="tag-row">
+        <span class="chip">Forecasting</span><span class="chip">Business Rules</span><span class="chip">Customer Health</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+      <div>
+        <div class="cs-block" data-reveal>
+          <h2>Overview</h2>
+          <p>An AI-driven replenishment engine that analyzes historical purchase patterns to identify delayed purchases, predict potential revenue/churn impact and recommend no-action, nudge or incentive strategies — with configurable rules for customer-health-based automated offers and business reporting.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Business problem</h2>
+          <p>In B2B commerce, a customer who quietly stops reordering on their usual cadence is an easy signal to miss — by the time an account manager notices, the relationship may already be cooling. Catching that delay early, with an appropriate response rather than a blanket discount, is the difference between retaining and losing the account.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Architecture</h2>
+          <div class="diagram-wrap diagram-zoomable" tabindex="0" role="button" aria-label="Enlarge architecture diagram">
+            <div class="diagram-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Enlarge</div>
+            <svg viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+              <path class="flow-line diagram-connector" d="M170 75 L245 75" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M395 75 L470 75" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+              <g class="diagram-node" style="transition-delay:0.05s">
+                <rect x="20" y="50" width="150" height="50" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+                <text x="95" y="80" text-anchor="middle" font-family="IBM Plex Sans" font-size="12" fill="var(--text-muted)">Purchase history</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.15s">
+                <rect x="245" y="45" width="150" height="60" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+                <text x="320" y="70" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">Pattern &amp;</text>
+                <text x="320" y="86" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">forecast engine</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.25s">
+                <rect x="470" y="40" width="150" height="70" rx="10" fill="var(--accent-2-dim)" stroke="var(--accent-2)" stroke-width="1.3"/>
+                <text x="545" y="68" text-anchor="middle" font-family="Space Grotesk" font-size="11.5" font-weight="600" fill="var(--accent-2-light)">No action /</text>
+                <text x="545" y="84" text-anchor="middle" font-family="Space Grotesk" font-size="11.5" font-weight="600" fill="var(--accent-2-light)">nudge /</text>
+                <text x="545" y="100" text-anchor="middle" font-family="Space Grotesk" font-size="11.5" font-weight="600" fill="var(--accent-2-light)">incentive</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>How it works</h2>
+          <ol>
+            <li>Historical purchase patterns are analyzed per customer against their normal reorder cadence.</li>
+            <li>Delayed or missed purchases are flagged, with a predicted revenue/churn impact.</li>
+            <li>Configurable customer-health rules determine the response: no action, a nudge, or an incentive.</li>
+            <li>Outcomes and trends feed into business reporting for account teams.</li>
+          </ol>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Status</h2>
+          <p>Built as a proof of concept and demoed — the rules-based recommendation logic and reporting are working, but this has not been integrated into a live production commerce environment.</p>
+        </div>
+      </div>
+
+      <aside class="cs-aside" data-reveal>
+        <div class="aside-card">
+          <h3>At a glance</h3>
+          <ul class="aside-list">
+            <li><span>Status</span><span>Proof of Concept</span></li>
+            <li><span>Focus</span><span>B2B replenishment</span></li>
+            <li><span>Core ideas</span><span>Forecasting, business rules</span></li>
+            <li><span>Output</span><span>Nudge / incentive recommendations</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cs-footer-note">Client and system details above are generalized to protect confidentiality.</div>
+  </div>
+</section>
+
+<!-- =========================================
+     CASE STUDY: AI INTEGRATION HEALER
+========================================= -->
+<section class="case-study" id="cs-integration-healer">
+  <div class="container">
+    <button type="button" class="back-link" data-back="ai-lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to AI Lab
+    </button>
+
+    <div class="cs-header">
+      <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+      <h1>AI Integration Healer</h1>
+      <p class="cs-dek">An AI-driven troubleshooting engine that matches production integration issues against a knowledge base and recommends a fix — with confidence scores for anything it hasn't seen before.</p>
+      <div class="tag-row">
+        <span class="chip">Knowledge Base</span><span class="chip">Ops Automation</span><span class="chip">Log Analysis</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+      <div>
+        <div class="cs-block" data-reveal>
+          <h2>Overview</h2>
+          <p>An AI-driven integration troubleshooting engine that analyzes production logs, matches known issues against a structured knowledge base and recommends or triggers predefined remediation actions. For new issues, it researches SAP documentation and provides solution recommendations with confidence scores.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Business problem</h2>
+          <p>Enterprise commerce platforms lean on a web of integrations — S/4HANA, Service Cloud, CPI, logistics and messaging providers. When one breaks, an engineer typically has to dig through production logs to find a fix that, more often than not, has already been solved before — just not somewhere easy to find.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Architecture</h2>
+          <div class="diagram-wrap diagram-zoomable" tabindex="0" role="button" aria-label="Enlarge architecture diagram">
+            <div class="diagram-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Enlarge</div>
+            <svg viewBox="0 0 640 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+              <path class="flow-line diagram-connector" d="M170 100 L235 100" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M330 100 L395 60 M330 100 L395 140" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M545 60 L545 90 M545 140 L545 110" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+              <g class="diagram-node" style="transition-delay:0.05s">
+                <rect x="20" y="80" width="150" height="40" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+                <text x="95" y="105" text-anchor="middle" font-family="IBM Plex Sans" font-size="11.5" fill="var(--text-muted)">Production logs</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.2s">
+                <rect x="235" y="80" width="95" height="40" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+                <text x="282" y="105" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="600" fill="var(--text)">KB match</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.3s">
+                <rect x="395" y="40" width="150" height="40" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+                <text x="470" y="65" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">Known → remediation</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.35s">
+                <rect x="395" y="120" width="150" height="40" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+                <text x="470" y="145" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">New → SAP docs</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.5s">
+                <rect x="565" y="80" width="60" height="40" rx="10" fill="var(--accent-2-dim)" stroke="var(--accent-2)" stroke-width="1.3"/>
+                <text x="595" y="105" text-anchor="middle" font-family="Space Grotesk" font-size="9.5" font-weight="600" fill="var(--accent-2-light)">Scored fix</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>How it works</h2>
+          <ol>
+            <li>Production logs are analyzed as integration issues occur.</li>
+            <li>The issue is matched against a structured knowledge base of known problems.</li>
+            <li>For a known issue, a predefined remediation action is recommended — or triggered directly.</li>
+            <li>For a new issue, the engine researches SAP documentation and returns a solution recommendation with a confidence score.</li>
+          </ol>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Status</h2>
+          <p>Built as a proof of concept and demoed — the knowledge-base matching and confidence-scored recommendations work end-to-end, but this has not been wired into a live production monitoring pipeline.</p>
+        </div>
+      </div>
+
+      <aside class="cs-aside" data-reveal>
+        <div class="aside-card">
+          <h3>At a glance</h3>
+          <ul class="aside-list">
+            <li><span>Status</span><span>Proof of Concept</span></li>
+            <li><span>Focus</span><span>Integration troubleshooting</span></li>
+            <li><span>Core ideas</span><span>Knowledge base, confidence scoring</span></li>
+            <li><span>Output</span><span>Remediation recommendations</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cs-footer-note">Client and system details above are generalized to protect confidentiality.</div>
+  </div>
+</section>
+
+<!-- =========================================
+     CASE STUDY: AI PRODUCT COMPANION / PDP HELPER
+========================================= -->
+<section class="case-study" id="cs-product-companion">
+  <div class="container">
+    <button type="button" class="back-link" data-back="ai-lab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to AI Lab
+    </button>
+
+    <div class="cs-header">
+      <span class="status-pill status-poc"><span class="status-dot"></span>Proof of Concept</span>
+      <h1>AI Product Companion / PDP Helper</h1>
+      <p class="cs-dek">A product-detail-page assistant that answers buyer questions in the moment and reads purchase-confidence signals to flag who needs a nudge.</p>
+      <div class="tag-row">
+        <span class="chip">RAG</span><span class="chip">Cross-sell</span><span class="chip">Intent Analysis</span>
+      </div>
+    </div>
+
+    <div class="cs-body">
+      <div>
+        <div class="cs-block" data-reveal>
+          <h2>Overview</h2>
+          <p>An AI product assistant that analyzes user intent, product documents and media to answer product questions, recommend alternatives/bundles and enable cross-sell/upsell. It tracks product purchase-confidence and budget signals to support targeted business interventions.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Business problem</h2>
+          <p>On a product detail page, an undecided buyer often has a specific question a static page can't answer — fit, compatibility, an alternative option — and that unanswered question is a common, quiet reason for drop-off before checkout.</p>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Architecture</h2>
+          <div class="diagram-wrap diagram-zoomable" tabindex="0" role="button" aria-label="Enlarge architecture diagram">
+            <div class="diagram-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Enlarge</div>
+            <svg viewBox="0 0 640 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation">
+              <path class="flow-line diagram-connector" d="M175 75 L245 75" stroke="var(--border-strong)" stroke-width="1.4"/>
+              <path class="flow-line diagram-connector" d="M395 75 L470 75" stroke="var(--border-strong)" stroke-width="1.4"/>
+
+              <g class="diagram-node" style="transition-delay:0.05s">
+                <rect x="15" y="50" width="160" height="50" rx="10" fill="var(--surface)" stroke="var(--border-strong)"/>
+                <text x="95" y="72" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">User intent +</text>
+                <text x="95" y="88" text-anchor="middle" font-family="IBM Plex Sans" font-size="11" fill="var(--text-muted)">product data</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.2s">
+                <rect x="245" y="45" width="150" height="60" rx="10" fill="var(--accent-dim)" stroke="var(--accent)" stroke-width="1.3"/>
+                <text x="320" y="70" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">RAG analysis</text>
+                <text x="320" y="86" text-anchor="middle" font-family="Space Grotesk" font-size="12" font-weight="600" fill="var(--text)">layer</text>
+              </g>
+
+              <g class="diagram-node" style="transition-delay:0.3s">
+                <rect x="470" y="40" width="150" height="70" rx="10" fill="var(--accent-2-dim)" stroke="var(--accent-2)" stroke-width="1.3"/>
+                <text x="545" y="65" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="600" fill="var(--accent-2-light)">Q&amp;A, bundles,</text>
+                <text x="545" y="81" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="600" fill="var(--accent-2-light)">confidence</text>
+                <text x="545" y="97" text-anchor="middle" font-family="Space Grotesk" font-size="11" font-weight="600" fill="var(--accent-2-light)">signal</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>How it works</h2>
+          <ol>
+            <li>User intent is analyzed alongside product documents and media on the page.</li>
+            <li>Product questions are answered directly, in context.</li>
+            <li>Alternatives, bundles and cross-sell/upsell options are recommended where relevant.</li>
+            <li>Purchase-confidence and budget signals are tracked to flag customers for targeted business interventions.</li>
+          </ol>
+        </div>
+
+        <div class="cs-block" data-reveal>
+          <h2>Status</h2>
+          <p>Built as a proof of concept and demoed — the Q&amp;A, recommendation and signal-tracking logic work end-to-end, but this has not been deployed on a live storefront.</p>
+        </div>
+      </div>
+
+      <aside class="cs-aside" data-reveal>
+        <div class="aside-card">
+          <h3>At a glance</h3>
+          <ul class="aside-list">
+            <li><span>Status</span><span>Proof of Concept</span></li>
+            <li><span>Focus</span><span>Product detail page assistant</span></li>
+            <li><span>Core ideas</span><span>RAG, intent + signal tracking</span></li>
+            <li><span>Output</span><span>Q&amp;A, recommendations, intervention signals</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="cs-footer-note">Client and system details above are generalized to protect confidentiality.</div>
+  </div>
+</section>
+
+<!-- =========================================
+     LIGHTBOX (used for the architecture diagrams above)
+========================================= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-inner" id="lightboxInner" role="dialog" aria-modal="true" aria-label="Enlarged diagram">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close enlarged diagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <div id="lightboxContent"></div>
+  </div>
+</div>
+
+<!-- =========================================
+     STICKY MOBILE CTA
+========================================= -->
+<div class="sticky-mobile-cta" id="stickyCta">
+  <a href="#contact" class="btn btn-outline btn-sm">Contact</a>
+  <a href="assets/Ritangkar-Dey-Resume.pdf" class="btn btn-primary btn-sm" download>Résumé</a>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- Header scroll state ---------- */
+  var header = document.getElementById('siteHeader');
+  function onScroll() {
+    if (window.scrollY > 8) header.classList.add('is-scrolled');
+    else header.classList.remove('is-scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Sticky mobile CTA ---------- */
+  var stickyCta = document.getElementById('stickyCta');
+  var heroEl = document.getElementById('home');
+  if (stickyCta && heroEl) {
+    var stickyTicking = false;
+    function updateStickyCta() {
+      var heroBottom = heroEl.getBoundingClientRect().bottom;
+      stickyCta.classList.toggle('is-visible', heroBottom < 0);
+      stickyTicking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!stickyTicking) { stickyTicking = true; requestAnimationFrame(updateStickyCta); }
+    }, { passive: true });
+    updateStickyCta();
+  }
+
+  /* ---------- Scroll progress bar ---------- */
+  var scrollProgress = document.getElementById('scrollProgress');
+  if (scrollProgress) {
+    var progressTicking = false;
+    function updateScrollProgress() {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - doc.clientHeight;
+      var pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      scrollProgress.style.width = pct + '%';
+      progressTicking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!progressTicking) { progressTicking = true; requestAnimationFrame(updateScrollProgress); }
+    }, { passive: true });
+    window.addEventListener('resize', updateScrollProgress);
+    updateScrollProgress();
+  }
+
+  /* ---------- Hero line reveal + diagram build (load-triggered, above the fold) ---------- */
+  requestAnimationFrame(function () {
+    document.querySelectorAll('.reveal-line').forEach(function (el) { el.classList.add('is-visible'); });
+    var heroDiagram = document.getElementById('heroDiagram');
+    if (heroDiagram) {
+      setTimeout(function () { heroDiagram.classList.add('is-built'); }, reduceMotion.matches ? 0 : 500);
+    }
+  });
+
+  /* ---------- Hero rotating tagline word ---------- */
+  (function () {
+    var el = document.getElementById('heroRotor');
+    if (!el) return;
+    if (reduceMotion.matches) return;
+    var words = ['Architect', 'Engineer', 'Systems Thinker', 'AI Practitioner'];
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % words.length;
+      el.style.opacity = '0';
+      setTimeout(function () {
+        el.textContent = words[i];
+        el.style.opacity = '1';
+      }, 260);
+    }, 2600);
+  })();
+
+  /* ---------- Scroll-linked timeline draw ----------
+     A thin accent line grows alongside the existing static line as the
+     visitor scrolls through the Experience timeline. The always-visible
+     base line (CSS ::before) means nothing depends on this for legibility. */
+  var timelineEl = document.querySelector('.timeline');
+  var timelineTrack = document.getElementById('timelineTrack');
+  if (timelineEl && timelineTrack && !reduceMotion.matches) {
+    var timelineTicking = false;
+    function updateTimelineTrack() {
+      var rect = timelineEl.getBoundingClientRect();
+      timelineTrack.style.height = rect.height + 'px';
+      var total = rect.height + window.innerHeight;
+      var scrolled = window.innerHeight - rect.top;
+      var progress = Math.max(0, Math.min(1, scrolled / total));
+      timelineTrack.style.transform = 'scaleY(' + progress + ')';
+      timelineTicking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!timelineTicking) { timelineTicking = true; requestAnimationFrame(updateTimelineTrack); }
+    }, { passive: true });
+    window.addEventListener('resize', updateTimelineTrack);
+    updateTimelineTrack();
+  }
+
+  /* ---------- Mobile navigation ---------- */
+  var navToggle = document.getElementById('navToggle');
+  var navClose = document.getElementById('navClose');
+  var mobileNav = document.getElementById('mobileNav');
+
+  function openMobileNav() {
+    mobileNav.classList.add('is-open');
+    document.body.classList.add('nav-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navClose.focus();
+  }
+  function closeMobileNav(returnFocus) {
+    mobileNav.classList.remove('is-open');
+    document.body.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    if (returnFocus !== false) navToggle.focus();
+  }
+  navToggle.addEventListener('click', openMobileNav);
+  navClose.addEventListener('click', function () { closeMobileNav(true); });
+  mobileNav.querySelectorAll('a').forEach(function (a) {
+    // Closing via a nav link is a navigation, not a cancel — let focus/scroll
+    // follow the link's target instead of yanking focus back to the toggle.
+    a.addEventListener('click', function () { closeMobileNav(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMobileNav(true);
+  });
+
+  /* ---------- Active nav link on scroll ---------- */
+  var navLinks = document.querySelectorAll('.nav-link[data-nav]');
+  var mainSections = document.querySelectorAll('#main-view > section[id]');
+
+  if ('IntersectionObserver' in window && mainSections.length) {
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var id = entry.target.id;
+        navLinks.forEach(function (link) {
+          link.classList.toggle('is-active', link.dataset.nav === id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    mainSections.forEach(function (s) { navObserver.observe(s); });
+  }
+
+  /* ---------- Section-to-section crossfade ----------
+     The effect you get from pinning (previous section dims as the next
+     takes over) WITHOUT pinning: sections stay in completely normal
+     document flow — native scroll speed, no sticky, nothing that can get
+     stuck. Opacity is simply a function of how much of a section currently
+     overlaps the centre reading band of the viewport. Set directly (no CSS
+     transition) each frame so it tracks the scroll exactly. */
+  var fadeSections = Array.prototype.slice.call(mainSections).filter(function (s) { return s.id !== 'home'; });
+  if (fadeSections.length && !reduceMotion.matches) {
+    var FADE_FLOOR = 0.1;
+    var fadeTicking = false;
+    function updateSectionFade() {
+      var vh = window.innerHeight;
+      var bandTop = vh * 0.15, bandBottom = vh * 0.85;
+      var bandHeight = bandBottom - bandTop;
+      fadeSections.forEach(function (s) {
+        var r = s.getBoundingClientRect();
+        var overlapTop = Math.max(r.top, bandTop);
+        var overlapBottom = Math.min(r.bottom, bandBottom);
+        var overlap = Math.max(0, overlapBottom - overlapTop);
+        var denom = Math.max(1, Math.min(r.height, bandHeight));
+        var fraction = Math.min(1, overlap / denom);
+        var eased = fraction * fraction * (3 - 2 * fraction); // smoothstep
+        s.style.opacity = String(FADE_FLOOR + (1 - FADE_FLOOR) * eased);
+      });
+      fadeTicking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!fadeTicking) { fadeTicking = true; requestAnimationFrame(updateSectionFade); }
+    }, { passive: true });
+    window.addEventListener('resize', updateSectionFade);
+    updateSectionFade();
+  }
+
+  /* ---------- Reveal on scroll ----------
+     Geometry-based rather than IntersectionObserver-only: a direct nav jump
+     (tap a menu link, load a URL with a #hash, fast flick-scroll) can move an
+     element straight from "below viewport" to "in viewport" without ever
+     registering as a gradual intersection change. Checking real bounding-box
+     position on scroll/resize/hashchange means nothing can get stuck at
+     opacity:0. */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  var checkReveals = function () {};
+
+  if (reduceMotion.matches) {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var revealTicking = false;
+    checkReveals = function () {
+      var vh = window.innerHeight;
+      revealEls = revealEls.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 1.1 && r.bottom > -100) {
+          el.classList.add('is-visible');
+          return false;
+        }
+        return true;
+      });
+      revealTicking = false;
+    };
+    var onRevealScroll = function () {
+      if (!revealTicking) {
+        revealTicking = true;
+        requestAnimationFrame(checkReveals);
+      }
+    };
+    window.addEventListener('scroll', onRevealScroll, { passive: true });
+    window.addEventListener('resize', onRevealScroll);
+    checkReveals();
+  }
+
+  /* ---------- Case study routing ---------- */
+  var caseStudyIds = ['ai-commerce-assistant', 'executive-copilot', 'service-cloud-chat', 'replenishment-engine', 'integration-healer', 'product-companion'];
+  var caseStudyTitles = {
+    'ai-commerce-assistant': 'Enterprise AI Commerce Assistant',
+    'executive-copilot': 'Multi-Agent Executive Business Copilot',
+    'service-cloud-chat': 'SAP Commerce + Service Cloud Live-Agent Chat',
+    'replenishment-engine': 'AI B2B Replenishment Engine',
+    'integration-healer': 'AI Integration Healer',
+    'product-companion': 'AI Product Companion / PDP Helper'
+  };
+  var baseTitle = document.title;
+
+  function showCaseStudy(id) {
+    document.querySelectorAll('.case-study').forEach(function (cs) {
+      cs.classList.toggle('is-active', cs.id === 'cs-' + id);
+    });
+    document.body.classList.add('case-study-open');
+    window.scrollTo(0, 0);
+    document.title = caseStudyTitles[id] + ' — Ritangkar Dey';
+    checkReveals();
+    var activeDiagram = document.querySelector('.case-study.is-active svg[role="presentation"]');
+    if (activeDiagram) activeDiagram.classList.add('is-built');
+  }
+
+  function hideCaseStudies() {
+    document.querySelectorAll('.case-study').forEach(function (cs) {
+      cs.classList.remove('is-active');
+    });
+    document.body.classList.remove('case-study-open');
+    document.title = baseTitle;
+  }
+
+  function applyRoute() {
+    var hash = location.hash.replace('#', '');
+    if (caseStudyIds.indexOf(hash) !== -1) {
+      showCaseStudy(hash);
+    } else {
+      var wasOpen = document.body.classList.contains('case-study-open');
+      hideCaseStudies();
+      checkReveals();
+      if (hash && wasOpen) {
+        requestAnimationFrame(function () {
+          var target = document.getElementById(hash);
+          if (target) {
+            target.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+          }
+        });
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', applyRoute);
+  applyRoute();
+
+  document.querySelectorAll('[data-back]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      location.hash = btn.getAttribute('data-back');
+    });
+  });
+
+  /* ---------- Lightbox for architecture diagrams ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxContent = document.getElementById('lightboxContent');
+  var lightboxClose = document.getElementById('lightboxClose');
+  var lastFocused = null;
+
+  function openLightbox(svgEl) {
+    lastFocused = document.activeElement;
+    lightboxContent.innerHTML = '';
+    lightboxContent.appendChild(svgEl.cloneNode(true));
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightboxClose.focus();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightboxContent.innerHTML = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.diagram-zoomable').forEach(function (wrap) {
+    var svg = wrap.querySelector('svg');
+    if (!svg) return;
+    wrap.addEventListener('click', function () { openLightbox(svg); });
+    wrap.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(svg); }
+    });
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(function (openItem) {
+        openItem.classList.remove('is-open');
+        openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ---------- Footer year ---------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+})();
+</script>
+</body>
+</html>
