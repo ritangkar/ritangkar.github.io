@@ -52,7 +52,7 @@ const STAGES = [
 const CSS = `.prc-big{font-size:clamp(2rem,6vw,2.8rem);font-weight:700;letter-spacing:-.03em;line-height:1.05}
 .prc-pre{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .prc-pre .d-btn[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#06121e}
-.prc-r{display:grid;grid-template-columns:minmax(100px,150px) 1fr 4.6em;gap:10px;align-items:center;margin:7px 0;font-size:.84rem}
+.prc-r{display:grid;grid-template-columns:minmax(120px,210px) 1fr 4.6em;gap:10px;align-items:center;margin:7px 0;font-size:.84rem}
 .prc-t{position:relative;height:12px;background:var(--surface2);border-radius:6px}
 .prc-t::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--line2)}
 .prc-t i{position:absolute;top:0;bottom:0;border-radius:6px;transition:left .5s,width .5s}
@@ -64,6 +64,7 @@ const CSS = `.prc-big{font-size:clamp(2rem,6vw,2.8rem);font-weight:700;letter-sp
 .d-step.prc-fired{border-color:var(--amber)}
 .prc-line{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.86rem}
 .prc-line b{font-family:var(--mono);font-weight:500;text-align:right}
+@media(max-width:760px){.prc-split>:last-child{order:-1}}
 @media(max-width:520px){.prc-r{grid-template-columns:1fr 4.6em}.prc-t{grid-column:1/-1;order:3}}`;
 
 export function mount(root) {
@@ -92,6 +93,7 @@ export function mount(root) {
   function setScen(i) {
     Object.assign(q, SCEN[i].q); ceilPct = SCEN[i].ceil === '' ? null : +SCEN[i].ceil; ceilSel.value = SCEN[i].ceil;
     sync(); clearPre(); preBtns[i].setAttribute('aria-pressed', 'true');
+    if (st) { const f = [R.capFired, R.floorFired, R.ceilFired].findIndex(Boolean); st.go(f < 0 ? 0 : f + 2); }
   }
 
   const line = (a, b) => h('div.prc-line', h('span', a), h('b', b));
@@ -139,7 +141,7 @@ export function mount(root) {
       line('Days of supply', `${R.dos.toFixed(1)} → ${R.pdos.toFixed(1)}`),
       h('div', { style: { marginTop: '10px' } }, chip('Inventory risk: ' + R.risk, R.risk === 'HIGH' ? 'bad' : R.risk === 'MEDIUM' ? 'warn' : 'ok')));
     verdict.replaceChildren(...(fired.some(Boolean)
-      ? [R.capFired && chip('±10% cap fired', 'warn'), R.floorFired && chip('Margin floor enforced', 'bad'), R.ceilFired && chip('Competitor ceiling enforced', 'bad')]
+      ? [R.capFired && chip('±10% cap fired', 'warn'), R.floorFired && chip('Margin floor enforced', 'bad'), R.ceilFired && chip('Competitor ceiling enforced', 'bad')].filter(Boolean)
       : [chip('No guardrail fired', 'ok')]));
     stepBtns.forEach((b, i) => {
       const f = [false, false, R.capFired, R.floorFired, R.ceilFired][i];
@@ -151,16 +153,14 @@ export function mount(root) {
 
   const flowHost = h('div');
   const left = h('div.d-card', h('span.d-label', 'Scenario & inputs (synthetic product)'), preBar, sliders);
-  const right = h('div', { style: { display: 'grid', gap: '14px', minWidth: 0, alignContent: 'start' } }, result);
   root.append(h('style', CSS),
     h('p.d-note', { style: { margin: '0 0 12px' } }, 'The same rule pipeline as the Java engine, run in the browser: weighted signals, then constraints applied in a fixed order. Click a stage to see its arithmetic. Deterministic, no ML.'),
     flowHost,
-    h('div.d-split', { style: { marginTop: '14px' } }, left, h('div', { style: { display: 'grid', gap: '14px', minWidth: 0, alignContent: 'start' } }, detail, result)),
+    h('div.d-split.prc-split', { style: { marginTop: '14px' } }, left, h('div', { style: { display: 'grid', gap: '14px', minWidth: 0, alignContent: 'start' } }, detail, result)),
     h('p.d-note', 'Elasticity −1.6: units% = demand% − 1.6 × price%; revenue% = (1+price%)(1+units%) − 1. Risk by projected days of supply: under 5 HIGH, under 15 MEDIUM, up to 60 LOW, up to 120 MEDIUM, above that HIGH.'));
   st = stepper(flowHost, STAGES.map(s => ({ ...s })), i => R && renderDetail(i));
   const stepBtns = [...flowHost.querySelectorAll('.d-step')];
   stepBtns.forEach(b => b.append(h('span.chip', '')));
   setScen(0);
-  st.go(0);
   inView(root, null);
 }

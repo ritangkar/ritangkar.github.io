@@ -61,6 +61,7 @@ h2{font-size:clamp(1.7rem,3.6vw,2.6rem);max-width:22ch}
 .btn.pri:hover{background:#fff;color:#000}
 .btn.sm{padding:8px 14px;font-size:.85rem}
 .chip{display:inline-block;font:500 .72rem var(--mono);letter-spacing:.04em;padding:3px 9px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
+.chip.wrap{white-space:normal}
 .chip.ok{color:var(--green);border-color:rgba(98,196,142,.4)}
 .chip.warn{color:var(--amber-lt);border-color:rgba(229,166,79,.45)}
 .chip.bad{color:var(--red);border-color:rgba(239,143,143,.45)}

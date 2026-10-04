@@ -28,7 +28,7 @@ const CSS = `.sec .chip{white-space:normal}
 .sec .gt .st{display:block;font:.72rem/1.35 var(--mono);color:var(--muted);margin-top:8px}
 .sec .gt.pass{border-color:var(--green);background:rgba(98,196,142,.07)}.sec .gt.pass .st{color:var(--green)}
 .sec .gt.stop{border-color:var(--red);background:rgba(239,143,143,.1)}.sec .gt.stop .st{color:var(--red)}
-.sec .gt.skip{opacity:.4}.sec .gt[aria-pressed=true]{outline:2px solid var(--blue);outline-offset:2px}
+.sec .gt.sk{opacity:.75;border-style:dashed}.sec .gt.sk b{color:var(--muted)}.sec .gt[aria-pressed=true]{outline:2px solid var(--blue);outline-offset:2px}
 .sec .sc{display:flex;flex-wrap:wrap;gap:8px}.sec .sc .d-btn[aria-pressed=true]{border-color:var(--blue);color:var(--blue-lt);background:#14202e}
 .sec .res{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.sec .res .d-stat{min-width:3.2ch}
 @media(max-width:860px){.sec .fl{grid-template-columns:1fr;gap:20px}.sec .gt:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-20px;transform:translateX(-50%)}}`;
@@ -48,9 +48,9 @@ export function mount(root) {
   function paint() {
     sc.replaceChildren(...S.map(s => h('button.d-btn', { type: 'button', 'aria-pressed': String(s === cur), onclick: () => play(s) }, s.label)));
     gates.forEach((b, i) => {
-      const g = G[i], state = i >= shown ? 'idle' : i < cur.stop ? 'pass' : i === cur.stop ? 'stop' : 'skip';
+      const g = G[i], state = i >= shown ? 'idle' : i < cur.stop ? 'pass' : i === cur.stop ? 'stop' : 'sk';
       const logGate = i === 4 && cur.t[4];
-      const cls = i >= shown ? '' : state === 'skip' && logGate ? 'pass' : state;
+      const cls = i >= shown ? '' : state === 'sk' && logGate ? 'pass' : state;
       b.className = 'gt' + (cls ? ' ' + cls : ''); b.setAttribute('aria-pressed', String(i === sel));
       const txt = i >= shown ? 'waiting' : cls === 'pass' ? '✓ ' + (cur.t[i] || 'pass') : cls === 'stop' ? '✗ ' + cur.code + ' · ' + cur.t[i] : cur.t[i] && i === 4 ? '' : 'not reached';
       b.replaceChildren(h('span.k', '0' + (i + 1)), h('b', g.n), chip(g.tag, i === cur.stop && shown > i ? 'bad' : 'info'), h('span.st', txt));

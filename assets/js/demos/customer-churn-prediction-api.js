@@ -35,7 +35,7 @@ const CSS = `.chn-g{width:100%;max-width:300px;margin:0 auto;display:block}
 .chn-fill.up{background:var(--red)}.chn-fill.dn{background:var(--green)}
 .chn-v{font:.78rem var(--mono);text-align:right}
 .chn-sl{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin-bottom:9px;font-size:.82rem}
-.chn-sl input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--blue)}
+.chn-sl input[type=checkbox]{justify-self:start;width:20px;height:20px;accent-color:var(--blue)}.chn-sl input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--blue)}
 .chn-sl output{font:.8rem var(--mono);color:var(--amber-lt)}
 .chn-pre{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .chn-pre .d-btn[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#06121e}
@@ -55,12 +55,12 @@ export function mount(root) {
   };
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('viewBox', '0 0 200 118'); svg.setAttribute('class', 'chn-g d-svg');
+  svg.setAttribute('viewBox', '0 0 200 122'); svg.setAttribute('class', 'chn-g d-svg');
   svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', 'Churn probability gauge');
   svg.innerHTML = arc(0, 0.3, 'green') + arc(0.3, 0.6, 'amber') + arc(0.6, 1, 'red') +
     '<g class="chn-needle" id="needle"><line x1="100" y1="100" x2="100" y2="34" stroke="var(--text)" stroke-width="3" stroke-linecap="round"/></g><circle cx="100" cy="100" r="6" fill="var(--text)"/>' +
     '<text class="m" x="14" y="116" text-anchor="middle">0</text><text class="m" x="186" y="116" text-anchor="middle">1</text>' +
-    '<text class="m" x="55" y="28" text-anchor="middle">0.30</text><text class="m" x="145" y="28" text-anchor="middle">0.60</text>'; // static markers
+    `<text class="m" x="${pt(0.3, 94)[0].toFixed(1)}" y="${pt(0.3, 94)[1].toFixed(1)}" text-anchor="end">0.30</text><text class="m" x="${pt(0.6, 94)[0].toFixed(1)}" y="${pt(0.6, 94)[1].toFixed(1)}" text-anchor="start">0.60</text>`;
   const needle = svg.querySelector('#needle');
 
   const pVal = h('div.d-stat', '0');

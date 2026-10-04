@@ -48,7 +48,7 @@ export function mount(root) {
   root.append(
     h('div.d-ctl', chip('Rule-based: dictionaries + regex', 'ok'), chip('No LLM · deterministic', 'info')),
     h('div.d-field', h('label', { for: 'pde-q' }, 'Natural-language query (try the examples or type your own)'), input),
-    presets, h('div.d-split', h('div', h('span.d-label', '1 · Tokens recognised'), hl, h('span.d-label', { style: { marginTop: '14px' } }, '3 · extractedFrom trace'), tr), h('div', h('span.d-label', '2 · Structured query'), res)),
+    presets, h('div.d-split', h('div', h('span.d-label', '1 · Tokens recognised'), hl, h('span.d-label', { style: { marginTop: '14px' } }, '2 · extractedFrom trace'), tr), h('div', h('span.d-label', '3 · Structured query'), res)),
     h('p.d-note', 'This is the query-understanding layer that sits in front of the BM25 search engine. The validation step (min > max is an ERROR, nothing extracted is a WARNING) is the same guardrail you would put in front of an LLM extractor.'));
 
   function draw() {
