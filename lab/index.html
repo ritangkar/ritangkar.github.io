@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engineering Lab — 17 commerce &amp; AI engineering projects | Ritangkar Dey</title>
+<meta name="description" content="Seventeen engineering projects behind the architecture: BM25 search, hybrid recommendation, revenue root-cause analysis, a research agent, API performance and security — each with an interactive demo.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/">
+<meta name="theme-color" content="#0a0c10">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="Engineering Lab — 17 commerce &amp; AI engineering projects | Ritangkar Dey"><meta property="og:description" content="Seventeen engineering projects behind the architecture: BM25 search, hybrid recommendation, revenue root-cause analysis, a research agent, API performance and security — each with an interactive demo.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Engineering Lab — 17 commerce &amp; AI engineering projects | Ritangkar Dey">
+<meta name="twitter:description" content="Seventeen engineering projects behind the architecture: BM25 search, hybrid recommendation, revenue root-cause analysis, a research agent, API performance and security — each with an interactive demo."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main">
+<div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / Lab</div>
+    <span class="eyebrow">Engineering Lab</span>
+    <h1>Seventeen projects. One way of thinking.</h1>
+    <p class="lede">Small, focused systems I built to understand commerce problems from first principles — ranking, recommendation, root-cause analysis, grounding, performance and security. Each has an interactive demo with hard-coded, synthetic data; the code is on GitHub.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Filter projects by theme"><button type="button" data-f="all" aria-pressed="true">All 17</button><button type="button" data-f="decisions" aria-pressed="false">Commerce decisions</button><button type="button" data-f="search" aria-pressed="false">Search & personalisation</button><button type="button" data-f="agents" aria-pressed="false">Agents & grounded content</button><button type="button" data-f="quality" aria-pressed="false">Catalog & content quality</button><button type="button" data-f="platform" aria-pressed="false">Platform engineering</button><button type="button" data-f="graph" aria-pressed="false">Graph & analytics</button></div>
+  <p class="sr" id="filter-status" role="status" aria-live="polite"></p>
+  <div class="tier-block" data-tier-block="flagship"><div class="tier"><h2>Flagship work</h2><p>The projects that best show how I think about commerce systems.</p></div>
+  <div class="grid g2"><a class="card flag" href="/lab/ecommerce-revenue-detective/" data-cluster="decisions" data-tier="flagship">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Commerce decisions</span></div>
+  <h3>Revenue Detective</h3><p>Answers “why did revenue fall?” with ranked, evidenced causes instead of dashboard archaeology.</p>
+  <div class="sig">Revenue −27.64% → six detectors → ranked by ₹ impact</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card flag" href="/lab/personalized-recommendation-engine/" data-cluster="search" data-tier="flagship">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Search & personalisation</span></div>
+  <h3>Recommendation Engine</h3><p>Hybrid recommender where every suggestion carries the reason it was made.</p>
+  <div class="sig">0.2·popularity + 0.4·content + 0.4·collaborative</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card flag" href="/lab/smart-product-search-engine/" data-cluster="search" data-tier="flagship">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Search & personalisation</span></div>
+  <h3>Product Search Engine</h3><p>Structured filters plus a hand-written BM25 ranker over a 124-product catalog.</p>
+  <div class="sig">124 products → 7 candidates → BM25 ranked</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card flag" href="/lab/personal-research-agent/" data-cluster="agents" data-tier="flagship">
+  <div class="top"><span class="chip ai">Pipeline · LLM-ready</span><span class="chip">Agents & grounded content</span></div>
+  <h3>Research Agent</h3><p>A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little.</p>
+  <div class="sig">4 tool calls · 16 retrieved · 12 accepted · confidence 0.73</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card flag" href="/lab/api-performance-lab/" data-cluster="platform" data-tier="flagship">
+  <div class="top"><span class="chip ok">Measured</span><span class="chip">Platform engineering</span></div>
+  <h3>API Performance Lab</h3><p>Reproducible before/after benchmarks for indexing, caching, pagination and parallelism.</p>
+  <div class="sig">≈486× indexing · 9.7× caching · 8.4 MB → 3.4 KB</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card flag" href="/lab/commerce-api-security-lab/" data-cluster="platform" data-tier="flagship">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Platform engineering</span></div>
+  <h3>Commerce API Security Lab</h3><p>A defensive commerce API: rate limiting, JWT, RBAC, ownership checks and audit logging, mapped to OWASP.</p>
+  <div class="sig">Rate limit → JWT → role → ownership → audit</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a></div></div>
+<div class="tier-block" data-tier-block="supporting"><div class="tier"><h2>Strong supporting work</h2><p>Focused engines, each with a clear algorithm and a clear business use.</p></div>
+  <div class="grid g3"><a class="card" href="/lab/customer-churn-prediction-api/" data-cluster="decisions" data-tier="supporting">
+  <div class="top"><span class="chip ai">Machine learning</span><span class="chip">Commerce decisions</span></div>
+  <h3>Churn Prediction API</h3><p>A from-scratch logistic regression returning churn probability, risk tier and top contributing factors.</p>
+  <div class="sig">At-risk profile → 0.9694 HIGH</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/football-transfer-network/" data-cluster="graph" data-tier="supporting">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Graph & analytics</span></div>
+  <h3>Transfer Network Analysis</h3><p>Graph analysis of a synthetic transfer market: PageRank, corridors, fee outliers, flurries and boomerangs.</p>
+  <div class="sig">26 clubs · 336 transfers · fence €7.85M</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/dynamic-pricing-simulator/" data-cluster="decisions" data-tier="supporting">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Commerce decisions</span></div>
+  <h3>Dynamic Pricing Simulator</h3><p>Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails.</p>
+  <div class="sig">₹7,199 → ₹7,680 (+6.68%), margin floor intact</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/inventory-fulfillment-optimizer/" data-cluster="decisions" data-tier="supporting">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Commerce decisions</span></div>
+  <h3>Fulfillment Optimizer</h3><p>Chooses the cheapest SLA-aware fulfilment plan across a warehouse network, splitting shipments when needed.</p>
+  <div class="sig">Pune, SLA 3 → Chennai DC · ₹109.24 · SLA met</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/product-discovery-engine/" data-cluster="search" data-tier="supporting">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Search & personalisation</span></div>
+  <h3>Product Discovery Engine</h3><p>Turns a natural-language shopping query into structured filters, with a trace of where each value came from.</p>
+  <div class="sig">“black running shoes under 8000” → 4 filters</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a></div></div>
+<div class="tier-block" data-tier-block="lab"><div class="tier"><h2>Engineering experiments</h2><p>A shared pattern: deterministic guardrails for catalog and content — the layer that makes LLM output safe to ship.</p></div>
+  <div class="grid g3"><a class="card" href="/lab/ai-catalog-quality-auditor/" data-cluster="quality" data-tier="lab">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Catalog & content quality</span></div>
+  <h3>Catalog Quality Auditor</h3><p>Seven deterministic checks that score catalog data quality: duplicates, gaps, mismatches and suspicious claims.</p>
+  <div class="sig">Catalog score 33/100 · 7 checks</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/product-faq-generator/" data-cluster="agents" data-tier="lab">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Agents & grounded content</span></div>
+  <h3>FAQ Generator</h3><p>Generates FAQs strictly from supplied product data and flags any answer the data does not support.</p>
+  <div class="sig">7 FAQs, all traceable to a field</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/seo-product-description-generator/" data-cluster="agents" data-tier="lab">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Agents & grounded content</span></div>
+  <h3>SEO Description Generator</h3><p>A staged content pipeline that generates SEO copy and checks it against the product facts.</p>
+  <div class="sig">Quality score 100 · 0 issues</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/product-review-summarizer/" data-cluster="agents" data-tier="lab">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Agents & grounded content</span></div>
+  <h3>Review Summarizer</h3><p>Extracts sentiment, themes and recurring complaints, with every finding tied to review IDs.</p>
+  <div class="sig">Avg 3.51 · “sizing” is the top complaint</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/product-seo-score-calculator/" data-cluster="quality" data-tier="lab">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Catalog & content quality</span></div>
+  <h3>SEO Score Calculator</h3><p>A fully deterministic six-part SEO score with no LLM.</p>
+  <div class="sig">Sample listing scores 96 · missing “size”</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a>
+<a class="card" href="/lab/football-match-intelligence/" data-cluster="graph" data-tier="lab">
+  <div class="top"><span class="chip info">Deterministic</span><span class="chip">Graph & analytics</span></div>
+  <h3>Match Intelligence</h3><p>Turns raw match rows into team form and plain-English insights.</p>
+  <div class="sig">Meridian United · WWWDW · 13 pts</div>
+  <div class="foot"><span class="go">Open demo →</span></div></a></div></div>
+  <p class="honest" style="margin-top:48px"><b>Reading this honestly:</b> most of these are deliberately deterministic — rules, statistics and classical algorithms. Only the churn model is machine learning, and no demo calls an LLM. The “LLM-ready” projects show the grounding and validation layers an LLM would sit behind.</p>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>

@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ritangkar.github.io/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://ritangkar.github.io/</loc><priority>1.0</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/</loc><priority>0.8</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/ecommerce-revenue-detective/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/personalized-recommendation-engine/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/smart-product-search-engine/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/personal-research-agent/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/api-performance-lab/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/commerce-api-security-lab/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/customer-churn-prediction-api/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/football-transfer-network/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/dynamic-pricing-simulator/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/inventory-fulfillment-optimizer/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/product-discovery-engine/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/ai-catalog-quality-auditor/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/product-faq-generator/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/seo-product-description-generator/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/product-review-summarizer/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/product-seo-score-calculator/</loc><priority>0.6</priority></url>
+  <url><loc>https://ritangkar.github.io/lab/football-match-intelligence/</loc><priority>0.6</priority></url>
 </urlset>

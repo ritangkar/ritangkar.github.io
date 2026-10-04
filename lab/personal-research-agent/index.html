@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research Agent — Engineering Lab | Ritangkar Dey</title>
+<meta name="description" content="A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/personal-research-agent/">
+<meta name="theme-color" content="#0a0c10">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="Research Agent — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/personal-research-agent/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Research Agent — Engineering Lab | Ritangkar Dey">
+<meta name="twitter:description" content="A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Research Agent","description":"A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little.","codeRepositoryUrl":"https://github.com/ritangkar/personal-research-agent","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Research Agent</div>
+    <span class="eyebrow">Agents & grounded content</span>
+    <h1>Research Agent</h1>
+    <p class="lede">A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little.</p>
+    <div class="meta"><span class="chip ai">Pipeline · LLM-ready</span><span class="chip">Flagship work</span><span class="chip">Agent pipeline</span><span class="chip">Evidence grading</span><span class="chip">Citation validation</span></div>
+    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/personal-research-agent" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+  </div>
+  <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
+    <div class="demo" data-demo="personal-research-agent"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
+  <div class="prose">
+    <div class="card"><h3>The problem</h3><p>Agent demos usually stop at “call a tool and summarise”. Production agents need cost accounting, evidence grading and a way to refuse.</p></div>
+    <div class="card"><h3>How it works</h3><ol><li>Decompose the question into sub-questions.</li><li>Call a search tool (cached, with retries) and score each result: 0.5 relevance + 0.3 source credibility + 0.2 recency.</li><li>Accept evidence at ≥ 0.35, keep the top three per section, then re-validate every citation before it reaches the report.</li></ol></div>
+    <div class="card"><h3>Technically interesting</h3><p>The pipeline reports its own tool calls, cache hits, estimated tokens and confidence, and revalidates citations independently of the synthesiser.</p></div>
+    <div class="card"><h3>Why it matters</h3><p>This is the engineering around the model — grounding, budgets and honest failure — that decides whether an agent is trustworthy in an enterprise.</p></div>
+  </div>
+  <p class="honest"><b>Scope &amp; honesty.</b> The recorded run uses a bundled synthetic corpus, mock keyword retrieval and a template synthesiser (no live LLM call). The LLM client is a pluggable interface.</p>
+  <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/personal-research-agent" rel="noopener">Read the code ↗</a></div>
+  <nav class="pn" aria-label="More projects"><a href="/lab/smart-product-search-engine/">← Product Search Engine</a><a href="/lab/api-performance-lab/">API Performance Lab →</a></nav>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>

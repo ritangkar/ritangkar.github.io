@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>API Performance Lab — Engineering Lab | Ritangkar Dey</title>
+<meta name="description" content="Reproducible before/after benchmarks for indexing, caching, pagination and parallelism.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/api-performance-lab/">
+<meta name="theme-color" content="#0a0c10">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="API Performance Lab — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="Reproducible before/after benchmarks for indexing, caching, pagination and parallelism.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/api-performance-lab/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="API Performance Lab — Engineering Lab | Ritangkar Dey">
+<meta name="twitter:description" content="Reproducible before/after benchmarks for indexing, caching, pagination and parallelism."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"API Performance Lab","description":"Reproducible before/after benchmarks for indexing, caching, pagination and parallelism.","codeRepositoryUrl":"https://github.com/ritangkar/api-performance-lab","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / API Performance Lab</div>
+    <span class="eyebrow">Platform engineering</span>
+    <h1>API Performance Lab</h1>
+    <p class="lede">Reproducible before/after benchmarks for indexing, caching, pagination and parallelism.</p>
+    <div class="meta"><span class="chip ok">Measured</span><span class="chip">Flagship work</span><span class="chip">Indexing</span><span class="chip">Caching</span><span class="chip">Pagination</span><span class="chip">Concurrency</span></div>
+    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/api-performance-lab" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+  </div>
+  <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
+    <div class="demo" data-demo="api-performance-lab"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
+  <div class="prose">
+    <div class="card"><h3>The problem</h3><p>“We optimised it” is not evidence. Performance claims need a baseline, a change and a measurement.</p></div>
+    <div class="card"><h3>How it works</h3><ol><li>Benchmark a full table scan against an index on 100,000 rows.</li><li>Measure repeated product lookups with and without a cache.</li><li>Compare a 50,000-product list endpoint unpaginated versus paginated, and sequential versus parallel processing.</li></ol></div>
+    <div class="card"><h3>Technically interesting</h3><p>The numbers are real and the weakest one is reported honestly: parallel processing gave only 1.29× because the test ran on a single CPU core.</p></div>
+    <div class="card"><h3>Why it matters</h3><p>The same measure-first discipline drives the data-model, indexing and query work in my enterprise commerce projects.</p></div>
+  </div>
+  <p class="honest"><b>Scope &amp; honesty.</b> Measured on a small, single-core test environment. Ratios illustrate the mechanism; they are not production benchmarks.</p>
+  <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/api-performance-lab" rel="noopener">Read the code ↗</a></div>
+  <nav class="pn" aria-label="More projects"><a href="/lab/personal-research-agent/">← Research Agent</a><a href="/lab/commerce-api-security-lab/">Commerce API Security Lab →</a></nav>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>
