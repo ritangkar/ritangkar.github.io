@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / FAQ Generator</div>
-    <span class="eyebrow">Agents & grounded content</span>
+    <span class="eyebrow">Agents & Grounded Content</span>
     <h1>FAQ Generator</h1>
     <p class="lede">Generates FAQs strictly from supplied product data and flags any answer the data does not support.</p>
-    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Engineering experiments</span><span class="chip">Grounding</span><span class="chip">Hallucination guard</span><span class="chip">Content</span></div>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Engineering Experiments</span><span class="chip">Grounding</span><span class="chip">Hallucination guard</span><span class="chip">Content</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/product-faq-generator" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="product-faq-generator"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Generated support content that invents specifications is a liability.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Emit colour, feature, spec, use-case and audience FAQs only when the source field exists — remove the field and the question disappears.</li><li>Check answers for unit claims and colours that are absent from the product data.</li><li>Run quality checks: well-formed, non-duplicate, non-trivial.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>The generator never guesses a missing field; the unsupported-answer detector is the part that would police an LLM.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>It demonstrates the guardrail pattern for grounded generation.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Generated support content that invents specifications is a liability.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Emit colour, feature, spec, use-case and audience FAQs only when the source field exists — remove the field and the question disappears.</li><li>Check answers for unit claims and colours that are absent from the product data.</li><li>Run quality checks: well-formed, non-duplicate, non-trivial.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>The generator never guesses a missing field; the unsupported-answer detector is the part that would police an LLM.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>It demonstrates the guardrail pattern for grounded generation.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Template-driven; no LLM in the demo.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/product-faq-generator" rel="noopener">Read the code ↗</a></div>

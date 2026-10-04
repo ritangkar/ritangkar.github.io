@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Research Agent</div>
-    <span class="eyebrow">Agents & grounded content</span>
+    <span class="eyebrow">Agents & Grounded Content</span>
     <h1>Research Agent</h1>
     <p class="lede">A plan → search → evaluate → synthesise pipeline that cites evidence or admits it has too little.</p>
-    <div class="meta"><span class="chip ai">Pipeline · LLM-ready</span><span class="chip">Flagship work</span><span class="chip">Agent pipeline</span><span class="chip">Evidence grading</span><span class="chip">Citation validation</span></div>
+    <div class="meta"><span class="chip ai">Pipeline · LLM-ready</span><span class="chip">Flagship Work</span><span class="chip">Agent pipeline</span><span class="chip">Evidence grading</span><span class="chip">Citation validation</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/personal-research-agent" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="personal-research-agent"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Agent demos usually stop at “call a tool and summarise”. Production agents need cost accounting, evidence grading and a way to refuse.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Decompose the question into sub-questions.</li><li>Call a search tool (cached, with retries) and score each result: 0.5 relevance + 0.3 source credibility + 0.2 recency.</li><li>Accept evidence at ≥ 0.35, keep the top three per section, then re-validate every citation before it reaches the report.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>The pipeline reports its own tool calls, cache hits, estimated tokens and confidence, and revalidates citations independently of the synthesiser.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>This is the engineering around the model — grounding, budgets and honest failure — that decides whether an agent is trustworthy in an enterprise.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Agent demos usually stop at “call a tool and summarise”. Production agents need cost accounting, evidence grading and a way to refuse.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Decompose the question into sub-questions.</li><li>Call a search tool (cached, with retries) and score each result: 0.5 relevance + 0.3 source credibility + 0.2 recency.</li><li>Accept evidence at ≥ 0.35, keep the top three per section, then re-validate every citation before it reaches the report.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>The pipeline reports its own tool calls, cache hits, estimated tokens and confidence, and revalidates citations independently of the synthesiser.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>This is the engineering around the model — grounding, budgets and honest failure — that decides whether an agent is trustworthy in an enterprise.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> The recorded run uses a bundled synthetic corpus, mock keyword retrieval and a template synthesiser (no live LLM call). The LLM client is a pluggable interface.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/personal-research-agent" rel="noopener">Read the code ↗</a></div>

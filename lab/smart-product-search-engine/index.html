@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Product Search Engine</div>
-    <span class="eyebrow">Search & personalisation</span>
+    <span class="eyebrow">Search & Personalisation</span>
     <h1>Product Search Engine</h1>
     <p class="lede">Structured filters plus a hand-written BM25 ranker over a 124-product catalog.</p>
-    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Flagship work</span><span class="chip">BM25</span><span class="chip">Information retrieval</span><span class="chip">Spring Boot</span></div>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Flagship Work</span><span class="chip">BM25</span><span class="chip">Information retrieval</span><span class="chip">Spring Boot</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/smart-product-search-engine" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="smart-product-search-engine"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Search relevance is revenue. Teams often configure a search engine without understanding the ranking underneath it.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Tokenise (lowercase, stop-words removed) and index name, description, use case, brand and material.</li><li>Apply hard filters first — category, colour, max price, in-stock.</li><li>Rank the survivors with BM25 (k1 = 1.5, b = 0.75), breaking ties by rating.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>IDF is computed over the whole catalog, not the filtered subset, so term rarity stays meaningful when filters narrow the result.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>Knowing the ranking function from first principles is what makes Solr/Elastic relevance tuning a decision rather than trial and error.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Search relevance is revenue. Teams often configure a search engine without understanding the ranking underneath it.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Tokenise (lowercase, stop-words removed) and index name, description, use case, brand and material.</li><li>Apply hard filters first — category, colour, max price, in-stock.</li><li>Rank the survivors with BM25 (k1 = 1.5, b = 0.75), breaking ties by rating.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>IDF is computed over the whole catalog, not the filtered subset, so term rarity stays meaningful when filters narrow the result.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>Knowing the ranking function from first principles is what makes Solr/Elastic relevance tuning a decision rather than trial and error.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Synthetic catalog. Built from scratch for understanding, not as a replacement for a search platform.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/smart-product-search-engine" rel="noopener">Read the code ↗</a></div>

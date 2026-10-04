@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Fulfillment Optimizer</div>
-    <span class="eyebrow">Commerce decisions</span>
+    <span class="eyebrow">Commerce Decisions</span>
     <h1>Fulfillment Optimizer</h1>
     <p class="lede">Chooses the cheapest SLA-aware fulfilment plan across a warehouse network, splitting shipments when needed.</p>
-    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong supporting work</span><span class="chip">Haversine</span><span class="chip">SLA</span><span class="chip">Order management</span></div>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong Supporting Work</span><span class="chip">Haversine</span><span class="chip">SLA</span><span class="chip">Order management</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/inventory-fulfillment-optimizer" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="inventory-fulfillment-optimizer"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Where an order ships from trades off cost, speed and stock. A cheap plan that misses the SLA is not cheap.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Compute Haversine distance to each warehouse.</li><li>Cost = ₹50 + ₹0.05/km + ₹8/kg; days = 1 + ceil(km / 500); add a ₹100/day penalty for lateness.</li><li>Prefer the best single warehouse with full stock; otherwise split each item to the nearest warehouse that has it.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>A late delivery is priced into the score, so the optimiser can knowingly choose a plan that misses the SLA when every alternative is worse.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>Order-management decisions are cost/SLA trade-offs; making the trade-off explicit is the core of fulfilment optimisation.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Where an order ships from trades off cost, speed and stock. A cheap plan that misses the SLA is not cheap.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Compute Haversine distance to each warehouse.</li><li>Cost = ₹50 + ₹0.05/km + ₹8/kg; days = 1 + ceil(km / 500); add a ₹100/day penalty for lateness.</li><li>Prefer the best single warehouse with full stock; otherwise split each item to the nearest warehouse that has it.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>A late delivery is priced into the score, so the optimiser can knowingly choose a plan that misses the SLA when every alternative is worse.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>Order-management decisions are cost/SLA trade-offs; making the trade-off explicit is the core of fulfilment optimisation.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> A greedy strategy over synthetic data. Warehouse capacity is modelled but not enforced.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/inventory-fulfillment-optimizer" rel="noopener">Read the code ↗</a></div>

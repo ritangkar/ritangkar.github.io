@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / API Performance Lab</div>
-    <span class="eyebrow">Platform engineering</span>
+    <span class="eyebrow">Platform Engineering</span>
     <h1>API Performance Lab</h1>
     <p class="lede">Reproducible before/after benchmarks for indexing, caching, pagination and parallelism.</p>
-    <div class="meta"><span class="chip ok">Measured</span><span class="chip">Flagship work</span><span class="chip">Indexing</span><span class="chip">Caching</span><span class="chip">Pagination</span><span class="chip">Concurrency</span></div>
+    <div class="meta"><span class="chip ok">Measured</span><span class="chip">Flagship Work</span><span class="chip">Indexing</span><span class="chip">Caching</span><span class="chip">Pagination</span><span class="chip">Concurrency</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/api-performance-lab" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="api-performance-lab"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>“We optimised it” is not evidence. Performance claims need a baseline, a change and a measurement.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Benchmark a full table scan against an index on 100,000 rows.</li><li>Measure repeated product lookups with and without a cache.</li><li>Compare a 50,000-product list endpoint unpaginated versus paginated, and sequential versus parallel processing.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>The numbers are real and the weakest one is reported honestly: parallel processing gave only 1.29× because the test ran on a single CPU core.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>The same measure-first discipline drives the data-model, indexing and query work in my enterprise commerce projects.</p></div>
+    <div class="card"><h2>The Problem</h2><p>“We optimised it” is not evidence. Performance claims need a baseline, a change and a measurement.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Benchmark a full table scan against an index on 100,000 rows.</li><li>Measure repeated product lookups with and without a cache.</li><li>Compare a 50,000-product list endpoint unpaginated versus paginated, and sequential versus parallel processing.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>The numbers are real and the weakest one is reported honestly: parallel processing gave only 1.29× because the test ran on a single CPU core.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>The same measure-first discipline drives the data-model, indexing and query work in my enterprise commerce projects.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Measured on a small, single-core test environment. Ratios illustrate the mechanism; they are not production benchmarks.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/api-performance-lab" rel="noopener">Read the code ↗</a></div>

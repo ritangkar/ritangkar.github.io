@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Product Discovery Engine</div>
-    <span class="eyebrow">Search & personalisation</span>
+    <span class="eyebrow">Search & Personalisation</span>
     <h1>Product Discovery Engine</h1>
     <p class="lede">Turns a natural-language shopping query into structured filters, with a trace of where each value came from.</p>
-    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong supporting work</span><span class="chip">Query understanding</span><span class="chip">Validation</span><span class="chip">NL → filters</span></div>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong Supporting Work</span><span class="chip">Query understanding</span><span class="chip">Validation</span><span class="chip">NL → filters</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/product-discovery-engine" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="product-discovery-engine"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Shoppers type “black running shoes under 8000”, not filter objects. Search needs query understanding before ranking.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Match category by longest keyword, plus colour, brand and use-case dictionaries.</li><li>Parse price phrases: under/over/between, with ₹, rs and “k” suffixes.</li><li>Emit structured filters with an extractedFrom trace and validate them (min &gt; max is an error).</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>Every extracted field records its source text, and a validation layer rejects contradictory output — the same layer you would put around an LLM extractor.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>It is the front door to the BM25 search engine: messy language in, validated structure out.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Shoppers type “black running shoes under 8000”, not filter objects. Search needs query understanding before ranking.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Match category by longest keyword, plus colour, brand and use-case dictionaries.</li><li>Parse price phrases: under/over/between, with ₹, rs and “k” suffixes.</li><li>Emit structured filters with an extractedFrom trace and validate them (min &gt; max is an error).</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>Every extracted field records its source text, and a validation layer rejects contradictory output — the same layer you would put around an LLM extractor.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>It is the front door to the BM25 search engine: messy language in, validated structure out.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Rule-based extraction over a fixed vocabulary; no LLM.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/product-discovery-engine" rel="noopener">Read the code ↗</a></div>

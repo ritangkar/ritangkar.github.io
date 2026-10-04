@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Dynamic Pricing Simulator</div>
-    <span class="eyebrow">Commerce decisions</span>
+    <span class="eyebrow">Commerce Decisions</span>
     <h1>Dynamic Pricing Simulator</h1>
     <p class="lede">Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails.</p>
-    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong supporting work</span><span class="chip">Pricing rules</span><span class="chip">Guardrails</span><span class="chip">Elasticity</span></div>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong Supporting Work</span><span class="chip">Pricing rules</span><span class="chip">Guardrails</span><span class="chip">Elasticity</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/dynamic-pricing-simulator" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="dynamic-pricing-simulator"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Automated pricing is only acceptable when the business can see which guardrail stopped it from going too far.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Sum adjustments from demand change, days of supply and competitor gap, scaled by seasonality.</li><li>Clamp the move to ±10%.</li><li>Apply the margin floor and optional competitor ceiling, then estimate unit, revenue and stock-risk impact.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>Constraints are applied in a fixed order and the response lists which one fired, so the output is a rationale rather than a number.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>Pricing logic needs governance. Guardrails and traceability matter more than model sophistication.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Automated pricing is only acceptable when the business can see which guardrail stopped it from going too far.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Sum adjustments from demand change, days of supply and competitor gap, scaled by seasonality.</li><li>Clamp the move to ±10%.</li><li>Apply the margin floor and optional competitor ceiling, then estimate unit, revenue and stock-risk impact.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>Constraints are applied in a fixed order and the response lists which one fired, so the output is a rationale rather than a number.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>Pricing logic needs governance. Guardrails and traceability matter more than model sophistication.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Coefficients are illustrative, not fitted to data.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/dynamic-pricing-simulator" rel="noopener">Read the code ↗</a></div>

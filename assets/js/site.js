@@ -11,12 +11,29 @@
     d.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
   }
 
+  // Scroll progress + header state
+  const sp = d.createElement('div'); sp.className = 'sp'; sp.setAttribute('aria-hidden', 'true'); d.body.prepend(sp);
+  const hdr = d.querySelector('.hdr'); let tick = false;
+  const onScroll = () => { tick = false; const max = d.documentElement.scrollHeight - innerHeight; sp.style.setProperty('--p', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0); if (hdr) hdr.classList.toggle('scrolled', scrollY > 8); };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(onScroll); } }, { passive: true }); onScroll();
+
+  // Card spotlight (pointer devices only)
+  if (!reduce && matchMedia('(hover:hover)').matches) {
+    d.addEventListener('pointermove', e => { const c = e.target.closest && e.target.closest('.card'); if (c) { const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); } }, { passive: true });
+  }
+
+  // Staggered reveal: tag groups of siblings so they cascade in
+  if (!reduce) {
+    d.querySelectorAll('.grid,.chain,.skills,.prose,.proof ul').forEach(g => [...g.children].forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--i', i % 6); }));
+    d.querySelectorAll('.tier,.demo-frame,.honest,.ph').forEach(el => el.classList.add('rv'));
+  }
+
   // Reveal on scroll
   const rv = [...d.querySelectorAll('.rv')];
   if (rv.length) {
     if (reduce || !('IntersectionObserver' in window)) rv.forEach(el => el.classList.add('in'));
     else {
-      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { const t = e.target; t.classList.add('in'); io.unobserve(t); setTimeout(() => { t.classList.remove('rv', 'in'); t.style.removeProperty('--i'); }, 1200 + 70 * (+t.style.getPropertyValue('--i') || 0)); } }), { rootMargin: '0px 0px -8% 0px' });
       rv.forEach(el => io.observe(el));
     }
   }

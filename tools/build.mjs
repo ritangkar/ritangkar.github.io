@@ -5,7 +5,27 @@ import { projects, clusters, tiers, kinds, owner } from '../data/projects.mjs';
 
 const SITE = 'https://ritangkar.github.io';
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const write = (path, html) => { if (path.includes('/')) mkdirSync(path.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(path, html); };
+// Title Case for h1–h3 text (small words stay lower-case; acronyms / mixed-case / digit tokens are left alone).
+const SMALL = new Set(['a', 'an', 'the', 'and', 'or', 'but', 'nor', 'for', 'of', 'on', 'in', 'at', 'to', 'by', 'as', 'vs', 'via']);
+const tcWord = (w, edge) => {
+  if (!w || /[&;\d/→+·]/.test(w) || /[A-Z]/.test(w.slice(1))) return w;
+  const m = w.match(/^([^A-Za-zÀ-ÿ]*)([A-Za-zÀ-ÿ].*?)([^A-Za-zÀ-ÿ]*)$/); if (!m) return w;
+  const core = m[2];
+  if (!edge && SMALL.has(core.toLowerCase())) return m[1] + core.toLowerCase() + m[3];
+  return m[1] + core.split('-').map(x => x.charAt(0).toUpperCase() + x.slice(1)).join('-') + m[3];
+};
+const titleCase = html => html.replace(/<(h[123])([^>]*)>([\s\S]*?)<\/\1>/g, (all, tag, attrs, inner) => {
+  const parts = inner.split(/(<[^>]+>)/); let first = true;
+  const out = parts.map((seg, i) => {
+    if (seg.startsWith('<')) return seg;
+    const words = seg.split(/(\s+)/);
+    const last = i === parts.length - 1 || parts.slice(i + 1).every(x => x.startsWith('<'));
+    const idx = words.map((w, k) => (w.trim() ? k : -1)).filter(k => k >= 0);
+    return words.map((w, k) => { const edge = (first && k === idx[0]) || (last && k === idx[idx.length - 1]); const r = tcWord(w, edge); if (w.trim()) first = false; return r; }).join('');
+  }).join('');
+  return `<${tag}${attrs}>${out}</${tag}>`;
+});
+const write = (path, html) => { if (path.endsWith('.html')) html = titleCase(html); if (path.includes('/')) mkdirSync(path.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(path, html); };
 
 export const header = (cur = '') => `<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap">
