@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transfer Network Analysis — Engineering Lab | Ritangkar Dey</title>
+<meta name="description" content="Graph analysis of a synthetic transfer market: PageRank, corridors, fee outliers, flurries and boomerangs.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/football-transfer-network/">
+<meta name="theme-color" content="#0a0c10">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="Transfer Network Analysis — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="Graph analysis of a synthetic transfer market: PageRank, corridors, fee outliers, flurries and boomerangs.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/football-transfer-network/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Transfer Network Analysis — Engineering Lab | Ritangkar Dey">
+<meta name="twitter:description" content="Graph analysis of a synthetic transfer market: PageRank, corridors, fee outliers, flurries and boomerangs."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Transfer Network Analysis","description":"Graph analysis of a synthetic transfer market: PageRank, corridors, fee outliers, flurries and boomerangs.","codeRepositoryUrl":"https://github.com/ritangkar/football-transfer-network","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Transfer Network Analysis</div>
+    <span class="eyebrow">Graph & analytics</span>
+    <h1>Transfer Network Analysis</h1>
+    <p class="lede">Graph analysis of a synthetic transfer market: PageRank, corridors, fee outliers, flurries and boomerangs.</p>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong supporting work</span><span class="chip">PageRank</span><span class="chip">Graph analysis</span><span class="chip">Outlier detection</span></div>
+    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/football-transfer-network" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+  </div>
+  <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
+    <div class="demo" data-demo="football-transfer-network"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
+  <div class="prose">
+    <div class="card"><h2>The problem</h2><p>Transfer data is a network. Spotting influential clubs and irregular deals needs graph algorithms, not just sorting.</p></div>
+    <div class="card"><h2>How it works</h2><ol><li>Build a weighted club graph from 336 transfers across 26 clubs.</li><li>Run PageRank (damping 0.85) with dangling-node redistribution.</li><li>Flag anomalies: Tukey-IQR fee outliers, signing flurries and players returning to a former club.</li></ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>Several independent analyses share one in-memory graph; the outlier fence (€7.85M) comes from the data’s own distribution.</p></div>
+    <div class="card"><h2>Why it matters</h2><p>The same graph-and-statistics toolkit applies to supplier networks, customer relationships and fraud patterns.</p></div>
+  </div>
+  <p class="honest"><b>Scope &amp; honesty.</b> Entirely synthetic clubs, players and fees.</p>
+  <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/football-transfer-network" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
+  <nav class="pn" aria-label="More projects"><a href="/lab/customer-churn-prediction-api/">← Churn Prediction API</a><a href="/lab/dynamic-pricing-simulator/">Dynamic Pricing Simulator →</a></nav>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>

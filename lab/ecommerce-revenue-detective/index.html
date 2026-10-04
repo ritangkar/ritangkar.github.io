@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revenue Detective — Engineering Lab | Ritangkar Dey</title>
+<meta name="description" content="Answers “why did revenue fall?” with ranked, evidenced causes instead of dashboard archaeology.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/ecommerce-revenue-detective/">
+<meta name="theme-color" content="#0a0c10">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="Revenue Detective — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="Answers “why did revenue fall?” with ranked, evidenced causes instead of dashboard archaeology.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/ecommerce-revenue-detective/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Revenue Detective — Engineering Lab | Ritangkar Dey">
+<meta name="twitter:description" content="Answers “why did revenue fall?” with ranked, evidenced causes instead of dashboard archaeology."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Revenue Detective","description":"Answers “why did revenue fall?” with ranked, evidenced causes instead of dashboard archaeology.","codeRepositoryUrl":"https://github.com/ritangkar/ecommerce-revenue-detective","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Revenue Detective</div>
+    <span class="eyebrow">Commerce decisions</span>
+    <h1>Revenue Detective</h1>
+    <p class="lede">Answers “why did revenue fall?” with ranked, evidenced causes instead of dashboard archaeology.</p>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Flagship work</span><span class="chip">Root-cause analysis</span><span class="chip">Rules &amp; thresholds</span><span class="chip">Spring Boot</span></div>
+    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/ecommerce-revenue-detective" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+  </div>
+  <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
+    <div class="demo" data-demo="ecommerce-revenue-detective"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
+  <div class="prose">
+    <div class="card"><h2>The problem</h2><p>When revenue drops, analysts spend hours drilling across product, region, payment and returns reports. The question is always the same: what changed, and what did it cost?</p></div>
+    <div class="card"><h2>How it works</h2><ol><li>Split the date range into two periods and compute recognised revenue (completed orders only).</li><li>Run six independent detectors — product, region, payment failures, returns, stock-outs, cancellations — each with explicit thresholds.</li><li>Estimate the money at stake per finding and rank by ₹ impact, with evidence bullets.</li></ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>Each cause is its own rule with a visible threshold, so every conclusion is traceable. Stock-out loss is modelled from units/day before versus during the outage.</p></div>
+    <div class="card"><h2>Why it matters</h2><p>Turns a reactive reporting task into a prioritised action list — the shape of decision support enterprise commerce teams actually need.</p></div>
+  </div>
+  <p class="honest"><b>Scope &amp; honesty.</b> Synthetic data (659 orders). Findings overlap — the South-region decline partly contains the stock-out — so impacts are not additive. Loss figures are modelled estimates.</p>
+  <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/ecommerce-revenue-detective" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
+  <nav class="pn" aria-label="More projects"><a href="/lab/football-match-intelligence/">← Match Intelligence</a><a href="/lab/personalized-recommendation-engine/">Recommendation Engine →</a></nav>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>
