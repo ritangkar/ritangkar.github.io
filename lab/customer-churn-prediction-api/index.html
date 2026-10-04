@@ -41,13 +41,14 @@
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="customer-churn-prediction-api"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h3>The problem</h3><p>Retention teams need to know who is at risk and why, so the action can match the cause.</p></div>
-    <div class="card"><h3>How it works</h3><ol><li>Train offline (Java trainer) on seven standardised customer features and commit the weights.</li><li>Serve p = sigmoid(bias + Σ w·z).</li><li>Return the risk tier (&lt;0.30 low, &lt;0.60 medium) and the three largest signed contributions.</li></ol></div>
-    <div class="card"><h3>Technically interesting</h3><p>The model is interpretable by construction: each factor’s contribution is its weight times its standardised value.</p></div>
-    <div class="card"><h3>Why it matters</h3><p>A small, explainable model is often the right answer in CRM, and it is the one genuine machine-learning component in this lab.</p></div>
+    <div class="card"><h2>The problem</h2><p>Retention teams need to know who is at risk and why, so the action can match the cause.</p></div>
+    <div class="card"><h2>How it works</h2><ol><li>Train offline (Java trainer) on seven standardised customer features and commit the weights.</li><li>Serve p = sigmoid(bias + Σ w·z).</li><li>Return the risk tier (&lt;0.30 low, &lt;0.60 medium) and the three largest signed contributions.</li></ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>The model is interpretable by construction: each factor’s contribution is its weight times its standardised value.</p></div>
+    <div class="card"><h2>Why it matters</h2><p>A small, explainable model is often the right answer in CRM, and it is the one genuine machine-learning component in this lab.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Trained on synthetic data; a demonstration of the technique, not a validated production model.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/customer-churn-prediction-api" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
   <nav class="pn" aria-label="More projects"><a href="/lab/commerce-api-security-lab/">← Commerce API Security Lab</a><a href="/lab/football-transfer-network/">Transfer Network Analysis →</a></nav>
 </div></main>
 <footer><div class="wrap">

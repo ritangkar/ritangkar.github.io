@@ -10,6 +10,7 @@
       <h1 id="h1">Ritangkar Dey</h1>
       <p class="role">AI-First Enterprise Commerce <span class="serif">Architect</span></p>
       <p class="sub">I design the systems behind large B2B, B2C and B2B2C commerce platforms — SAP Commerce, S/4HANA and CPI integration, performance and security — and put grounded, explainable AI on top of them.</p>
+      <p class="hnote">The client-deployed RAG + multi-agent assistant is private. The public <a href="/lab/">Lab</a> shows the layer underneath it: grounding, validation and explainability — mostly deterministic, on purpose.</p>
       <div class="actions">
         <a class="btn pri" href="/lab/">Explore the Engineering Lab</a>
         <a class="btn" href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
@@ -19,17 +20,17 @@
     </div>
 
     <figure class="arch" style="margin:0">
-      <svg class="arch-d" viewBox="0 0 560 350" role="img" aria-labelledby="archT archD">
+      <svg class="arch-d" viewBox="0 0 560 350" role="group" aria-labelledby="archT archD">
         <title id="archT">Enterprise commerce architecture</title>
         <desc id="archD">Storefront, POS and messaging connect to SAP Commerce, which connects through SAP CPI to S/4HANA, Service Cloud and logistics. An AI layer of retrieval, agents and guardrails sits alongside Commerce and Service Cloud.</desc>
-        <text class="layer" x="8" y="50">EXPERIENCE</text><text class="layer" x="8" y="138">COMMERCE</text><text class="layer" x="8" y="226">INTEGRATION</text><text class="layer" x="8" y="314">ENTERPRISE</text>
+        <text class="layer" x="8" y="50">CHANNELS</text><text class="layer" x="8" y="138">COMMERCE</text><text class="layer" x="8" y="226">INTEGRATION</text><text class="layer" x="8" y="314">ENTERPRISE</text>
         <g>
           <path class="edge hot" d="M145 68V112M255 68V112M365 68V112M145 156V200M255 156V200M365 156V200M145 244V288M255 244V288M365 244V288"/>
-          <path class="edge ai" d="M420 124C438 124 436 82 452 82M420 140C438 140 436 172 452 172M310 310C390 310 400 262 452 262"/>
+          <path class="edge ai" d="M420 124C438 124 436 82 452 82M420 140C438 140 436 172 452 172M260 332C260 346 496 348 496 284"/>
           <path class="pulse" d="M145 68V112V156V200V244V288"/>
           <path class="pulse" style="animation-delay:-1.1s" d="M365 288V244V200V156V112V68"/>
           <path class="pulse ai" style="animation-delay:-.5s" d="M420 140C438 140 436 172 452 172"/>
-          <path class="pulse ai" style="animation-delay:-1.8s" d="M310 310C390 310 400 262 452 262"/>
+          <path class="pulse ai" style="animation-delay:-1.8s" d="M260 332C260 346 496 348 496 284"/>
         </g>
         <rect x="440" y="28" width="112" height="296" rx="12" fill="none" stroke="#e5a64f" stroke-opacity=".35" stroke-dasharray="4 4"/>
         <text class="layer" x="452" y="48" style="fill:#e5a64f">AI LAYER</text>
@@ -39,16 +40,16 @@
         <g class="node core" tabindex="0" role="button" aria-label="SAP Commerce" data-t="SAP Commerce" data-d="The commerce core for B2B, B2C and B2B2C: data model, performance, OOTB-first customisation and the JDK 17 → 21 upgrade."><rect x="90" y="112" width="330" height="44" rx="8"/><text x="104" y="131">SAP Commerce Cloud</text><text class="s" x="104" y="146">B2B · B2C · B2B2C · Backoffice · Solr</text></g>
         <g class="node core" tabindex="0" role="button" aria-label="SAP CPI" data-t="SAP CPI" data-d="The integration layer between Commerce and enterprise systems — REST/SOAP flows designed to be implementable and supportable."><rect x="90" y="200" width="330" height="44" rx="8"/><text x="104" y="219">SAP CPI · Integration layer</text><text class="s" x="104" y="234">REST · SOAP · events</text></g>
         <g class="node" tabindex="0" role="button" aria-label="S/4HANA" data-t="SAP S/4HANA" data-d="Core ERP integration, designed and delivered through implementable APIs and data flows."><rect x="90" y="288" width="110" height="44" rx="8"/><text x="102" y="307">S/4HANA</text><text class="s" x="102" y="322">ERP</text></g>
-        <g class="node" tabindex="0" role="button" aria-label="Service Cloud" data-t="C4C / Service Cloud" data-d="Service-side integration for cases and live-agent scenarios, including a BTP middle-layer proof of concept."><rect x="210" y="288" width="100" height="44" rx="8"/><text x="222" y="307">Service Cloud</text><text class="s" x="222" y="322">C4C</text></g>
+        <g class="node" tabindex="0" role="button" aria-label="Service Cloud" data-t="C4C / Service Cloud" data-d="Service-side integration for live-agent scenarios, including a BTP middle-layer proof of concept."><rect x="210" y="288" width="100" height="44" rx="8"/><text x="222" y="307">Service Cloud</text><text class="s" x="222" y="322">C4C</text></g>
         <g class="node" tabindex="0" role="button" aria-label="Logistics" data-t="Logistics &amp; third parties" data-d="Logistics providers and other third-party systems integrated through APIs."><rect x="320" y="288" width="100" height="44" rx="8"/><text x="332" y="307">Logistics</text><text class="s" x="332" y="322">3rd-party</text></g>
-        <g class="node ai" tabindex="0" role="button" aria-label="Retrieval" data-t="Retrieval (RAG)" data-d="Grounding answers in enterprise knowledge and Commerce/Service Cloud data, as in the client-deployed AI Commerce Assistant."><rect x="452" y="60" width="88" height="44" rx="8"/><text x="464" y="79">RAG</text><text class="s" x="464" y="94">grounding</text></g>
+        <g class="node ai" tabindex="0" role="button" aria-label="RAG" data-t="Retrieval (RAG)" data-d="Grounding answers in enterprise knowledge and Commerce/Service Cloud data, as in the client-deployed AI Commerce Assistant."><rect x="452" y="60" width="88" height="44" rx="8"/><text x="464" y="79">RAG</text><text class="s" x="464" y="94">grounding</text></g>
         <g class="node ai" tabindex="0" role="button" aria-label="Agents" data-t="Multi-agent orchestration" data-d="An orchestrator routing work across agents that call Commerce and Service Cloud APIs."><rect x="452" y="150" width="88" height="44" rx="8"/><text x="464" y="169">Agents</text><text class="s" x="464" y="184">routing</text></g>
         <g class="node ai" tabindex="0" role="button" aria-label="Guardrails" data-t="Guardrails" data-d="Human-in-the-loop, data masking and validation, so output stays grounded, explainable and overridable."><rect x="452" y="240" width="88" height="44" rx="8"/><text x="464" y="259">Guardrails</text><text class="s" x="464" y="274">HITL · rules</text></g>
       </svg>
 
-      <svg class="arch-m" viewBox="0 0 330 420" role="img" aria-labelledby="archT2">
+      <svg class="arch-m" viewBox="0 0 330 420" role="group" aria-labelledby="archT2">
         <title id="archT2">Enterprise commerce architecture (stacked view)</title>
-        <text class="layer" x="0" y="12">EXPERIENCE</text><text class="layer" x="0" y="96">COMMERCE</text><text class="layer" x="0" y="180">INTEGRATION</text><text class="layer" x="0" y="264">ENTERPRISE</text>
+        <text class="layer" x="0" y="12">CHANNELS</text><text class="layer" x="0" y="96">COMMERCE</text><text class="layer" x="0" y="180">INTEGRATION</text><text class="layer" x="0" y="264">ENTERPRISE</text>
         <path class="edge hot" d="M52 58V102M165 58V102M275 58V102M52 142V186M165 142V186M275 142V186M52 226V270M165 226V270M275 226V270"/>
         <path class="edge ai" d="M140 310C140 336 56 330 56 358M171 310V358M200 310C200 336 274 330 274 358"/>
         <path class="pulse" d="M52 58V102V142V186V226V270"/><path class="pulse" style="animation-delay:-1.4s" d="M275 270V226V186V142V102V58"/>
@@ -63,7 +64,7 @@
         <g class="node" tabindex="0" role="button" aria-label="S/4HANA"><rect x="0" y="270" width="105" height="40" rx="8"/><text x="10" y="294">S/4HANA</text></g>
         <g class="node" tabindex="0" role="button" aria-label="Service Cloud"><rect x="113" y="270" width="117" height="40" rx="8"/><text x="123" y="294">Service Cloud</text></g>
         <g class="node" tabindex="0" role="button" aria-label="Logistics"><rect x="238" y="270" width="92" height="40" rx="8"/><text x="248" y="294">Logistics</text></g>
-        <g class="node ai" tabindex="0" role="button" aria-label="Retrieval"><rect x="8" y="358" width="96" height="40" rx="8"/><text x="18" y="382">RAG</text></g>
+        <g class="node ai" tabindex="0" role="button" aria-label="RAG"><rect x="8" y="358" width="96" height="40" rx="8"/><text x="18" y="382">RAG</text></g>
         <g class="node ai" tabindex="0" role="button" aria-label="Agents"><rect x="117" y="358" width="96" height="40" rx="8"/><text x="127" y="382">Agents</text></g>
         <g class="node ai" tabindex="0" role="button" aria-label="Guardrails"><rect x="226" y="358" width="96" height="40" rx="8"/><text x="236" y="382">Guardrails</text></g>
       </svg>
@@ -96,7 +97,7 @@
       <li class="rv"><span class="dot" aria-hidden="true">3</span>
         <span class="stage">Architecture &amp; scale</span>
         <div class="step-meta"><h3>Senior Consultant</h3><span class="org">Birlasoft · Pune</span><span class="when">May 2022 – Mar 2024</span></div>
-        <ul class="pts"><li>Engineered capabilities for a large <b>US B2C footwear platform</b>: services, REST APIs, data modelling, Solr and storefront integrations.</li><li>Fixed performance and scalability constraints in a heavily customised implementation through <b>data restructuring, indexing and query optimisation</b>.</li><li>Supported the move from a legacy JSP storefront to <b>Spartacus / headless</b>, adapting backend and OCC interactions.</li><li>Implemented a Commerce-based <b>cashier/POS</b> capability linking store transactions to accounts, orders and loyalty.</li></ul></li>
+        <ul class="pts"><li>Engineered capabilities for a large <b>US B2C footwear platform</b>: services, REST APIs, data modelling, Solr and storefront integrations.</li><li>Addressed performance and scalability constraints in a heavily customised implementation through <b>data restructuring, indexing and query optimisation</b>.</li><li>Supported the move from a legacy JSP storefront to <b>Spartacus / headless</b>, adapting backend and OCC interactions.</li><li>Implemented a Commerce-based <b>cashier/POS</b> capability linking store transactions to accounts, orders and loyalty.</li></ul></li>
       <li class="rv"><span class="dot" aria-hidden="true">4</span>
         <span class="stage">Integration &amp; leadership</span>
         <div class="step-meta"><h3>Senior Associate</h3><span class="org">PwC India · Kolkata</span><span class="when">Apr 2024 – Present</span></div>
@@ -137,7 +138,7 @@
         <h3>Enterprise AI Commerce Assistant</h3>
         <p>An end-to-end enterprise chatbot answering across product, order and service context from Commerce and Service Cloud. Deployed for one client and being adapted for another.</p>
         <div class="flow"><span>Angular</span><i>→</i><span>Java</span><i>→</i><span>Agent orchestrator</span><i>→</i><span>RAG · Commerce · Service Cloud</span></div>
-        <details><summary>Role &amp; scope</summary><p style="margin-top:8px">Led design and build end-to-end across frontend, backend, AI integration and orchestration. Client and system details are generalised for confidentiality.</p></details></article>
+        <details><summary>Role &amp; scope</summary><p style="margin-top:8px">Built end-to-end across frontend, backend, AI integration and orchestration. Client and system details are generalised for confidentiality.</p></details></article>
       <article class="card ai-card rv"><div class="top"><span class="chip warn">Hackathon winner · concept</span></div>
         <h3>Multi-Agent Executive Copilot</h3>
         <p>Decision support that moves from a headline metric to its root cause — retrieval, reasoning and forecasting agents with drill-down — without hopping between reports.</p>

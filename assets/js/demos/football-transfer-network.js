@@ -23,6 +23,7 @@ const CSS = `.tn-svg{width:100%;height:auto;max-width:560px;margin:0 auto;displa
 .tn-strip{max-width:640px;margin:0 auto;display:block}
 .tn-n{cursor:pointer}
 .tn-n:focus-visible{outline:none}.tn-n:focus-visible circle{stroke:var(--amber);stroke-width:.7}
+.tn-n .tn-hit{fill:transparent!important;stroke:none!important}
 .tn-n circle{fill:var(--blue);fill-opacity:.8;stroke:var(--bg);stroke-width:.35;transition:fill-opacity .2s}
 .tn-n:hover circle{fill-opacity:1}
 .tn-n.sel circle{stroke:var(--text);stroke-width:.6}
@@ -66,7 +67,7 @@ function graph(o, onPick) {
   NODES.forEach(n => {
     const g = el('g', { class: 'tn-n' + (hiMap[n[0]] ? ' hi-' + hiMap[n[0]] : o.hl && o.hl.length ? ' dim' : '') + (o.sel === n[0] ? ' sel' : ''), tabindex: 0, role: 'button',
       'aria-label': `${n[1]}, PageRank ${n[5]}`, 'data-id': n[0] });
-    g.append(el('circle', { cx: n[3], cy: n[4], r: rad(n) }));
+    g.append(el('circle', { cx: n[3], cy: n[4], r: Math.max(rad(n) + 1.2, 4.2), class: 'tn-hit', fill: 'transparent', stroke: 'none', 'fill-opacity': 0 }), el('circle', { cx: n[3], cy: n[4], r: rad(n) }));
     g.addEventListener('click', () => onPick(n[0]));
     g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onPick(n[0]); } });
     svg.append(g);
@@ -90,9 +91,11 @@ function tabPR(p) {
   let sel = 'C05';
   const gh = h('div'), card = h('div');
   const top = [...NODES].sort((a, b) => b[5] - a[5]).slice(0, 6);
-  const draw = () => { gh.replaceChildren(graph({ sel, labels: top.map(n => n[0]) }, id => { sel = id; draw(); })); card.replaceChildren(clubCard(sel)); };
+  const draw = () => { gh.replaceChildren(graph({ sel, labels: top.map(n => n[0]) }, id => { sel = id; draw(); })); card.replaceChildren(clubCard(sel)); const pk = document.getElementById('tn-pick'); if (pk) pk.value = sel; };
   draw();
-  p.append(h('div.d-split', h('div.d-card', h('span.d-label', 'Club graph: node size = PageRank, edge width = corridor count (2+ transfers). Click a club.'), gh),
+  p.append(h('div.d-split', h('div.d-card', h('span.d-label', 'Club graph: node size = PageRank, edge width = corridor count (2+ transfers). Tap a club, or pick one below.'), gh,
+      h('div.d-field', { style: { marginTop: '12px' } }, h('label', { for: 'tn-pick' }, 'Select a club (ranked by PageRank)'),
+        h('select', { id: 'tn-pick', onchange: e => { sel = e.target.value; draw(); } }, [...NODES].sort((a, b) => b[5] - a[5]).map(n => h('option', { value: n[0], selected: n[0] === sel }, n[1] + ' — ' + n[5].toFixed(4)))))),
     h('div', { style: { display: 'grid', gap: '14px', minWidth: 0, alignContent: 'start' } }, card,
       h('div.d-card', h('span.d-label', 'Top 6 by weighted PageRank'), top.map(n => barRow(n[1], n[5] / MAXPR * 100, n[5].toFixed(4), n[0] === 'C05' ? 'amber' : ''))),
       h('div.d-card', h('span.d-label', 'Algorithm'), h('pre.d-code', 'damping 0.85, uniform start 1/26\nweight = transfers from→to\nrepeat ≤200×, stop at Σ|Δ| < 1e-9\ndangling mass spread evenly'),

@@ -41,13 +41,14 @@
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="api-performance-lab"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h3>The problem</h3><p>“We optimised it” is not evidence. Performance claims need a baseline, a change and a measurement.</p></div>
-    <div class="card"><h3>How it works</h3><ol><li>Benchmark a full table scan against an index on 100,000 rows.</li><li>Measure repeated product lookups with and without a cache.</li><li>Compare a 50,000-product list endpoint unpaginated versus paginated, and sequential versus parallel processing.</li></ol></div>
-    <div class="card"><h3>Technically interesting</h3><p>The numbers are real and the weakest one is reported honestly: parallel processing gave only 1.29× because the test ran on a single CPU core.</p></div>
-    <div class="card"><h3>Why it matters</h3><p>The same measure-first discipline drives the data-model, indexing and query work in my enterprise commerce projects.</p></div>
+    <div class="card"><h2>The problem</h2><p>“We optimised it” is not evidence. Performance claims need a baseline, a change and a measurement.</p></div>
+    <div class="card"><h2>How it works</h2><ol><li>Benchmark a full table scan against an index on 100,000 rows.</li><li>Measure repeated product lookups with and without a cache.</li><li>Compare a 50,000-product list endpoint unpaginated versus paginated, and sequential versus parallel processing.</li></ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>The numbers are real and the weakest one is reported honestly: parallel processing gave only 1.29× because the test ran on a single CPU core.</p></div>
+    <div class="card"><h2>Why it matters</h2><p>The same measure-first discipline drives the data-model, indexing and query work in my enterprise commerce projects.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Measured on a small, single-core test environment. Ratios illustrate the mechanism; they are not production benchmarks.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/api-performance-lab" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
   <nav class="pn" aria-label="More projects"><a href="/lab/personal-research-agent/">← Research Agent</a><a href="/lab/commerce-api-security-lab/">Commerce API Security Lab →</a></nav>
 </div></main>
 <footer><div class="wrap">

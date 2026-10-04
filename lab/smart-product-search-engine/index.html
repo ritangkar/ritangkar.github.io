@@ -41,13 +41,14 @@
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="smart-product-search-engine"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h3>The problem</h3><p>Search relevance is revenue. Teams often configure a search engine without understanding the ranking underneath it.</p></div>
-    <div class="card"><h3>How it works</h3><ol><li>Tokenise (lowercase, stop-words removed) and index name, description, use case, brand and material.</li><li>Apply hard filters first — category, colour, max price, in-stock.</li><li>Rank the survivors with BM25 (k1 = 1.5, b = 0.75), breaking ties by rating.</li></ol></div>
-    <div class="card"><h3>Technically interesting</h3><p>IDF is computed over the whole catalog, not the filtered subset, so term rarity stays meaningful when filters narrow the result.</p></div>
-    <div class="card"><h3>Why it matters</h3><p>Knowing the ranking function from first principles is what makes Solr/Elastic relevance tuning a decision rather than trial and error.</p></div>
+    <div class="card"><h2>The problem</h2><p>Search relevance is revenue. Teams often configure a search engine without understanding the ranking underneath it.</p></div>
+    <div class="card"><h2>How it works</h2><ol><li>Tokenise (lowercase, stop-words removed) and index name, description, use case, brand and material.</li><li>Apply hard filters first — category, colour, max price, in-stock.</li><li>Rank the survivors with BM25 (k1 = 1.5, b = 0.75), breaking ties by rating.</li></ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>IDF is computed over the whole catalog, not the filtered subset, so term rarity stays meaningful when filters narrow the result.</p></div>
+    <div class="card"><h2>Why it matters</h2><p>Knowing the ranking function from first principles is what makes Solr/Elastic relevance tuning a decision rather than trial and error.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Synthetic catalog. Built from scratch for understanding, not as a replacement for a search platform.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/smart-product-search-engine" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
   <nav class="pn" aria-label="More projects"><a href="/lab/personalized-recommendation-engine/">← Recommendation Engine</a><a href="/lab/personal-research-agent/">Research Agent →</a></nav>
 </div></main>
 <footer><div class="wrap">

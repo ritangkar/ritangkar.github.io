@@ -41,13 +41,14 @@
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="product-discovery-engine"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h3>The problem</h3><p>Shoppers type “black running shoes under 8000”, not filter objects. Search needs query understanding before ranking.</p></div>
-    <div class="card"><h3>How it works</h3><ol><li>Match category by longest keyword, plus colour, brand and use-case dictionaries.</li><li>Parse price phrases: under/over/between, with ₹, rs and “k” suffixes.</li><li>Emit structured filters with an extractedFrom trace and validate them (min &gt; max is an error).</li></ol></div>
-    <div class="card"><h3>Technically interesting</h3><p>Every extracted field records its source text, and a validation layer rejects contradictory output — the same layer you would put around an LLM extractor.</p></div>
-    <div class="card"><h3>Why it matters</h3><p>It is the front door to the BM25 search engine: messy language in, validated structure out.</p></div>
+    <div class="card"><h2>The problem</h2><p>Shoppers type “black running shoes under 8000”, not filter objects. Search needs query understanding before ranking.</p></div>
+    <div class="card"><h2>How it works</h2><ol><li>Match category by longest keyword, plus colour, brand and use-case dictionaries.</li><li>Parse price phrases: under/over/between, with ₹, rs and “k” suffixes.</li><li>Emit structured filters with an extractedFrom trace and validate them (min &gt; max is an error).</li></ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>Every extracted field records its source text, and a validation layer rejects contradictory output — the same layer you would put around an LLM extractor.</p></div>
+    <div class="card"><h2>Why it matters</h2><p>It is the front door to the BM25 search engine: messy language in, validated structure out.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Rule-based extraction over a fixed vocabulary; no LLM.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/product-discovery-engine" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
   <nav class="pn" aria-label="More projects"><a href="/lab/inventory-fulfillment-optimizer/">← Fulfillment Optimizer</a><a href="/lab/ai-catalog-quality-auditor/">Catalog Quality Auditor →</a></nav>
 </div></main>
 <footer><div class="wrap">

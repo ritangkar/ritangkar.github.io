@@ -103,13 +103,14 @@ ${header('lab')}
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="${p.slug}"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h3>The problem</h3><p>${esc(p.problem)}</p></div>
-    <div class="card"><h3>How it works</h3><ol>${p.how.map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>
-    <div class="card"><h3>Technically interesting</h3><p>${esc(p.interesting)}</p></div>
-    <div class="card"><h3>Why it matters</h3><p>${esc(p.matters)}</p></div>
+    <div class="card"><h2>The problem</h2><p>${esc(p.problem)}</p></div>
+    <div class="card"><h2>How it works</h2><ol>${p.how.map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>
+    <div class="card"><h2>Technically interesting</h2><p>${esc(p.interesting)}</p></div>
+    <div class="card"><h2>Why it matters</h2><p>${esc(p.matters)}</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> ${esc(p.honest)}</p>
   <div class="meta"><a class="btn pri" href="${owner}${p.slug}" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
   <nav class="pn" aria-label="More projects"><a href="/lab/${prev.slug}/">← ${esc(prev.name)}</a><a href="/lab/${next.slug}/">${esc(next.name)} →</a></nav>
 </div></main>
 ${footer()}
