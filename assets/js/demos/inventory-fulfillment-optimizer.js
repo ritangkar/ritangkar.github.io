@@ -64,9 +64,10 @@ function plan(city, items, sla) {
 
 const CSS = `.ful-pre{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .ful-pre .d-btn[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#06121e}
-.ful-ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:6px}
+.ful-ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px;margin-bottom:6px}
 .ful-ctl select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:.9rem var(--sans)}
 .ful-ctl label{font-size:.78rem;color:var(--muted);display:block;margin-bottom:4px}
+.ful-map{max-width:400px;margin:0 auto}
 .ful-map path.o{fill:var(--surface2);stroke:var(--line2);stroke-width:1}
 .ful-map .lnk{fill:none;stroke-width:2.2}
 .ful-map .lnk.dim{stroke:var(--line2);stroke-dasharray:4 4;stroke-width:1.3}
@@ -111,12 +112,13 @@ export function mount(root) {
     });
     W.forEach((w, wi) => {
       const [x, y] = px(w.lon, w.lat), on = chosen.includes(wi);
-      const east = x < 200;
+      const east = !['Mumbai', 'Bangalore', 'Kolkata'].includes(w.city);
       svg.append(svgEl('rect', { x: x - 5, y: y - 5, width: 10, height: 10, rx: 2, fill: on ? 'var(--blue)' : 'var(--surface)', stroke: 'var(--blue)', 'stroke-width': 1.6 }),
         svgEl('text', { x: east ? x + 9 : x - 9, y: y + 3, 'text-anchor': east ? 'start' : 'end', class: on ? 'hi' : '' }, w.city));
     });
-    const lbl = svgEl('text', { x: dx + (dx > 200 ? -9 : 9), y: dy - 7, 'text-anchor': dx > 200 ? 'end' : 'start', class: 'dst' }, sel.city);
-    svg.append(svgEl('circle', { cx: dx, cy: dy, r: 6, fill: 'var(--amber)', stroke: 'var(--bg)', 'stroke-width': 1.5 }), lbl);
+    const lbl = svgEl('text', { x: dx + (dx > 200 ? -9 : 9), y: dy - 8, 'text-anchor': dx > 200 ? 'end' : 'start', class: 'dst' }, sel.city);
+    svg.append(svgEl('circle', { cx: dx, cy: dy, r: 6, fill: 'var(--amber)', stroke: 'var(--bg)', 'stroke-width': 1.5 }));
+    if (!W.some(w => w.city === sel.city)) svg.append(lbl);
     mapHost.replaceChildren(h('span.d-label', 'Network (schematic lat/lon projection, not to scale)'), svg,
       h('div', { style: { display: 'flex', gap: '12px', flexWrap: 'wrap', fontSize: '.76rem', color: 'var(--muted)' } },
         h('span', '■ warehouse'), h('span', { style: { color: 'var(--amber-lt)' } }, '● destination'), h('span', { style: { color: 'var(--green)' } }, '— SLA met'), h('span', { style: { color: 'var(--red)' } }, '— SLA missed'), h('span', '- - not chosen')));

@@ -20,6 +20,7 @@ const rad = n => 1 + (n[5] - MINPR) / (MAXPR - MINPR) * 2.3;
 const NS = 'http://www.w3.org/2000/svg';
 const el = (t, a, txt) => { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; return e; };
 const CSS = `.tn-svg{width:100%;height:auto;max-width:560px;margin:0 auto;display:block}
+.tn-strip{max-width:640px;margin:0 auto;display:block}
 .tn-n{cursor:pointer}
 .tn-n:focus-visible{outline:none}.tn-n:focus-visible circle{stroke:var(--amber);stroke-width:.7}
 .tn-n circle{fill:var(--blue);fill-opacity:.8;stroke:var(--bg);stroke-width:.35;transition:fill-opacity .2s}
@@ -39,7 +40,7 @@ let uid = 0;
 
 function graph(o, onPick) {
   const id = 'tnm' + (++uid);
-  const svg = el('svg', { viewBox: '0 0 100 100', class: 'tn-svg', role: 'group', 'aria-label': 'Club transfer graph. Node size is PageRank; edge width is number of transfers on the corridor.' });
+  const svg = el('svg', { viewBox: '6 4 84 92', class: 'tn-svg', role: 'group', 'aria-label': 'Club transfer graph. Node size is PageRank; edge width is number of transfers on the corridor.' });
   const defs = el('defs', {});
   [['a', 'var(--amber)'], ['r', 'var(--red)'], ['b', 'var(--blue-lt)']].forEach(([k, c]) => {
     const m = el('marker', { id: id + k, viewBox: '0 0 6 6', refX: 5, refY: 3, markerWidth: 3.2, markerHeight: 3.2, orient: 'auto-start-reverse' });
@@ -47,7 +48,6 @@ function graph(o, onPick) {
   });
   svg.append(defs);
   const co = { Avonia: [27, 31], Castellara: [73, 26], Nordkessel: [27, 74], Vantera: [73, 74] };
-  Object.entries(co).forEach(([k, [x, y]]) => svg.append(el('text', { class: 'tn-co', x, y }, k.toUpperCase())));
   const pos = k => [N[k][3], N[k][4]];
   const shrink = (a, b, r) => { const dx = b[0] - a[0], dy = b[1] - a[1], d = Math.hypot(dx, dy) || 1; return [b[0] - dx / d * r, b[1] - dy / d * r]; };
   const base = el('g', { opacity: o.hl && o.hl.length ? 0.35 : 1 });
@@ -56,6 +56,7 @@ function graph(o, onPick) {
     base.append(el('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: 'var(--blue)', 'stroke-opacity': 0.14 + c * 0.1, 'stroke-width': 0.18 + c * 0.22 }));
   });
   svg.append(base);
+  Object.entries(co).forEach(([k, [x, y]]) => svg.append(el('text', { class: 'tn-co', x, y }, k.toUpperCase())));
   (o.hl || []).forEach(([f, t, k, w]) => {
     const a = pos(f), b = shrink(pos(f), pos(t), rad(N[t]) + 0.4);
     svg.append(el('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], stroke: k === 'r' ? 'var(--red)' : 'var(--amber)', 'stroke-width': w || 0.6, 'marker-end': `url(#${id}${k})` }));
@@ -99,8 +100,8 @@ function tabPR(p) {
 }
 
 function strip() {
-  const W = 340, Hh = 175, pad = 14, base = 120, sc = f => pad + Math.sqrt(f / 90) * (W - 2 * pad);
-  const svg = el('svg', { viewBox: `0 0 ${W} ${Hh}`, class: 'd-svg', role: 'img', 'aria-label': 'Dot plot of 274 transfer fees on a square-root axis with the Tukey fence at 7.85 million euros' });
+  const W = 340, Hh = 150, pad = 14, base = 120, sc = f => pad + Math.sqrt(f / 90) * (W - 2 * pad);
+  const svg = el('svg', { viewBox: `0 0 ${W} ${Hh}`, class: 'd-svg tn-strip', role: 'img', 'aria-label': 'Dot plot of 274 transfer fees on a square-root axis with the Tukey fence at 7.85 million euros' });
   [0, 2, 5, 10, 20, 40, 80].forEach(t => {
     svg.append(el('line', { x1: sc(t), x2: sc(t), y1: base + 2, y2: base + 6, stroke: 'var(--line2)' }), el('text', { class: 'm', x: sc(t), y: base + 17, 'text-anchor': 'middle' }, '€' + t + 'M'));
   });
@@ -115,10 +116,10 @@ function strip() {
   svg.append(el('line', { x1: fx, x2: fx, y1: 14, y2: base + 2, stroke: 'var(--red)', 'stroke-dasharray': '4 3', 'stroke-width': 1.4 }),
     el('text', { x: fx + 5, y: 22, fill: 'var(--red)', style: 'fill:var(--red);font-weight:600' }, 'Tukey fence €7.85M'),
     el('text', { class: 'm', x: fx + 5, y: 33 }, 'Q3 4.10 + 1.5 × IQR 2.50'));
-  [[57.4, 58.8, '€57–59M ×2', 'middle', 2], [72.1, 72.1, '€72.1M', 'middle', 1], [86.5, 86.5, '€86.5M', 'end', 1]].forEach(([a, b, t, an, k]) => {
-    svg.append(el('text', { class: 'm', x: sc((a + b) / 2) + (an === 'end' ? 8 : 0), y: base - 14 - (an === 'middle' && a === 72.1 ? 14 : 0), 'text-anchor': an, style: 'fill:var(--red)' }, t));
+  [[sc(58) - 3, base - 14, 'end', '€57–59M ×2'], [sc(72.1), base - 30, 'middle', '€72.1M'], [sc(86.5) + 6, base - 14, 'end', '€86.5M']].forEach(([x, y, an, t]) => {
+    svg.append(el('text', { class: 'm', x, y, 'text-anchor': an, style: 'fill:var(--red)' }, t));
   });
-  svg.append(el('text', { class: 'm', x: W - pad, y: Hh - 3, 'text-anchor': 'end' }, 'square-root axis; each dot is one transfer'));
+  svg.append(el('text', { class: 'm', x: W - pad, y: Hh - 2, 'text-anchor': 'end' }, 'square-root axis; each dot is one transfer'));
   return svg;
 }
 
@@ -153,7 +154,7 @@ function tabFlur(p) {
       const [c, start, sg] = FLUR[idx];
       hl = sg.map(s => [s[0], c, 'a', 0.55]); nodes[c] = 'a'; sg.forEach(s => { nodes[s[0]] = 'a'; }); labels = [c];
       info.replaceChildren(h('span.d-label', 'Rule: >= 5 incoming signings inside any 30-day window'), h('div', { style: { fontWeight: 650, marginBottom: '6px' } }, `${nm(c)}: 5 signings from ${start}`),
-        sg.map(s => h('div.tn-ln', h('span', s[1] + '  from ' + nm(s[0])), h('b', s[2] ? '€' + s[2] + 'M' : 'free/loan'))));
+        ...sg.map(s => h('div.tn-ln', h('span', s[1] + '  from ' + nm(s[0])), h('b', s[2] ? '€' + s[2] + 'M' : 'free/loan'))));
     } else {
       const [pl, f, t, d, fee] = BOOM[idx];
       hl = [[f, t, 'a', 0.9]]; nodes[t] = 'a'; nodes[f] = 'a'; labels = [f, t];

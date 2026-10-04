@@ -53,7 +53,7 @@ const CSS = `.fmi-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
 .fmi-b.L{background:rgba(239,143,143,.14);color:var(--red);border-color:rgba(239,143,143,.5)}
 .fmi-ins{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .fmi-ins li{border-left:3px solid var(--blue);background:var(--surface2);border-radius:8px;padding:10px 12px;font-size:.92rem}
-.fmi-ins .chip{margin-top:6px;font-size:.68rem}
+.fmi-ins .chip{margin-top:6px;font-size:.68rem;white-space:normal;border-radius:8px}
 .fmi-rule{display:grid;grid-template-columns:2.2em 1fr auto;gap:4px 10px;align-items:start;padding:8px 0;border-bottom:1px solid var(--line);font-size:.84rem}
 .fmi-rule small{display:block;color:var(--faint);font:.72rem var(--mono)}
 .fmi-rule.off{opacity:.62}
