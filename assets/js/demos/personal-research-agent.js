@@ -14,7 +14,8 @@ const STEPS = [
   { k: '03', title: 'Evaluate', sub: '0.5·rel + 0.3·cred + 0.2·recency', cls: 'ai' },
   { k: '04', title: 'Synthesize', sub: 'cite, score, caveat', cls: 'ai' },
 ];
-const CSS = `.pra .tk{position:relative;height:12px;background:var(--surface2);border-radius:999px}
+const CSS = `.pra .chip{white-space:normal}
+.pra .tk{position:relative;height:12px;background:var(--surface2);border-radius:999px}
 .pra .tk i{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--amber)}
 .pra .tk u{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--red);text-decoration:none}
 .pra .er{display:grid;grid-template-columns:minmax(0,1fr) minmax(90px,38%) auto;gap:6px 12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:.84rem}

@@ -111,7 +111,7 @@ export function mount(root) {
 
   function show(i) {
     const r = res();
-    panel.replaceChildren(...views[i](r));
+    panel.replaceChildren(h('div', views[i](r)));
     verdict.replaceChildren(chip('score ' + r.score, r.score >= 90 ? 'ok' : r.score >= 70 ? 'warn' : 'bad'), ' ', r.fact.length ? chip('factuality gate: BLOCKED', 'bad') : chip('factuality gate: pass', 'ok'),
       ' ', chip(r.seo.length + ' SEO warning' + (r.seo.length === 1 ? '' : 's'), r.seo.length ? 'warn' : 'ok'));
   }
@@ -122,8 +122,8 @@ export function mount(root) {
       h('div.d-field', h('label', { for: 'sg-name' }, 'Product name'),
         h('select', { id: 'sg-name', onchange: e => { S.name = +e.target.value; show(flow.index); } }, NAMES.map((n, i) => h('option', { value: i, selected: i === S.name }, n)))),
       h('span.d-label', 'Tone (4 templates)'),
-      h('div.sg-seg', { role: 'group', 'aria-label': 'Tone' }, TONES.map(t => h('button.d-btn', { type: 'button', 'aria-pressed': S.tone === t, onclick: () => { S.tone = t; controls(); show(flow.index); } }, t[0] + t.slice(1).toLowerCase()))),
-      h('div.d-ctl', h('button.d-btn' + (S.inject ? '.pri' : ''), { type: 'button', 'aria-pressed': S.inject, onclick: () => { S.inject = !S.inject; controls(); if (S.inject) flow.go(4); else show(flow.index); } },
+      h('div.sg-seg', { role: 'group', 'aria-label': 'Tone' }, TONES.map(t => h('button.d-btn', { type: 'button', 'aria-pressed': String(S.tone === t), onclick: () => { S.tone = t; controls(); show(flow.index); } }, t[0] + t.slice(1).toLowerCase()))),
+      h('div.d-ctl', h('button.d-btn' + (S.inject ? '.pri' : ''), { type: 'button', 'aria-pressed': String(S.inject), onclick: () => { S.inject = !S.inject; controls(); if (S.inject) flow.go(4); else show(flow.index); } },
         S.inject ? 'Remove fabricated “500g”' : 'Inject a fabricated “500g” into the long description')));
   }
 

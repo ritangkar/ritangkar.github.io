@@ -1,4 +1,6 @@
-import { h, tabs, chip, barRow, reduced } from './_kit.js';
+import { h, tabs, chip, barRow as _barRow, reduced } from './_kit.js';
+
+const barRow = (l, p, t, v) => { const r = _barRow(l, p, t, v); r.querySelector('.bar').style.setProperty('--w', Math.max(0, Math.min(100, p)) + '%'); return r; }; // kit barRow drops the --w custom property
 
 // Four REAL measured comparisons from the repo's /benchmarks scripts. Numbers shown exactly as recorded.
 // bars: [label, value in a common unit, display text, variant]
@@ -19,7 +21,8 @@ const C = [
     note: 'Honest reading: the test environment exposed only 1 CPU core, so this speedup is modest and is not evidence of how the workload scales on multi-core hardware. It is reported as measured rather than as a flattering number.' },
 ];
 
-const CSS = `.apl .big{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--green)}
+const CSS = `.apl .chip{white-space:normal}
+.apl .big{font-size:clamp(2.2rem,8vw,3.6rem);font-weight:700;letter-spacing:-.04em;line-height:1;color:var(--green)}
 .apl .big.w{color:var(--amber-lt)}`;
 
 export function mount(root) {

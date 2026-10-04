@@ -1,4 +1,6 @@
-import { h, stepper, barRow, chip, stat, inr, inView } from './_kit.js';
+import { h, stepper, barRow as _barRow, chip, stat, inr, inView } from './_kit.js';
+
+const barRow = (l, p, t, v) => { const r = _barRow(l, p, t, v); r.querySelector('.bar').style.setProperty('--w', Math.max(0, Math.min(100, p)) + '%'); return r; }; // kit barRow drops the --w custom property
 
 // Real values from the BM25 index over the 124-product synthetic catalogue.
 const Q = 'running shoes long distance running';

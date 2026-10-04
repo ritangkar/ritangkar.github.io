@@ -44,6 +44,7 @@ const CSS = `.ca-dial{--p:33;--c:var(--red);width:150px;height:150px;border-radi
 .ca-chk .bar{grid-column:1/-1;margin-top:6px}.ca-chk.fixed{opacity:.55}.ca-chk.fixed .m{text-decoration:line-through}
 .ca-ids{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 12px}
 .ca-ids .tok{margin:0}.ca-ids .tok.hit{border-color:var(--amber);color:var(--amber-lt)}
+.ca-top .chip{white-space:normal}
 .ca-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}`;
 
 export function mount(root) {
@@ -84,7 +85,7 @@ export function mount(root) {
     btnE.setAttribute('aria-pressed', e.every(c => fixed.has(c.k)));
     btnW.setAttribute('aria-pressed', w.every(c => fixed.has(c.k)));
     list.replaceChildren(...CHECKS.map(c => {
-      const b = h('button.ca-chk' + (fixed.has(c.k) ? '.fixed' : ''), { type: 'button', 'aria-pressed': sel === c.k, onclick: () => { sel = c.k; draw(); } },
+      const b = h('button.ca-chk' + (fixed.has(c.k) ? '.fixed' : ''), { type: 'button', 'aria-pressed': String(sel === c.k), onclick: () => { sel = c.k; draw(); } },
         h('span.t', c.label, ' ', chip(c.sev === 'E' ? 'ERROR' : 'WARNING', c.sev === 'E' ? 'bad' : 'warn')),
         h('span.m', c.n + ' × ' + (rate(c) / 10).toFixed(1) + ' = −' + (pen(c) / 10).toFixed(1)),
         h('div.bar' + (c.sev === 'E' ? '.red' : '.amber') + '.is-in', { style: { '--w': (pen(c) / MAXPEN * 100) + '%' } }, h('i')));

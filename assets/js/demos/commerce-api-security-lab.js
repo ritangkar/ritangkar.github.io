@@ -20,7 +20,8 @@ const S = [
   { id: 'admin', label: 'Customer hitting /api/admin → 403', req: 'GET /api/admin/** · Bearer <valid customer JWT>', stop: 2, code: 403, msg: 'Central role rule rejects it; no controller code runs.',
     t: ['token available in the 100/min bucket', 'signature valid → principal = the customer', '/api/admin/** needs ROLE_ADMIN, principal has ROLE_CUSTOMER → 403', '', 'access-denied event is logged'] },
 ];
-const CSS = `.sec .fl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;margin:16px 0}
+const CSS = `.sec .chip{white-space:normal}
+.sec .fl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;margin:16px 0}
 .sec .gt{position:relative;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;color:var(--text);font:inherit;cursor:pointer;transition:border-color .3s,background .3s,opacity .3s}
 .sec .gt:not(:last-child)::after{content:'→';position:absolute;right:-19px;top:50%;transform:translateY(-50%);color:var(--faint);font:700 1rem var(--mono)}
 .sec .gt .k{font:.68rem var(--mono);color:var(--faint);display:block}.sec .gt b{display:block;font-size:.9rem;margin:2px 0 8px}

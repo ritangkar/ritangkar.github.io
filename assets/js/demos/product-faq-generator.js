@@ -91,10 +91,10 @@ export function mount(root) {
           h('div.q', x.q), h('div.a', x.a), h('div', { style: { marginTop: '6px' } }, chip(x.c, e.length ? 'bad' : 'info'), ' ', e.length ? chip('ERROR · unsupported', 'bad') : chip('grounded', 'ok')),
           e.map(er => h('div.fq-err', 'ERROR: ' + er.msg)));
       }),
-      FIELDS.filter(f => !on[f.k]).map(f => h('div.fq-gone', 'No “' + f.label + '” in the data, so no ' + f.cat + ' FAQ. Nothing was guessed to fill the gap.')));
+      ...FIELDS.filter(f => !on[f.k]).map(f => h('div.fq-gone', 'No “' + f.label + '” in the data, so no ' + f.cat + ' FAQ. Nothing was guessed to fill the gap.')));
     gate.replaceChildren(
-      h('button.d-btn', { type: 'button', 'aria-pressed': inj.weight, onclick: () => { inj.weight = !inj.weight; draw(); } }, inj.weight ? 'Remove injected “weighs 300g”' : 'Inject unsupported claim “weighs 300g”'),
-      h('button.d-btn', { type: 'button', 'aria-pressed': inj.color, onclick: () => { inj.color = !inj.color; draw(); } }, inj.color ? 'Remove injected “Red”' : 'Inject unlisted color “Red”'));
+      h('button.d-btn', { type: 'button', 'aria-pressed': String(inj.weight), onclick: () => { inj.weight = !inj.weight; draw(); } }, inj.weight ? 'Remove injected “weighs 300g”' : 'Inject unsupported claim “weighs 300g”'),
+      h('button.d-btn', { type: 'button', 'aria-pressed': String(inj.color), onclick: () => { inj.color = !inj.color; draw(); } }, inj.color ? 'Remove injected “Red”' : 'Inject unlisted color “Red”'));
     fresh = null;
   }
 

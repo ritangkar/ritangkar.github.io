@@ -82,24 +82,24 @@ export function mount(root) {
   };
 
   function draw() {
-    segs.replaceChildren(...SCOPES.map(([k, l]) => h('button.d-btn', { type: 'button', 'aria-pressed': scope === k, onclick: () => { scope = k; draw(); } }, l)));
+    segs.replaceChildren(...SCOPES.map(([k, l]) => h('button.d-btn', { type: 'button', 'aria-pressed': String(scope === k), onclick: () => { scope = k; draw(); } }, l)));
     const max = Math.max(...THEMES.map(t => t[scope][0]));
     themes.replaceChildren(...THEMES.slice().sort((a, b) => b[scope][0] - a[scope][0]).map(t => {
       const i = THEMES.indexOf(t);
-      return h('button.rs-btn' + (t[scope][0] ? '' : '.z'), { type: 'button', 'aria-pressed': pick.type === 'theme' && pick.i === i, onclick: () => { pick = { type: 'theme', i }; draw(); } },
+      return h('button.rs-btn' + (t[scope][0] ? '' : '.z'), { type: 'button', 'aria-pressed': String(pick.type === 'theme' && pick.i === i), onclick: () => { pick = { type: 'theme', i }; draw(); } },
         h('span', t.name), h('span.n', t[scope][0] + ' mentions'),
         h('div.bar' + (scope === 'neg' ? '.red' : scope === 'pos' ? '.green' : '') + '.is-in', { style: { '--w': (t[scope][0] / max * 100) + '%' } }, h('i')));
     }));
-    cl.replaceChildren(...COMPLAINTS.map((c, i) => h('button.rs-btn', { type: 'button', 'aria-pressed': pick.type === 'comp' && pick.i === i, onclick: () => { pick = { type: 'comp', i }; draw(); } },
+    cl.replaceChildren(...COMPLAINTS.map((c, i) => h('button.rs-btn', { type: 'button', 'aria-pressed': String(pick.type === 'comp' && pick.i === i), onclick: () => { pick = { type: 'comp', i }; draw(); } },
       h('span', '“' + c.name + '”'), h('span.n', c.n + ' negative reviews'), h('div.bar.amber.is-in', { style: { '--w': (c.n / 10 * 100) + '%' } }, h('i')))));
     let title, count, ids, words, note;
     if (pick.type === 'theme') { const t = THEMES[pick.i]; title = t.name + ' · ' + SCOPES.find(s => s[0] === scope)[1]; [count, ids] = t[scope]; words = t.kw; }
     else { const c = COMPLAINTS[pick.i]; title = 'Complaint “' + c.name + '” (needs ≥ 2 negative reviews)'; count = c.n; ids = c.ids; words = [c.name]; }
     const tricky = pick.type === 'theme' && pick.i === 0 && scope === 'neg';
-    cites.replaceChildren(h('span.d-label', 'Evidence trail · ' + title),
+    cites.replaceChildren(h('div', h('span.d-label', 'Evidence trail · ' + title),
       h('p', { style: { margin: '0 0 10px', fontSize: '.88rem' } }, ids.length ? 'Cited ' + ids.length + ' of ' + count + ' matching reviews. The highlighted words are exactly why each one matched.' : 'No review in this scope matches, so nothing is cited.'),
       ids.map(id => { const r = REV[id]; return h('div.rs-rev.' + (r.r >= 4 ? 'p' : r.r <= 2 ? 'n' : ''), h('span.id', id + ' · ' + '★'.repeat(r.r) + ' (' + r.r + ')'), hl(r.t, words, pick.type === 'comp' ? 'w' : '')); }),
-      tricky ? h('p.d-note', { style: { marginTop: '4px' } }, 'Honest limit: matching is substring-based, so “comfort” also fires inside “Uncomfortable”. That is why Comfort shows 10 mentions among negative reviews. A real sentiment model would not make that mistake; a dictionary does.') : null);
+      tricky ? h('p.d-note', { style: { marginTop: '4px' } }, 'Honest limit: matching is substring-based, so “comfort” also fires inside “Uncomfortable”. That is why Comfort shows 10 mentions among negative reviews. A real sentiment model would not make that mistake; a dictionary does.') : null));
   }
 
   root.append(h('style', CSS),

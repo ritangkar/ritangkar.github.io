@@ -1,4 +1,6 @@
-import { h, barRow, chip, stat, inr, inView, reduced } from './_kit.js';
+import { h, barRow as _barRow, chip, stat, inr, inView, reduced } from './_kit.js';
+
+const barRow = (l, p, t, v) => { const r = _barRow(l, p, t, v); r.querySelector('.bar').style.setProperty('--w', Math.max(0, Math.min(100, p)) + '%'); return r; }; // kit barRow drops the --w custom property
 
 // Real output of the revenue-analysis run over the synthetic dataset (659 orders, 2 periods).
 const A = { label: 'Period A · Jun 1–30', v: 1673583 }, B = { label: 'Period B · Jul 1–30', v: 1211063 };
@@ -71,7 +73,7 @@ export function mount(root) {
       h('span.rk', '#' + (i + 1)),
       h('span.tt', f.t),
       h('span', chip(f.c, 'info'), ' ', chip(f.sev, SEV[f.sev]), ' ', f.mod ? chip('modelled', 'ai') : null),
-      h('div.d-row', { style: { margin: 0 } }, h('span', 'impact'), h('div.bar' + (f.sev === 'HIGH' ? '.red' : '.amber'), { style: { '--w': (f.imp / 394216 * 100) + '%' } }, h('i')), h('span.n', inr(f.imp))));
+      barRow('impact', f.imp / 394216 * 100, inr(f.imp), f.sev === 'HIGH' ? 'red' : 'amber'));
     return h('div.fc' + (f.sev === 'HIGH' ? '' : '.m'), btn, body);
   }
   function setFilter(id) {
