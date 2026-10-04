@@ -32,19 +32,19 @@
 </div></header>
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Commerce API Security Lab</div>
-    <span class="eyebrow">Platform engineering</span>
+    <span class="eyebrow">Platform Engineering</span>
     <h1>Commerce API Security Lab</h1>
     <p class="lede">A defensive commerce API: rate limiting, JWT, RBAC, ownership checks and audit logging, mapped to OWASP.</p>
-    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Flagship work</span><span class="chip">Spring Security</span><span class="chip">JWT</span><span class="chip">OWASP API Top 10</span></div>
+    <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Flagship Work</span><span class="chip">Spring Security</span><span class="chip">JWT</span><span class="chip">OWASP API Top 10</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/commerce-api-security-lab" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
   </div>
   <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
     <div class="demo" data-demo="commerce-api-security-lab"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
-    <div class="card"><h2>The problem</h2><p>Commerce APIs expose carts, orders and admin functions. Most real breaches are authorisation mistakes, not exotic exploits.</p></div>
-    <div class="card"><h2>How it works</h2><ol><li>Rate-limit per IP with a token bucket (5/min on login, 100/min elsewhere).</li><li>Validate HS256 JWTs; an invalid token is simply unauthenticated so authorisation returns the correct 401.</li><li>Enforce roles centrally, then resolve ownership from the token subject — never from the request — and audit security events.</li></ol></div>
-    <div class="card"><h2>Technically interesting</h2><p>Object-level authorisation (BOLA) is solved in the service layer and proved by an integration test that a customer cannot read another customer’s order.</p></div>
-    <div class="card"><h2>Why it matters</h2><p>Security is an architecture concern: each OWASP risk gets a specific control at a specific layer.</p></div>
+    <div class="card"><h2>The Problem</h2><p>Commerce APIs expose carts, orders and admin functions. Most real breaches are authorisation mistakes, not exotic exploits.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>Rate-limit per IP with a token bucket (5/min on login, 100/min elsewhere).</li><li>Validate HS256 JWTs; an invalid token is simply unauthenticated so authorisation returns the correct 401.</li><li>Enforce roles centrally, then resolve ownership from the token subject — never from the request — and audit security events.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>Object-level authorisation (BOLA) is solved in the service layer and proved by an integration test that a customer cannot read another customer’s order.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>Security is an architecture concern: each OWASP risk gets a specific control at a specific layer.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> A reference lab with in-memory users and audit buffer — a walkthrough of the design, not a deployed service.</p>
   <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/commerce-api-security-lab" rel="noopener">Read the code ↗</a></div>

@@ -3,23 +3,23 @@
 export const owner = 'https://github.com/ritangkar/';
 
 export const clusters = {
-  decisions: { label: 'Commerce decisions', blurb: 'Explainable engines that answer “why”, “how likely” and “what should we do”.' },
-  search:    { label: 'Search & personalisation', blurb: 'The find-and-recommend funnel: query understanding, ranking, recommendation.' },
-  agents:    { label: 'Agents & grounded content', blurb: 'Pipelines where every claim or citation is validated against source data.' },
-  quality:   { label: 'Catalog & content quality', blurb: 'Deterministic scoring that catches data problems before customers do.' },
-  platform:  { label: 'Platform engineering', blurb: 'Measured performance and a defensive security model for commerce APIs.' },
-  graph:     { label: 'Graph & analytics', blurb: 'Graph analysis and rule-based narrative over structured data.' },
+  decisions: { label: 'Commerce Decisions', blurb: 'Explainable engines that answer “why”, “how likely” and “what should we do”.' },
+  search:    { label: 'Search & Personalisation', blurb: 'The find-and-recommend funnel: query understanding, ranking, recommendation.' },
+  agents:    { label: 'Agents & Grounded Content', blurb: 'Pipelines where every claim or citation is validated against source data.' },
+  quality:   { label: 'Catalog & Content Quality', blurb: 'Deterministic scoring that catches data problems before customers do.' },
+  platform:  { label: 'Platform Engineering', blurb: 'Measured performance and a defensive security model for commerce APIs.' },
+  graph:     { label: 'Graph & Analytics', blurb: 'Graph analysis and rule-based narrative over structured data.' },
 };
 
 export const tiers = {
-  flagship:   { label: 'Flagship work', blurb: 'The projects that best show how I think about commerce systems.' },
-  supporting: { label: 'Strong supporting work', blurb: 'Focused engines, each with a clear algorithm and a clear business use.' },
-  lab:        { label: 'Engineering experiments', blurb: 'A shared pattern: deterministic guardrails for catalog and content — the layer that makes LLM output safe to ship.' },
+  flagship:   { label: 'Flagship Work', blurb: 'The projects that best show how I think about commerce systems.' },
+  supporting: { label: 'Strong Supporting Work', blurb: 'Focused engines, each with a clear algorithm and a clear business use.' },
+  lab:        { label: 'Engineering Experiments', blurb: 'A shared pattern: deterministic guardrails for catalog and content — the layer that makes LLM output safe to ship.' },
 };
 
 export const kinds = {
   det:  { label: 'Deterministic', cls: 'info' },
-  ml:   { label: 'Machine learning', cls: 'ai' },
+  ml:   { label: 'Machine Learning', cls: 'ai' },
   pipe: { label: 'Pipeline · LLM-ready', cls: 'ai' },
   meas: { label: 'Measured', cls: 'ok' },
 };
