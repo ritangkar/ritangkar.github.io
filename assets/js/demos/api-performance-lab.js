@@ -45,7 +45,7 @@ export function mount(root) {
     p.append(ctl, h('div.d-split',
       h('div.d-card', h('span.d-label', 'Speed-up'), h('div.big' + (c.honest ? '.w' : ''), c.x), h('p.d-note', { style: { marginTop: '8px' } }, c.xs)),
       h('div', bars, !c.linear && h('p.d-note', { style: { marginTop: '8px' } }, log ? 'Bars use a log scale so the small value stays visible; the exact numbers are printed.' : 'Linear scale: the small bar is almost invisible, which is exactly why log is the default here.'))),
-      c.code && h('pre.d-code', { style: { marginTop: '14px' } }, c.code),
+      c.code ? h('pre.d-code', { style: { marginTop: '14px' } }, c.code) : null,
       h('div.d-card' + (c.honest ? '.ai' : ''), { style: { marginTop: '14px' } }, h('span.d-label', c.honest ? 'Read this honestly' : 'Takeaway'), h('p', { style: { margin: 0, fontSize: '.9rem' } }, c.note)));
     if (reduced) p.classList.add('is-in');
   }

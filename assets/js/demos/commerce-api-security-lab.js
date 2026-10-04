@@ -36,7 +36,7 @@ const CSS = `.sec .chip{white-space:normal}
 export function mount(root) {
   let cur = S[1], run = 0, sel = 3, shown = 5;
   const el = h('div.sec', h('style', CSS)); root.append(el);
-  const sc = h('div.sc', { role: 'group', 'aria-label': 'Request scenarios' }), flow = h('div.fl'), res = h('div.d-card'), det = h('div.d-card.hl');
+  const sc = h('div.sc', { role: 'group', 'aria-label': 'Request scenarios' }), flow = h('div.fl'), res = h('div.d-card', { style: { marginBottom: '12px' } }), det = h('div.d-card.hl');
   el.append(h('div.d-ctl', chip('Scripted walkthrough, not a live backend', 'warn'), chip('Spring Security · OWASP API Top 10', 'info')),
     h('span.d-label', 'Send a request'), sc, flow, res, det,
     h('p.d-note', 'Each stage is real code in the repo; the claim that a customer cannot read another customer\'s order is covered by a MockMvc integration test there. The runs above are scripted illustrations of that logic.'));

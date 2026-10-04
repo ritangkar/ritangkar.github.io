@@ -42,8 +42,8 @@
     <div class="demo" data-demo="product-faq-generator"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
   <div class="prose">
     <div class="card"><h3>The problem</h3><p>Generated support content that invents specifications is a liability.</p></div>
-    <div class="card"><h3>How it works</h3><ol><li>Emit an FAQ only when its source field exists — remove the field and the question disappears.</li><li>Check answers for unit claims and colours that are absent from the product data.</li><li>Run quality checks: well-formed, non-duplicate, non-trivial.</li></ol></div>
-    <div class="card"><h3>Technically interesting</h3><p>The generator never guesses; the unsupported-answer detector is the part that would police an LLM.</p></div>
+    <div class="card"><h3>How it works</h3><ol><li>Emit colour, feature, spec, use-case and audience FAQs only when the source field exists — remove the field and the question disappears.</li><li>Check answers for unit claims and colours that are absent from the product data.</li><li>Run quality checks: well-formed, non-duplicate, non-trivial.</li></ol></div>
+    <div class="card"><h3>Technically interesting</h3><p>The generator never guesses a missing field; the unsupported-answer detector is the part that would police an LLM.</p></div>
     <div class="card"><h3>Why it matters</h3><p>It demonstrates the guardrail pattern for grounded generation.</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> Template-driven; no LLM in the demo.</p>

@@ -53,7 +53,7 @@ export function mount(root) {
             h('div.tk', { role: 'img', 'aria-label': 'overall ' + ov }, h('i', { style: { width: (ov * 100) + '%' } }), h('u', { style: { left: '35%' } })),
             h('span', chip('tier ' + DOCS[d][2], TIER[DOCS[d][2]]), ' ', h('b.mono', ov.toFixed(2))),
             h('small', 'rel ' + rel + '×.5 + cred ' + cred + '×.3 + recency ' + rec + '×.2 · ' + DOCS[d][3] + ' · ' + (j < 3 ? 'kept (top 3)' : 'passed gate, over the 3-per-section cap')))),
-          h('p.d-note', 'Source tier A = 1.0, B = 0.75. In this recorded run every item scored above 0.57, so the 0.35 gate rejected none; the cap of 3 per section kept 12 of 16. Citations are re-validated against the accepted ids before they enter the report.'));
+          h('p.d-note', 'Source tier A = 1.0, B = 0.75. In this recorded run every item scored at least 0.57, so the 0.35 gate rejected none; the cap of 3 per section kept 12 of 16. Citations are re-validated against the accepted ids before they enter the report.'));
       };
       draw3();
     } else {

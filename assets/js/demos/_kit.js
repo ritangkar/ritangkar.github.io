@@ -8,11 +8,11 @@ export function h(sel, attrs, ...kids) {
   if (cls.length) el.className = cls.join(' ');
   if (attrs && (typeof attrs !== 'object' || attrs instanceof Node || Array.isArray(attrs))) { kids.unshift(attrs); attrs = null; }
   for (const [k, v] of Object.entries(attrs || {})) {
-    if (v == null || v === false) continue;
+    if (v == null || (v === false && !k.startsWith('aria-'))) continue;
     if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
     else if (k === 'html') el.innerHTML = v;
     else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
-    else el.setAttribute(k, v === true ? '' : v);
+    else el.setAttribute(k, v === true && !k.startsWith('aria-') ? '' : String(v));
   }
   (function add(list) {
     for (const k of list) {
