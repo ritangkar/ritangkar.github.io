@@ -12,7 +12,7 @@ lab/<slug>/index.html      17 project pages (generated), each with an interactiv
 assets/css/site.css        design tokens, layout, components, demo kit
 assets/js/site.js          nav, reveal, career progression, architecture graph
 assets/js/world.js         raw-WebGL scene chain: one continuous camera flight, velocity-reactive
-assets/js/motion.js        Lenis + GSAP/ScrollTrigger orchestration; scroll -> scene/velocity -> world, HUD, marquee
+assets/js/motion.js        home page only: Lenis + GSAP/ScrollTrigger; scroll -> scene/velocity -> world
 assets/vendor/             Lenis, GSAP, ScrollTrigger (+ licences, NOTICE.md)
 assets/fonts/              Fraunces + Inter (OFL), self-hosted
 assets/js/lab.js           lab filter + demo loader
@@ -35,6 +35,6 @@ GitHub Pages → Settings → Pages → **Deploy from a branch**, branch `main`,
 ## Motion & 3D design notes
 
 - **Concept:** the page is one connected flight through "the commerce stack" — catalog field → career ascent → architecture layers → AI mesh inside a guardrail cage → the 17 lab projects → destination. Scene order follows the sections; `BOUNDS`/`LINGER` in `motion.js` map scroll position to camera position (the dwell/seam idea from [scroll-world](https://github.com/oso95/scroll-world), rendered live instead of as paid AI video).
-- **Velocity** (from Lenis' smoothed scroll) drives star streaks, FOV, camera roll, heading skew, the marquee speed/direction and the HUD meter.
+- **Velocity** (from Lenis' smoothed scroll) drives the star streaks, field of view and camera roll in the WebGL world. Inner pages (Lab, projects) get a calm static backdrop and native scrolling — no Lenis/GSAP is loaded there.
 - **Fallbacks:** no WebGL → CSS background; `prefers-reduced-motion` → native scroll, one static frame, no GSAP choreography; touch devices keep native touch scrolling and a lighter scene (fewer points, DPR ≤ 1.5).
 - Third-party licences and attribution: `assets/vendor/NOTICE.md`.
