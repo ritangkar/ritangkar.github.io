@@ -5,7 +5,7 @@
   // Mobile menu
   const btn = d.querySelector('.menu-btn'), nav = d.getElementById('nav');
   if (btn && nav) {
-    const set = o => { nav.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); btn.textContent = o ? 'Close' : 'Menu'; };
+    const set = o => { nav.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); btn.textContent = o ? 'Close' : 'Menu'; d.dispatchEvent(new CustomEvent('nav:toggle', { detail: o })); };
     btn.addEventListener('click', () => set(!nav.classList.contains('open')));
     nav.addEventListener('click', e => { if (e.target.closest('a')) set(false); });
     d.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });

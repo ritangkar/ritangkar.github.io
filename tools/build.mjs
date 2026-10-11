@@ -39,20 +39,26 @@ export const header = (cur = '') => `<a class="skip" href="#main">Skip to conten
   </nav>
 </div></header>`;
 
+// Fixed WebGL backdrop ("the world") + legibility veil. Decorative: hidden from AT; falls back to CSS when WebGL is unavailable.
+export const shell = () => `<canvas id="world" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>`;
+// Local, versioned copies of Lenis + GSAP/ScrollTrigger (see assets/vendor/NOTICE.md), then the site's own scripts.
+export const scripts = (extra = '') => `<script src="/assets/vendor/gsap.min.js" defer></script><script src="/assets/vendor/ScrollTrigger.min.js" defer></script><script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/js/world.js" defer></script><script src="/assets/js/site.js" defer></script>${extra}<script src="/assets/js/motion.js" defer></script>`;
+
 export const footer = () => `<footer><div class="wrap">
   <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
   <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
 </div></footer>`;
 
 const head = ({ title, desc, path, extra = '' }) => `<!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${SITE}${path}">
-<meta name="theme-color" content="#0a0c10">
+<meta name="theme-color" content="#06080c">
 <meta name="author" content="Ritangkar Dey">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
 <meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
@@ -61,6 +67,8 @@ const head = ({ title, desc, path, extra = '' }) => `<!doctype html>
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}"><meta name="twitter:image" content="${SITE}/assets/og-image.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
 ${extra}</head>`;
 
@@ -85,12 +93,13 @@ write('lab/index.html', `${head({
   desc: 'Seventeen engineering projects behind the architecture: BM25 search, hybrid recommendation, revenue root-cause analysis, a research agent, API performance and security — each with an interactive demo.',
   path: '/lab/' })}
 <body>
+${shell()}
 ${header('lab')}
 <main id="main">
 <div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / Lab</div>
     <span class="eyebrow">Engineering Lab</span>
-    <h1>Seventeen projects. One way of thinking.</h1>
+    <h1 data-vel>Seventeen projects. One way of thinking.</h1>
     <p class="lede">Small, focused systems I built to understand commerce problems from first principles — ranking, recommendation, root-cause analysis, grounding, performance and security. Each has an interactive demo with hard-coded, synthetic data; the code is on GitHub.</p>
   </div>
   <div class="filters" role="group" aria-label="Filter projects by theme">${chips}</div>
@@ -99,7 +108,7 @@ ${header('lab')}
   <p class="honest" style="margin-top:48px"><b>Reading this honestly:</b> most of these are deliberately deterministic — rules, statistics and classical algorithms. Only the churn model is machine learning, and no demo calls an LLM. The “LLM-ready” projects show the grounding and validation layers an LLM would sit behind.</p>
 </div></main>
 ${footer()}
-<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+${scripts('<script src="/assets/js/lab.js" defer></script>')}
 </body></html>`);
 
 // ---------- Project pages ----------
@@ -111,11 +120,12 @@ projects.forEach((p, i) => {
     title: `${p.name} — Engineering Lab | Ritangkar Dey`, desc: p.tagline, path: `/lab/${p.slug}/`,
     extra: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n` })}
 <body>
+${shell()}
 ${header('lab')}
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / ${esc(p.name)}</div>
     <span class="eyebrow">${clusters[p.cluster].label}</span>
-    <h1>${esc(p.name)}</h1>
+    <h1 data-vel>${esc(p.name)}</h1>
     <p class="lede">${esc(p.tagline)}</p>
     <div class="meta">${kindChip(p.kind)}<span class="chip">${tiers[p.tier].label}</span>${p.tags.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="${owner}${p.slug}" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
@@ -134,12 +144,14 @@ ${header('lab')}
   <nav class="pn" aria-label="More projects"><a href="/lab/${prev.slug}/">← ${esc(prev.name)}</a><a href="/lab/${next.slug}/">${esc(next.name)} →</a></nav>
 </div></main>
 ${footer()}
-<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+${scripts('<script src="/assets/js/lab.js" defer></script>')}
 </body></html>`);
 });
 
 // ---------- Home (from template) ----------
 import { readFileSync } from 'node:fs';
+const MARQUEE_TERMS = ['SAP Commerce', 'S/4HANA', 'SAP CPI', 'Spartacus', 'OCC APIs', 'Solr', 'Java', 'Spring', 'RAG', 'Multi-agent', 'Guardrails', 'Performance', 'Security', 'B2B2C'];
+const marquee = () => { const row = MARQUEE_TERMS.map(t => `<span>${esc(t)}</span>`).join(''); return `<div class="marquee" aria-hidden="true"><div>${row}${row}</div></div>`; };
 const ld = { '@context': 'https://schema.org', '@type': 'Person', name: 'Ritangkar Dey', url: SITE + '/',
   jobTitle: 'AI-First Enterprise Commerce Architect', description: 'SAP Commerce technical lead and solution architect with 8+ years across B2B, B2C and B2B2C commerce, enterprise integration, performance engineering and applied AI.',
   sameAs: ['https://www.linkedin.com/in/ritangkar-dey', 'https://github.com/ritangkar'], address: { '@type': 'PostalAddress', addressLocality: 'Kolkata', addressCountry: 'IN' },
@@ -148,7 +160,7 @@ const home = readFileSync('tools/home.template.html', 'utf8')
   .replace('{{HEAD}}', head({ title: 'Ritangkar Dey — AI-First Enterprise Commerce Architect',
     desc: 'SAP Commerce technical lead and solution architect with 8+ years across B2B, B2C and B2B2C commerce — enterprise integration, performance, security and applied AI. Explore 17 engineering projects with interactive demos.',
     path: '/', extra: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n` }))
-  .replace('{{HEADER}}', header()).replace('{{FOOTER}}', footer())
+  .replace('{{SHELL}}', shell()).replace('{{HEADER}}', header()).replace('{{FOOTER}}', footer()).replace('{{SCRIPTS}}', scripts()).replace('{{MARQUEE}}', marquee())
   .replace('{{FLAGSHIP_CARDS}}', projects.filter(p => p.tier === 'flagship').map(card).join('\n'))
   .replace('{{OTHER_LINKS}}', projects.filter(p => p.tier !== 'flagship').map(p => `<a href="/lab/${p.slug}/">${esc(p.name)}</a>`).join(' · '));
 write('index.html', home);

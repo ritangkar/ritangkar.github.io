@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dynamic Pricing Simulator — Engineering Lab | Ritangkar Dey</title>
 <meta name="description" content="Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails.">
 <link rel="canonical" href="https://ritangkar.github.io/lab/dynamic-pricing-simulator/">
-<meta name="theme-color" content="#0a0c10">
+<meta name="theme-color" content="#06080c">
 <meta name="author" content="Ritangkar Dey">
 <meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
 <meta property="og:title" content="Dynamic Pricing Simulator — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails.">
@@ -15,10 +15,13 @@
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Dynamic Pricing Simulator — Engineering Lab | Ritangkar Dey">
 <meta name="twitter:description" content="Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"Dynamic Pricing Simulator","description":"Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails.","codeRepositoryUrl":"https://github.com/ritangkar/dynamic-pricing-simulator","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
 </head>
 <body>
+<canvas id="world" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap">
   <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
@@ -33,7 +36,7 @@
 <main id="main"><div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / Dynamic Pricing Simulator</div>
     <span class="eyebrow">Commerce Decisions</span>
-    <h1>Dynamic Pricing Simulator</h1>
+    <h1 data-vel>Dynamic Pricing Simulator</h1>
     <p class="lede">Rule-based pricing from demand, inventory, competitor and seasonality — bounded by margin and move-size guardrails.</p>
     <div class="meta"><span class="chip info">Deterministic</span><span class="chip">Strong Supporting Work</span><span class="chip">Pricing rules</span><span class="chip">Guardrails</span><span class="chip">Elasticity</span></div>
     <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/dynamic-pricing-simulator" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
@@ -55,5 +58,6 @@
   <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
   <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
 </div></footer>
-<script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+<script src="/assets/vendor/gsap.min.js" defer></script><script src="/assets/vendor/ScrollTrigger.min.js" defer></script><script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/js/world.js" defer></script><script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script><script src="/assets/js/motion.js" defer></script>
 </body></html>
