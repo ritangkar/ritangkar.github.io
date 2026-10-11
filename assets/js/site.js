@@ -48,7 +48,8 @@
       prog.style.setProperty('--fill', (reduce ? 100 : pct) + '%');
       items.forEach(li => li.classList.toggle('on', reduce || li.getBoundingClientRect().top < mid));
     };
-    upd(); addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd);
+    let pt = false; const rafUpd = () => { if (!pt) { pt = true; requestAnimationFrame(() => { pt = false; upd(); }); } };
+    upd(); addEventListener('scroll', rafUpd, { passive: true }); addEventListener('resize', rafUpd);
   }
 
   // Hero architecture graph: select a node to read its role

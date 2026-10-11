@@ -23,11 +23,13 @@
   const fail = () => { root.classList.add('no-3d'); canvas.hidden = true; };
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const coarse = matchMedia('(hover: none) and (pointer: coarse)').matches;
+  // Inner pages (lab, projects): one calm, static frame — no travel, no animation, no per-frame cost.
+  const still = reduce || !document.querySelector('[data-scenes]');
   const gl = canvas.getContext('webgl', { antialias: false, alpha: false, depth: false, powerPreference: 'high-performance' });
   if (!gl) return fail();
 
   /* ---------- geometry ---------- */
-  const D = 64, Q = coarse || innerWidth < 760 ? 0.55 : 1;
+  const D = 64, Q = coarse || innerWidth < 760 ? 0.4 : 1;
   let seed = 20260711;
   const rnd = () => { seed |= 0; seed = (seed + 0x6D2B79F5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
   const R = (a, b) => a + (b - a) * rnd();
@@ -118,7 +120,7 @@
   /* ---------- GL plumbing ---------- */
   const VS = `precision highp float;
 attribute vec3 aPos;attribute vec3 aMeta;attribute vec3 aEnd;attribute vec2 aAnim;
-uniform mat4 uVP;uniform float uZone,uTime,uVel,uPx,uMode;
+uniform mat4 uVP;uniform float uZone,uTime,uVel,uPx,uMode,uDim;
 varying vec3 vCol;varying float vPt;
 void main(){
   vec3 p=aPos;
@@ -131,7 +133,7 @@ void main(){
   vec3 col=mix(vec3(0.36,0.62,0.86),vec3(0.93,0.66,0.31),aMeta.y);
   col+=vec3(0.22)*min(1.0,abs(uVel));
   float k=uMode<0.5?0.9:(uMode<1.5?1.3:(0.12+min(1.0,abs(uVel)*1.6))*0.9);
-  vCol=col*b*fade*k;
+  vCol=col*b*fade*k*uDim;
   vPt=(uMode>0.5&&uMode<1.5)?1.0:0.0;
   gl_Position=c;
   gl_PointSize=clamp(aMeta.z*uPx*(52.0/max(d,1.0)),1.0,16.0*uPx);
@@ -144,7 +146,7 @@ void main(){float a=1.0;if(vPt>0.5){float r=length(gl_PointCoord-0.5);a=smoothst
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.warn('world.js link:', gl.getProgramInfoLog(prog)); return fail(); }
   gl.useProgram(prog);
   const U = n => gl.getUniformLocation(prog, n), A = n => gl.getAttribLocation(prog, n);
-  const u = { vp: U('uVP'), zone: U('uZone'), time: U('uTime'), vel: U('uVel'), px: U('uPx'), mode: U('uMode') };
+  const u = { vp: U('uVP'), zone: U('uZone'), dim: U('uDim'), time: U('uTime'), vel: U('uVel'), px: U('uPx'), mode: U('uMode') };
   const mk = arr => { const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(arr), gl.STATIC_DRAW); return { b, n: arr.length / 11 }; };
   const bufs = { line: mk(LN), point: mk(PT), streak: mk(ST) };
   const attrs = [['aPos', 3, 0], ['aMeta', 3, 3], ['aEnd', 3, 6], ['aAnim', 2, 9]].map(([n, s, o]) => [A(n), s, o * 4]);
@@ -174,46 +176,50 @@ void main(){float a=1.0;if(vPt>0.5){float r=length(gl_PointCoord-0.5);a=smoothst
   };
 
   /* ---------- state / loop ---------- */
-  const tgt = { zone: 0, vel: 0 }, cur = { zone: 0, vel: 0, mx: 0, my: 0 }, ptr = { x: 0, y: 0 };
+  const tgt = { zone: still && !reduce ? .35 : 0, vel: 0, dim: still ? .4 : 1 }, cur = { zone: tgt.zone, vel: 0, dim: tgt.dim, mx: 0, my: 0 }, ptr = { x: 0, y: 0 };
   let W = 0, H = 0, dpr = 1, last = performance.now(), raf = 0, t0 = last;
   const size = force => {
     const w = innerWidth, h = innerHeight;
     // ignore URL-bar-only height changes on phones (scroll-world: no jump on mobile chrome collapse)
     if (!force && w === W && Math.abs(h - H) < 120) return;
-    W = w; H = h; dpr = Math.min(devicePixelRatio || 1, coarse ? 1.5 : 2);
+    W = w; H = h; dpr = Math.min(devicePixelRatio || 1, coarse ? 1 : 1.5);
     canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr); gl.viewport(0, 0, canvas.width, canvas.height);
   };
+  let skip = false;
   const frame = (now) => {
     raf = 0;
+    // idle (not scrolling): 30fps is plenty for the drifting pulses; full rate only while moving
+    const moving = Math.abs(cur.vel) > .03 || Math.abs(tgt.zone - cur.zone) > .002;
+    if (!still && !moving && (skip = !skip)) { if (!document.hidden) raf = requestAnimationFrame(frame); return; }
     const dt = Math.min(.05, (now - last) / 1000); last = now;
     const k = 1 - Math.exp(-dt * 5.5);
     cur.zone += (tgt.zone - cur.zone) * k;
-    cur.vel += (tgt.vel - cur.vel) * (1 - Math.exp(-dt * 9));
+    cur.vel += (tgt.vel - cur.vel) * (1 - Math.exp(-dt * 9)); cur.dim += (tgt.dim - cur.dim) * (1 - Math.exp(-dt * 6));
     cur.mx += (ptr.x - cur.mx) * (1 - Math.exp(-dt * 3)); cur.my += (ptr.y - cur.my) * (1 - Math.exp(-dt * 3));
-    const z = cur.zone, v = reduce ? 0 : cur.vel, p = path(z), l = path(z + .12), asp = W / H;
+    const z = cur.zone, v = still ? 0 : cur.vel, p = path(z), l = path(z + .12), asp = W / H;
     const eye = [p[0] + cur.mx * .6, p[1] + cur.my * .4, p[2]], tg = [l[0] + cur.mx * 2.4, l[1] - cur.my * 1.4, l[2] - 6];
     const fov = ((asp < 1 ? 78 : 58) + Math.min(1.5, Math.abs(v)) * 14) * Math.PI / 180;
     const vp = mul(persp(fov, asp, .1, 220), look(eye, tg, p[3] + v * -.045));
     const i = Math.min(Math.floor(Math.min(Math.max(z, 0), ZONES - 1)), ZONES - 2), f = Math.min(Math.max(z, 0), ZONES - 1) - i, a = TINT[i], b = TINT[i + 1];
     gl.clearColor(a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f, 1); gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniformMatrix4fv(u.vp, false, vp); gl.uniform1f(u.zone, z); gl.uniform1f(u.time, reduce ? 0 : (now - t0) / 1000); gl.uniform1f(u.vel, v); gl.uniform1f(u.px, dpr);
+    gl.uniformMatrix4fv(u.vp, false, vp); gl.uniform1f(u.zone, z); gl.uniform1f(u.time, still ? 0 : (now - t0) / 1000); gl.uniform1f(u.vel, v); gl.uniform1f(u.px, dpr); gl.uniform1f(u.dim, cur.dim);
     draw(bufs.line, gl.LINES, 0); draw(bufs.point, gl.POINTS, 1);
-    if (!reduce && Math.abs(v) > .02) draw(bufs.streak, gl.LINES, 2);
-    if (!reduce && !document.hidden) raf = requestAnimationFrame(frame);
+    if (!still && Math.abs(v) > .02) draw(bufs.streak, gl.LINES, 2);
+    if (!still && !document.hidden) raf = requestAnimationFrame(frame);
   };
   const kick = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } };
 
   size(true);
-  addEventListener('resize', () => { size(); if (reduce) kick(); }, { passive: true });
+  addEventListener('resize', () => { size(); if (still) kick(); }, { passive: true });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) kick(); });
   canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); cancelAnimationFrame(raf); fail(); });
-  if (!reduce && matchMedia('(hover:hover) and (pointer:fine)').matches)
+  if (!still && matchMedia('(hover:hover) and (pointer:fine)').matches)
     addEventListener('pointermove', e => { ptr.x = e.clientX / innerWidth * 2 - 1; ptr.y = e.clientY / innerHeight * 2 - 1; }, { passive: true });
 
   root.classList.add('has-3d');
   window.World = {
     // reduced motion: a single static establishing frame, no travel
-    set(zone, vel) { if (reduce) return; tgt.zone = Math.min(Math.max(zone, 0), ZONES - 1); tgt.vel = vel; kick(); },
+    set(zone, vel, dim) { if (still) return; tgt.zone = Math.min(Math.max(zone, 0), ZONES - 1); tgt.vel = vel; if (dim != null) tgt.dim = dim; kick(); },
     zones: ZONES
   };
   kick();
