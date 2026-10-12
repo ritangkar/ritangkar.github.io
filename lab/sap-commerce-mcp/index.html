@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAP Commerce MCP — Engineering Lab | Ritangkar Dey</title>
+<meta name="description" content="A read-only MCP server that lets Claude or another MCP client inspect a local SAP Commerce instance through HAC, in natural language.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/sap-commerce-mcp/">
+<meta name="theme-color" content="#06080c">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="SAP Commerce MCP — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="A read-only MCP server that lets Claude or another MCP client inspect a local SAP Commerce instance through HAC, in natural language.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/sap-commerce-mcp/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SAP Commerce MCP — Engineering Lab | Ritangkar Dey">
+<meta name="twitter:description" content="A read-only MCP server that lets Claude or another MCP client inspect a local SAP Commerce instance through HAC, in natural language."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"SAP Commerce MCP","description":"A read-only MCP server that lets Claude or another MCP client inspect a local SAP Commerce instance through HAC, in natural language.","codeRepositoryUrl":"https://github.com/ritangkar/sap-commerce-mcp","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
+</head>
+<body>
+<canvas id="world" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / SAP Commerce MCP</div>
+    <span class="eyebrow">SAP Commerce Developer Tools</span>
+    <h1>SAP Commerce MCP</h1>
+    <p class="lede">A read-only MCP server that lets Claude or another MCP client inspect a local SAP Commerce instance through HAC, in natural language.</p>
+    <div class="meta"><span class="chip ai">MCP · Read-only</span><span class="chip">Strong Supporting Work</span><span class="chip">MCP</span><span class="chip">Read-only</span><span class="chip">HAC</span><span class="chip">FlexibleSearch</span></div>
+    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://github.com/ritangkar/sap-commerce-mcp" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+  </div>
+  <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>simulated · sample data · no network calls · not a live MCP connection</span></div>
+    <div class="demo" data-demo="sap-commerce-mcp"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
+  <div class="prose">
+    <div class="card"><h2>The Problem</h2><p>Answering “what is in my dev instance?” normally means opening HAC, writing FlexibleSearch by hand and remembering type-system details. A natural-language client can do that, but only if the integration cannot change anything.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>An MCP client (for example Claude Code or Copilot in VS Code) starts the server as a local stdio process and lists five allow-listed tools: flexible_search, type_info, config_get, logs_tail and cronjob.</li><li>The client’s model turns a question into a tool call. Arguments are schema-validated, and any FlexibleSearch goes through an allow-list validator (single SELECT, no comments, no mutation words) before it reaches HAC.</li><li>The server calls a fixed set of local HAC paths (or reads the local console log), masks secret-like values and caps result size, then returns structured data to the client.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>Read-only is enforced in code, not by prompting: a tool allow-list, a conservative query validator, a HAC client limited to fixed paths, and a host guard that accepts only loopback or private addresses.</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>It shows how to give an AI assistant useful access to enterprise commerce data with narrow, auditable boundaries.</p></div>
+  </div>
+  <p class="honest"><b>Scope &amp; honesty.</b> The demo above is a simulation with hard-coded sample data. It never contacts SAP Commerce, HAC, an MCP server or an AI API, and it does not run a real FlexibleSearch. The project is for a local development instance only. Its authors state that real HAC behaviour and the Claude Code and Copilot clients have not been verified live.</p>
+  <div class="meta"><a class="btn pri" href="https://github.com/ritangkar/sap-commerce-mcp" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
+  <nav class="pn" aria-label="More projects"><a href="/lab/sap-commerce-code-generator/">← SAP Commerce Developer Toolkit</a><a href="/lab/ecommerce-revenue-detective/">Revenue Detective →</a></nav>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/world.js" defer></script><script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>
