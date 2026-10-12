@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAP Commerce Developer Toolkit — Engineering Lab | Ritangkar Dey</title>
+<meta name="description" content="A live, browser-only toolkit with two SAP Commerce generators: an OCC Controller Generator &amp; Tester and an ImpEx Generator.">
+<link rel="canonical" href="https://ritangkar.github.io/lab/sap-commerce-code-generator/">
+<meta name="theme-color" content="#06080c">
+<meta name="author" content="Ritangkar Dey">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Ritangkar Dey">
+<meta property="og:title" content="SAP Commerce Developer Toolkit — Engineering Lab | Ritangkar Dey"><meta property="og:description" content="A live, browser-only toolkit with two SAP Commerce generators: an OCC Controller Generator &amp; Tester and an ImpEx Generator.">
+<meta property="og:url" content="https://ritangkar.github.io/lab/sap-commerce-code-generator/"><meta property="og:image" content="https://ritangkar.github.io/assets/og-image.png">
+<meta property="og:image:alt" content="Ritangkar Dey — AI-First Enterprise Commerce Architect">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SAP Commerce Developer Toolkit — Engineering Lab | Ritangkar Dey">
+<meta name="twitter:description" content="A live, browser-only toolkit with two SAP Commerce generators: an OCC Controller Generator &amp; Tester and an ImpEx Generator."><meta name="twitter:image" content="https://ritangkar.github.io/assets/og-image.png">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareSourceCode","name":"SAP Commerce Developer Toolkit","description":"A live, browser-only toolkit with two SAP Commerce generators: an OCC Controller Generator & Tester and an ImpEx Generator.","codeRepositoryUrl":"https://github.com/ritangkar/sap-commerce-code-generator","author":{"@type":"Person","name":"Ritangkar Dey"}}</script>
+</head>
+<body>
+<canvas id="world" aria-hidden="true"></canvas><div class="veil" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="hdr"><div class="wrap">
+  <a class="brand" href="/" aria-label="Ritangkar Dey — home"><i aria-hidden="true">RD</i><span>Ritangkar Dey</span></a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="/#experience">Experience</a><a href="/#architecture">Architecture</a><a href="/#ai">AI</a>
+    <a href="/lab/" aria-current="page">Lab</a><a href="/#skills">Skills</a>
+    <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="cta" href="/#contact">Contact</a>
+  </nav>
+</div></header>
+<main id="main"><div class="wrap">
+  <div class="ph"><div class="crumb"><a href="/">Home</a> / <a href="/lab/">Lab</a> / SAP Commerce Developer Toolkit</div>
+    <span class="eyebrow">SAP Commerce Developer Tools</span>
+    <h1>SAP Commerce Developer Toolkit</h1>
+    <p class="lede">A live, browser-only toolkit with two SAP Commerce generators: an OCC Controller Generator &amp; Tester and an ImpEx Generator.</p>
+    <div class="meta"><span class="chip ok">Live Tool</span><span class="chip">Strong Supporting Work</span><span class="chip">OCC</span><span class="chip">ImpEx</span><span class="chip">Code generation</span><span class="chip">React · TypeScript</span></div>
+    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="https://ritangkar.github.io/sap-commerce-code-generator/" target="_blank" rel="noopener noreferrer">Open Live Toolkit ↗</a><a class="btn sm" href="https://github.com/ritangkar/sap-commerce-code-generator" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+  </div>
+  <div class="demo-frame"><div class="demo-bar"><span>LIVE APPLICATION</span><span>opens in a new tab · not embedded here</span></div>
+    <div class="demo" style="min-height:0"><p class="lede" style="margin-top:0">Two related tools, one toolkit. Both run entirely in your browser: nothing you type is sent anywhere.</p>
+    <div class="d-grid"><div class="d-card"><span class="d-label">Tool 1</span><b>OCC Controller Generator &amp; Tester</b><p class="muted">Generate Spring MVC OCC controller scaffolding for SAP Commerce 2205 or 2211, with optional DTO, facade and validator, and try requests against a local mock.</p></div>
+    <div class="d-card"><span class="d-label">Tool 2</span><b>ImpEx Generator</b><p class="muted">Build ImpEx from a header, macro and data editor or a CSV import, with deterministic output and diagnostics.</p></div></div>
+    <div class="d-ctl" style="margin-top:18px"><a class="btn pri" href="https://ritangkar.github.io/sap-commerce-code-generator/" target="_blank" rel="noopener noreferrer">Open Live Toolkit ↗</a></div></div></div>
+  <div class="prose">
+    <div class="card"><h2>The Problem</h2><p>OCC controllers and ImpEx scripts are repetitive to write by hand, and small mistakes (path variables that do not match, rows that do not match the header, undefined macros) are easy to make and slow to find.</p></div>
+    <div class="card"><h2>How It Works</h2><ol><li>OCC Controller Generator &amp; Tester: configure a controller and its endpoints for SAP Commerce 2205 or 2211 and generate Spring MVC controller scaffolding, with an optional DTO, facade and validator. Try requests against a built-in mock tester that never runs Java.</li><li>ImpEx Generator: build a script from a header, macros and a data grid, or import CSV/TSV, and get deterministic ImpEx text.</li><li>Both tools run diagnostics (Error / Warning / Information) as you edit; errors disable export. Configurations can be saved locally and exported as JSON.</li></ol></div>
+    <div class="card"><h2>Technically Interesting</h2><p>Both tools are pure TypeScript functions running in the browser. Output is deterministic (fixed ordering, no timestamps), and the 2205 and 2211 profiles differ only where it was verified (Swagger v1 versus OpenAPI v3 annotations).</p></div>
+    <div class="card"><h2>Why It Matters</h2><p>It removes boilerplate from two everyday SAP Commerce tasks while keeping the developer in control of what gets written to a real system.</p></div>
+  </div>
+  <p class="honest"><b>Scope &amp; honesty.</b> Output is scaffolding: static checks cannot prove the code compiles or the ImpEx type, attribute or catalog exists in your installation. The mock tester is a simulation. There is no backend, no SAP connection and no AI call; nothing you type leaves the browser. This portfolio links to the app and does not embed it.</p>
+  <div class="meta"><a class="btn pri" href="https://ritangkar.github.io/sap-commerce-code-generator/" target="_blank" rel="noopener noreferrer">Open Live Toolkit ↗</a><a class="btn" href="https://github.com/ritangkar/sap-commerce-code-generator" rel="noopener">Read the code ↗</a></div>
+  <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
+  <nav class="pn" aria-label="More projects"><a href="/lab/football-match-intelligence/">← Match Intelligence</a><a href="/lab/sap-commerce-mcp/">SAP Commerce MCP →</a></nav>
+</div></main>
+<footer><div class="wrap">
+  <span>© 2026 Ritangkar Dey · Enterprise commerce · Architecture · AI</span>
+  <span><a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></span>
+</div></footer>
+<script src="/assets/js/world.js" defer></script><script src="/assets/js/site.js" defer></script><script src="/assets/js/lab.js" defer></script>
+</body></html>

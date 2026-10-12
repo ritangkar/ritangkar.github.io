@@ -9,6 +9,7 @@ export const clusters = {
   quality:   { label: 'Catalog & Content Quality', blurb: 'Deterministic scoring that catches data problems before customers do.' },
   platform:  { label: 'Platform Engineering', blurb: 'Measured performance and a defensive security model for commerce APIs.' },
   graph:     { label: 'Graph & Analytics', blurb: 'Graph analysis and rule-based narrative over structured data.' },
+  devtools:  { label: 'SAP Commerce Developer Tools', blurb: 'Tools that make day-to-day SAP Commerce development faster, with read-only or local-only boundaries.' },
 };
 
 export const tiers = {
@@ -22,6 +23,8 @@ export const kinds = {
   ml:   { label: 'Machine Learning', cls: 'ai' },
   pipe: { label: 'Pipeline · LLM-ready', cls: 'ai' },
   meas: { label: 'Measured', cls: 'ok' },
+  tool: { label: 'Live Tool', cls: 'ok' },
+  mcp:  { label: 'MCP · Read-only', cls: 'ai' },
 };
 
 export const projects = [
@@ -211,6 +214,30 @@ export const projects = [
   honest: 'Synthetic data (8 teams, 56 matches). The demo implements team form only.',
   tags: ['Analytics', 'Insights', 'Spring Boot'],
   sig: 'Meridian United · WWWDW · 13 pts',
+},
+{
+  slug: 'sap-commerce-code-generator', name: 'SAP Commerce Developer Toolkit', tier: 'supporting', cluster: 'devtools', kind: 'tool',
+  live: 'https://ritangkar.github.io/sap-commerce-code-generator/',
+  tagline: 'A live, browser-only toolkit with two SAP Commerce generators: an OCC Controller Generator & Tester and an ImpEx Generator.',
+  problem: 'OCC controllers and ImpEx scripts are repetitive to write by hand, and small mistakes (path variables that do not match, rows that do not match the header, undefined macros) are easy to make and slow to find.',
+  how: ['OCC Controller Generator & Tester: configure a controller and its endpoints for SAP Commerce 2205 or 2211 and generate Spring MVC controller scaffolding, with an optional DTO, facade and validator. Try requests against a built-in mock tester that never runs Java.', 'ImpEx Generator: build a script from a header, macros and a data grid, or import CSV/TSV, and get deterministic ImpEx text.', 'Both tools run diagnostics (Error / Warning / Information) as you edit; errors disable export. Configurations can be saved locally and exported as JSON.'],
+  interesting: 'Both tools are pure TypeScript functions running in the browser. Output is deterministic (fixed ordering, no timestamps), and the 2205 and 2211 profiles differ only where it was verified (Swagger v1 versus OpenAPI v3 annotations).',
+  matters: 'It removes boilerplate from two everyday SAP Commerce tasks while keeping the developer in control of what gets written to a real system.',
+  honest: 'Output is scaffolding: static checks cannot prove the code compiles or the ImpEx type, attribute or catalog exists in your installation. The mock tester is a simulation. There is no backend, no SAP connection and no AI call; nothing you type leaves the browser. This portfolio links to the app and does not embed it.',
+  tags: ['OCC', 'ImpEx', 'Code generation', 'React · TypeScript'],
+  sig: 'OCC 2205 / 2211 · ImpEx · runs in your browser',
+},
+{
+  slug: 'sap-commerce-mcp', name: 'SAP Commerce MCP', tier: 'supporting', cluster: 'devtools', kind: 'mcp',
+  tagline: 'A read-only MCP server that lets Claude or another MCP client inspect a local SAP Commerce instance through HAC, in natural language.',
+  problem: 'Answering “what is in my dev instance?” normally means opening HAC, writing FlexibleSearch by hand and remembering type-system details. A natural-language client can do that, but only if the integration cannot change anything.',
+  how: ['An MCP client (for example Claude Code or Copilot in VS Code) starts the server as a local stdio process and lists five allow-listed tools: flexible_search, type_info, config_get, logs_tail and cronjob.', 'The client’s model turns a question into a tool call. Arguments are schema-validated, and any FlexibleSearch goes through an allow-list validator (single SELECT, no comments, no mutation words) before it reaches HAC.', 'The server calls a fixed set of local HAC paths (or reads the local console log), masks secret-like values and caps result size, then returns structured data to the client.'],
+  interesting: 'Read-only is enforced in code, not by prompting: a tool allow-list, a conservative query validator, a HAC client limited to fixed paths, and a host guard that accepts only loopback or private addresses.',
+  matters: 'It shows how to give an AI assistant useful access to enterprise commerce data with narrow, auditable boundaries.',
+  honest: 'The demo above is a simulation with hard-coded sample data. It never contacts SAP Commerce, HAC, an MCP server or an AI API, and it does not run a real FlexibleSearch. The project is for a local development instance only. Its authors state that real HAC behaviour and the Claude Code and Copilot clients have not been verified live.',
+  demoBar: 'simulated · sample data · no network calls · not a live MCP connection',
+  tags: ['MCP', 'Read-only', 'HAC', 'FlexibleSearch'],
+  sig: '5 read-only tools · allow-listed · local HAC only',
 },
 ];
 export const bySlug = Object.fromEntries(projects.map(p => [p.slug, p]));

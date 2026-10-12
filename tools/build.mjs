@@ -73,12 +73,16 @@ const head = ({ title, desc, path, extra = '' }) => `<!doctype html>
 <link rel="stylesheet" href="/assets/css/site.css">
 ${extra}</head>`;
 
+const N = projects.length;
+const WORDS = ['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'];
+const Nword = WORDS[N] || String(N);
+const NWORD = Nword.charAt(0).toUpperCase() + Nword.slice(1);
 const kindChip = k => `<span class="chip ${kinds[k].cls}">${kinds[k].label}</span>`;
 const card = p => `<a class="card${p.tier === 'flagship' ? ' flag' : ''}" href="/lab/${p.slug}/" data-cluster="${p.cluster}" data-tier="${p.tier}">
   <div class="top">${kindChip(p.kind)}<span class="chip">${clusters[p.cluster].label}</span></div>
   <h3>${esc(p.name)}</h3><p>${esc(p.tagline)}</p>
   <div class="sig">${esc(p.sig)}</div>
-  <div class="foot"><span class="go">Open demo →</span></div></a>`;
+  <div class="foot"><span class="go">${p.live ? 'View project →' : 'Open demo →'}</span></div></a>`;
 
 // ---------- Lab index ----------
 const tierBlocks = Object.entries(tiers).map(([t, meta]) => {
@@ -86,12 +90,12 @@ const tierBlocks = Object.entries(tiers).map(([t, meta]) => {
   return `<div class="tier-block" data-tier-block="${t}"><div class="tier"><h2>${meta.label}</h2><p>${esc(meta.blurb)}</p></div>
   <div class="grid ${t === 'flagship' ? 'g2' : 'g3'}">${list.map(card).join('\n')}</div></div>`;
 }).join('\n');
-const chips = ['<button type="button" data-f="all" aria-pressed="true">All 17</button>',
+const chips = [`<button type="button" data-f="all" aria-pressed="true">All ${N}</button>`,
   ...Object.entries(clusters).map(([k, c]) => `<button type="button" data-f="${k}" aria-pressed="false">${c.label}</button>`)].join('');
 
 write('lab/index.html', `${head({
-  title: 'Engineering Lab — 17 commerce & AI engineering projects | Ritangkar Dey',
-  desc: 'Seventeen engineering projects behind the architecture: BM25 search, hybrid recommendation, revenue root-cause analysis, a research agent, API performance and security — each with an interactive demo.',
+  title: `Engineering Lab — ${N} commerce & AI engineering projects | Ritangkar Dey`,
+  desc: `${NWORD} engineering projects behind the architecture: BM25 search, hybrid recommendation, revenue root-cause analysis, a research agent, API performance and security, plus SAP Commerce developer tools — with interactive demos.`,
   path: '/lab/' })}
 <body>
 ${shell()}
@@ -100,13 +104,13 @@ ${header('lab')}
 <div class="wrap">
   <div class="ph"><div class="crumb"><a href="/">Home</a> / Lab</div>
     <span class="eyebrow">Engineering Lab</span>
-    <h1>Seventeen projects. One way of thinking.</h1>
-    <p class="lede">Small, focused systems I built to understand commerce problems from first principles — ranking, recommendation, root-cause analysis, grounding, performance and security. Each has an interactive demo with hard-coded, synthetic data; the code is on GitHub.</p>
+    <h1>${NWORD} projects. One way of thinking.</h1>
+    <p class="lede">Small, focused systems I built to understand commerce problems from first principles — ranking, recommendation, root-cause analysis, grounding, performance and security. Each has an interactive demo with hard-coded, synthetic data (the SAP Commerce Developer Toolkit links to its live app instead); the code is on GitHub.</p>
   </div>
   <div class="filters" role="group" aria-label="Filter projects by theme">${chips}</div>
   <p class="sr" id="filter-status" role="status" aria-live="polite"></p>
   ${tierBlocks}
-  <p class="honest" style="margin-top:48px"><b>Reading this honestly:</b> most of these are deliberately deterministic — rules, statistics and classical algorithms. Only the churn model is machine learning, and no demo calls an LLM. The “LLM-ready” projects show the grounding and validation layers an LLM would sit behind.</p>
+  <p class="honest" style="margin-top:48px"><b>Reading this honestly:</b> most of these are deliberately deterministic — rules, statistics and classical algorithms. Only the churn model is machine learning, and no demo calls an LLM. The SAP Commerce MCP demo is a simulation with sample data, not a live connection. The “LLM-ready” projects show the grounding and validation layers an LLM would sit behind.</p>
 </div></main>
 ${footer()}
 ${scripts('<script src="/assets/js/lab.js" defer></script>')}
@@ -129,10 +133,14 @@ ${header('lab')}
     <h1>${esc(p.name)}</h1>
     <p class="lede">${esc(p.tagline)}</p>
     <div class="meta">${kindChip(p.kind)}<span class="chip">${tiers[p.tier].label}</span>${p.tags.map(t => `<span class="chip">${esc(t)}</span>`).join('')}</div>
-    <div class="meta" style="margin-top:20px"><a class="btn pri sm" href="${owner}${p.slug}" rel="noopener">View code on GitHub ↗</a><a class="btn sm" href="/lab/">All projects</a></div>
+    <div class="meta" style="margin-top:20px">${p.live ? `<a class="btn pri sm" href="${p.live}" target="_blank" rel="noopener noreferrer">Open Live Toolkit ↗</a><a class="btn sm" href="${owner}${p.slug}" rel="noopener">View code on GitHub ↗</a>` : `<a class="btn pri sm" href="${owner}${p.slug}" rel="noopener">View code on GitHub ↗</a>`}<a class="btn sm" href="/lab/">All projects</a></div>
   </div>
-  <div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>hard-coded · synthetic data · runs in your browser</span></div>
-    <div class="demo" data-demo="${p.slug}"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>
+  ${p.live ? `<div class="demo-frame"><div class="demo-bar"><span>LIVE APPLICATION</span><span>opens in a new tab · not embedded here</span></div>
+    <div class="demo" style="min-height:0"><p class="lede" style="margin-top:0">Two related tools, one toolkit. Both run entirely in your browser: nothing you type is sent anywhere.</p>
+    <div class="d-grid"><div class="d-card"><span class="d-label">Tool 1</span><b>OCC Controller Generator &amp; Tester</b><p class="muted">Generate Spring MVC OCC controller scaffolding for SAP Commerce 2205 or 2211, with optional DTO, facade and validator, and try requests against a local mock.</p></div>
+    <div class="d-card"><span class="d-label">Tool 2</span><b>ImpEx Generator</b><p class="muted">Build ImpEx from a header, macro and data editor or a CSV import, with deterministic output and diagnostics.</p></div></div>
+    <div class="d-ctl" style="margin-top:18px"><a class="btn pri" href="${p.live}" target="_blank" rel="noopener noreferrer">Open Live Toolkit ↗</a></div></div></div>` : `<div class="demo-frame"><div class="demo-bar"><span>INTERACTIVE DEMO</span><span>${p.demoBar || 'hard-coded · synthetic data · runs in your browser'}</span></div>
+    <div class="demo" data-demo="${p.slug}"><noscript><p class="muted">The interactive demo needs JavaScript. The write-up below covers the same material.</p></noscript></div></div>`}
   <div class="prose">
     <div class="card"><h2>The problem</h2><p>${esc(p.problem)}</p></div>
     <div class="card"><h2>How it works</h2><ol>${p.how.map(s => `<li>${esc(s)}</li>`).join('')}</ol></div>
@@ -140,7 +148,7 @@ ${header('lab')}
     <div class="card"><h2>Why it matters</h2><p>${esc(p.matters)}</p></div>
   </div>
   <p class="honest"><b>Scope &amp; honesty.</b> ${esc(p.honest)}</p>
-  <div class="meta"><a class="btn pri" href="${owner}${p.slug}" rel="noopener">Read the code ↗</a></div>
+  <div class="meta">${p.live ? `<a class="btn pri" href="${p.live}" target="_blank" rel="noopener noreferrer">Open Live Toolkit ↗</a>` : ''}<a class="btn${p.live ? '' : ' pri'}" href="${owner}${p.slug}" rel="noopener">Read the code ↗</a></div>
   <p class="byline">Built by Ritangkar Dey · <a href="/assets/Ritangkar-Dey-Resume.pdf" target="_blank" rel="noopener">Résumé</a> · <a href="https://www.linkedin.com/in/ritangkar-dey" rel="noopener">LinkedIn</a> · <a href="https://github.com/ritangkar" rel="noopener">GitHub</a> · <a href="mailto:ritangkardey11@gmail.com">Email</a></p>
   <nav class="pn" aria-label="More projects"><a href="/lab/${prev.slug}/">← ${esc(prev.name)}</a><a href="/lab/${next.slug}/">${esc(next.name)} →</a></nav>
 </div></main>
@@ -157,9 +165,9 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: 'Ritangk
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'KIIT University' }, knowsAbout: ['SAP Commerce', 'Enterprise commerce architecture', 'SAP S/4HANA', 'SAP CPI', 'Java', 'Spring', 'Applied AI'] };
 const home = readFileSync('tools/home.template.html', 'utf8')
   .replace('{{HEAD}}', head({ title: 'Ritangkar Dey — AI-First Enterprise Commerce Architect',
-    desc: 'SAP Commerce technical lead and solution architect with 8+ years across B2B, B2C and B2B2C commerce — enterprise integration, performance, security and applied AI. Explore 17 engineering projects with interactive demos.',
+    desc: `SAP Commerce technical lead and solution architect with 8+ years across B2B, B2C and B2B2C commerce — enterprise integration, performance, security and applied AI. Explore ${N} engineering projects with interactive demos.`,
     path: '/', extra: `<script type="application/ld+json">${JSON.stringify(ld)}</script>\n` }))
-  .replace('{{SHELL}}', shell()).replace('{{HEADER}}', header()).replace('{{FOOTER}}', footer()).replace('{{SCRIPTS}}', scripts('', true))
+  .replace(/\{\{NWORD\}\}/g, Nword).replace(/\{\{N\}\}/g, String(N)).replace('{{SHELL}}', shell()).replace('{{HEADER}}', header()).replace('{{FOOTER}}', footer()).replace('{{SCRIPTS}}', scripts('', true))
   .replace('{{FLAGSHIP_CARDS}}', projects.filter(p => p.tier === 'flagship').map(card).join('\n'))
   .replace('{{OTHER_LINKS}}', projects.filter(p => p.tier !== 'flagship').map(p => `<a href="/lab/${p.slug}/">${esc(p.name)}</a>`).join(' · '));
 write('index.html', home);
